@@ -25,6 +25,19 @@ class FirstViewController: UIViewController {
         return label
     }()
     
+    let slogan: UILabel = {
+        let label = UILabel()
+        
+        label.text = "All your service. In one place."
+        label.textAlignment = .center
+        label.font = UIFont(name: "Avenir-Heavy", size: 23)
+        label.textColor = .white
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
+    
     let signUp: UIButton = {
         let button = UIButton()
         let font = UIFont(name: "Avenir-Medium", size: 20)
@@ -63,6 +76,7 @@ class FirstViewController: UIViewController {
         super.viewDidLoad()
         
         view.addSubview(name)
+        view.addSubview(slogan)
         view.addSubview(signUp)
         view.addSubview(login)
         
@@ -70,6 +84,9 @@ class FirstViewController: UIViewController {
         
         name.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         name.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 150).isActive = true
+        
+        slogan.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        slogan.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 343).isActive = true
         
         signUp.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         signUp.centerYAnchor.constraint(equalTo: view.bottomAnchor, constant: -200).isActive = true

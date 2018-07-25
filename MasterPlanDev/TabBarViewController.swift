@@ -10,10 +10,39 @@ import UIKit
 
 class TabBarController: UITabBarController {
     
+    let margin: CGFloat = 10
+    let buttonSize: CGFloat = 20
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = mainBlue
+        view.addSubview(name)
+        
+        let moreButton = UIButton()
+        let moreImage = UIImage(cgImage: #imageLiteral(resourceName: "More").cgImage!)
+        moreButton.setImage(moreImage, for: .normal)
+        moreButton.imageEdgeInsets = UIEdgeInsetsMake(buttonSize, buttonSize, buttonSize, buttonSize)
+        view.addSubview(moreButton)
+        
+        moreButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        let searchButton = UIButton()
+        let searchImage = UIImage(cgImage: #imageLiteral(resourceName: "Search").cgImage!)
+        searchButton.setImage(searchImage, for: .normal)
+        searchButton.imageEdgeInsets = UIEdgeInsetsMake(buttonSize*1.2, buttonSize*1.2, buttonSize*1.2, buttonSize*1.2)
+        view.addSubview(searchButton)
+        
+        searchButton.translatesAutoresizingMaskIntoConstraints = false
+
+        name.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        name.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 50).isActive = true
+        
+        moreButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: margin).isActive = true
+        moreButton.centerYAnchor.constraint(equalTo: name.centerYAnchor).isActive = true
+        
+        searchButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -margin).isActive = true
+        searchButton.centerYAnchor.constraint(equalTo: name.centerYAnchor, constant: -1).isActive = true
         
         setupTabBar()
     }
@@ -32,7 +61,7 @@ class TabBarController: UITabBarController {
         userController.tabBarItem.selectedImage = #imageLiteral(resourceName: "UserPressed").withRenderingMode(.alwaysOriginal)
         
         tabBar.backgroundColor = secondaryBlue
-        tabBar.isTranslucent = false
+//        tabBar.isTranslucent = false
         
         viewControllers = [barController, requestController, userController]
         
@@ -42,5 +71,21 @@ class TabBarController: UITabBarController {
             item.imageInsets = UIEdgeInsetsMake(5, 0, -5, 0)
         }
     }
+    
+    
+    let name: UILabel = {
+        let label = UILabel()
+        let master = "MASTER"
+        let plan = "PLAN"
+        let size = 36
+        
+        let title = NSMutableAttributedString(string: master, attributes: [.font : UIFont(name: "Avenir-Black", size: CGFloat(size))!])
+        title.append(NSAttributedString(string: plan, attributes: [.font : UIFont(name: "Avenir-Light", size: CGFloat(size))!]))
+        
+        label.attributedText = title
+        label.textColor = .white
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
 
 }

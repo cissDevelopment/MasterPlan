@@ -10,45 +10,83 @@ import UIKit
 
 class BarMainViewController: UIViewController {
     
-    private var embedController: EmbedController?
-    
     let barSegmentedControl: UISegmentedControl = {
         let barItems = ["Newest", "Rewarding", "Saved"]
        let segmentedControl = UISegmentedControl(items: barItems)
-        segmentedControl.backgroundColor = secondaryBlue
-        segmentedControl.tintColor = segmentedControl.backgroundColor
-        let frame = UIScreen.main.bounds
-        segmentedControl.frame = CGRect(x: frame.minX, y: frame.minY + 100,
-                                        width: frame.width, height: 50)
-        segmentedControl.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.white, .font: segmentedControlFont!], for: .normal)
-        segmentedControl.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.white, .font: segmentedControlFont!], for: .selected)
-        
-        segmentedControl.addTarget(self, action: #selector(segmentSelection(sender:)), for: .valueChanged)
+        segmentedControl.addTarget(self, action: #selector(selectionDidChange(_:)), for: .valueChanged)
         
         return segmentedControl
+    }()
+    
+    let containerView: UIView = {
+       let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        return view
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.addSubview(barSegmentedControl)
+        view.addSubview(containerView)
         
-        embedController = EmbedController(rootViewController: self)
+        barSegmentedControl.addUnderlineForSelectedSegment()
         
-        segmentSelection(sender: barSegmentedControl).view.frame = CGRect(x: barSegmentedControl.frame.minX, y: barSegmentedControl.frame.maxY, width: view.frame.width, height: view.frame.height-49)
+        // Default VC
+        containerView.addSubview(BarNewestViewController().view)
         
-        embedController?.append(viewController: segmentSelection(sender: barSegmentedControl))
+        containerView.topAnchor.constraint(equalTo: barSegmentedControl.bottomAnchor).isActive = true
+        containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -49).isActive = true
+        containerView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        containerView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         
     }
     
-    @objc func segmentSelection(sender: UISegmentedControl) -> UIViewController {
-        switch sender.selectedSegmentIndex {
-        case 1:
-            return BarRewardingViewController()
-        case 2:
-            return BarSavedViewController()
-        default:
-            return BarNewestViewController()
+    @objc func selectionDidChange(_ sender: UISegmentedControl) {
+        updateView()
+        barSegmentedControl.changeUnderlinePosition()
+    }
+    
+    private func updateView() {
+        if barSegmentedControl.selectedSegmentIndex == 0 {
+            remove(asChildViewController: BarRewardingViewController())
+            remove(asChildViewController: BarSavedViewController())
+            add(asChildViewController: BarNewestViewController())
+        } else if barSegmentedControl.selectedSegmentIndex == 1 {
+            remove(asChildViewController: BarNewestViewController())
+            remove(asChildViewController: BarSavedViewController())
+            add(asChildViewController: BarRewardingViewController())
+        } else {
+            remove(asChildViewController: BarNewestViewController())
+            remove(asChildViewController: BarRewardingViewController())
+            add(asChildViewController: BarSavedViewController())
         }
     }
+    
+    private func add(asChildViewController viewController: UIViewController) {
+        // Add Child View Controller
+        addChildViewController(viewController)
+        
+        // Add Child View as Subview
+        containerView.addSubview(viewController.view)
+        
+        // Configure Child View
+        viewController.view.translatesAutoresizingMaskIntoConstraints = false
+        
+        // Notify Child View Controller
+        viewController.didMove(toParentViewController: self)
+    }
+    
+    private func remove(asChildViewController viewController: UIViewController) {
+        // Notify Child View Controller
+        viewController.willMove(toParentViewController: nil)
+        
+        // Remove Child View From Superview
+        viewController.view.removeFromSuperview()
+        
+        // Notify Child View Controller
+        viewController.removeFromParentViewController()
+    }
+    
 }

@@ -71,6 +71,7 @@
         <!--User Main-->
         <scene sceneID="AdV-2w-uaS">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BEb-ev-dTp" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController title="User Main" id="XV8-AM-RKg" customClass="UserMainViewController" customModule="MasterPlanDev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wYQ-E0-1Lr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -79,9 +80,8 @@
                         <viewLayoutGuide key="safeArea" id="qmT-Yb-ckM"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BEb-ev-dTp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2424.8000000000002" y="988.15592203898063"/>
+            <point key="canvasLocation" x="2246" y="1093"/>
         </scene>
         <!--Request Main-->
         <scene sceneID="GMH-Vz-jJL">
@@ -90,15 +90,6 @@
                     <view key="view" contentMode="scaleToFill" id="4Jc-80-Csa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lYy-uP-WUf">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <connections>
-                                    <segue destination="xFc-CB-jY2" kind="embed" id="OKp-bx-jEi"/>
-                                </connections>
-                            </containerView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="klc-Lb-ekJ"/>
                     </view>
@@ -117,11 +108,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="IAp-b7-heo"/>
                     </view>
-                    <connections>
-                        <segue destination="eTJ-7S-Du9" kind="show" identifier="Bar Main -&gt; Newest" id="WLE-Re-0ZA"/>
-                        <segue destination="IsB-Ra-Eqd" kind="show" identifier="Bar Main -&gt; Rewarding" id="eaZ-ZA-aHY"/>
-                        <segue destination="xyU-qk-8yk" kind="show" identifier="Bar Main -&gt; Saved" id="3Cm-zK-cfp"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pQ6-Wa-ypR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -146,69 +132,9 @@
             </objects>
             <point key="canvasLocation" x="33" y="770"/>
         </scene>
-        <!--Rewarding-->
-        <scene sceneID="07F-IV-qMS">
-            <objects>
-                <viewController title="Rewarding" id="IsB-Ra-Eqd" customClass="BarRewardingViewController" customModule="MasterPlanDev" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="DCu-Uf-Txq">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="Orq-gX-dQL"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NN5-g4-9lL" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2425" y="-1092"/>
-        </scene>
-        <!--Saved-->
-        <scene sceneID="zr7-za-WQl">
-            <objects>
-                <viewController title="Saved" id="xyU-qk-8yk" customClass="BarSavedViewController" customModule="MasterPlanDev" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="TBe-Qe-oO1">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="uZn-N3-slN"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KjC-po-YVa" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3134" y="-1093"/>
-        </scene>
-        <!--Newest-->
-        <scene sceneID="Py7-6X-enW">
-            <objects>
-                <viewController storyboardIdentifier="NewestID" title="Newest" id="eTJ-7S-Du9" customClass="BarNewestViewController" customModule="MasterPlanDev" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="pSg-84-b2G">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="S2D-5i-WBY"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oNK-lm-swz" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3134" y="-398"/>
-        </scene>
-        <!--Single Role-->
-        <scene sceneID="ono-LD-NcP">
-            <objects>
-                <viewController title="Single Role" id="xFc-CB-jY2" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="vmz-TD-1g6">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="cbc-Kh-wVV"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8oc-Bq-EYI" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3134" y="303"/>
-        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="gQg-tO-ytE"/>
+        <segue reference="uMN-Wr-Uwc"/>
         <segue reference="IZv-uK-lib"/>
         <segue reference="VRK-GH-AAi"/>
     </inferredMetricsTieBreakers>

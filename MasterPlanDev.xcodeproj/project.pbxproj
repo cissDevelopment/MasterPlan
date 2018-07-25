@@ -15,7 +15,12 @@
 		7F09180E21064D1400C33F60 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F09180D21064D1400C33F60 /* SignUpViewController.swift */; };
 		7F0918102106517300C33F60 /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F09180F2106517300C33F60 /* LaunchScreen.swift */; };
 		7F091812210652D400C33F60 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F091811210652D400C33F60 /* LaunchScreen.storyboard */; };
-		7FE7E4EA2108238100F115D1 /* EmbedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE7E4E92108238100F115D1 /* EmbedController.swift */; };
+		7F3EDCE32108A73200120BED /* RequestMultipleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3EDCE22108A73200120BED /* RequestMultipleViewController.swift */; };
+		7F3EDCE52108A73A00120BED /* RequestTutorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3EDCE42108A73A00120BED /* RequestTutorViewController.swift */; };
+		7F3EDCE72108A74100120BED /* RequestDraftsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3EDCE62108A74100120BED /* RequestDraftsViewController.swift */; };
+		7F3EDCE92108A74D00120BED /* UserStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3EDCE82108A74D00120BED /* UserStatsViewController.swift */; };
+		7F3EDCEB2108A75300120BED /* UserCurrentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3EDCEA2108A75300120BED /* UserCurrentViewController.swift */; };
+		7F3EDCEF2108AC5000120BED /* SegmentedControlHighlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3EDCEE2108AC5000120BED /* SegmentedControlHighlight.swift */; };
 		7FE7E4EC21082DC100F115D1 /* BarRewardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE7E4EB21082DC100F115D1 /* BarRewardingViewController.swift */; };
 		7FE7E4EE21082DC800F115D1 /* BarSavedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE7E4ED21082DC800F115D1 /* BarSavedViewController.swift */; };
 		7FED50B12107201600FEF5E7 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FED50B02107201600FEF5E7 /* TabBarViewController.swift */; };
@@ -39,7 +44,12 @@
 		7F09180D21064D1400C33F60 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		7F09180F2106517300C33F60 /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
 		7F091811210652D400C33F60 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		7FE7E4E92108238100F115D1 /* EmbedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbedController.swift; sourceTree = "<group>"; };
+		7F3EDCE22108A73200120BED /* RequestMultipleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestMultipleViewController.swift; sourceTree = "<group>"; };
+		7F3EDCE42108A73A00120BED /* RequestTutorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTutorViewController.swift; sourceTree = "<group>"; };
+		7F3EDCE62108A74100120BED /* RequestDraftsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestDraftsViewController.swift; sourceTree = "<group>"; };
+		7F3EDCE82108A74D00120BED /* UserStatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatsViewController.swift; sourceTree = "<group>"; };
+		7F3EDCEA2108A75300120BED /* UserCurrentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCurrentViewController.swift; sourceTree = "<group>"; };
+		7F3EDCEE2108AC5000120BED /* SegmentedControlHighlight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlHighlight.swift; sourceTree = "<group>"; };
 		7FE7E4EB21082DC100F115D1 /* BarRewardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarRewardingViewController.swift; sourceTree = "<group>"; };
 		7FE7E4ED21082DC800F115D1 /* BarSavedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarSavedViewController.swift; sourceTree = "<group>"; };
 		7FED50B02107201600FEF5E7 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -88,7 +98,7 @@
 				7F09180B2106423400C33F60 /* LoginViewController.swift */,
 				7F09180D21064D1400C33F60 /* SignUpViewController.swift */,
 				7FED50B02107201600FEF5E7 /* TabBarViewController.swift */,
-				7FE7E4E92108238100F115D1 /* EmbedController.swift */,
+				7F3EDCEE2108AC5000120BED /* SegmentedControlHighlight.swift */,
 				7FED50C2210769BD00FEF5E7 /* Bar */,
 				7FED50C4210769C800FEF5E7 /* Request */,
 				7FED50C3210769C300FEF5E7 /* User */,
@@ -116,6 +126,8 @@
 			isa = PBXGroup;
 			children = (
 				7FED50B62107212900FEF5E7 /* UserMainViewController.swift */,
+				7F3EDCE82108A74D00120BED /* UserStatsViewController.swift */,
+				7F3EDCEA2108A75300120BED /* UserCurrentViewController.swift */,
 				7FED50C0210769B500FEF5E7 /* UserSettingsViewController.swift */,
 			);
 			path = User;
@@ -126,6 +138,9 @@
 			children = (
 				7FED50B42107212400FEF5E7 /* RequestMainViewController.swift */,
 				7FED50BE210769AF00FEF5E7 /* RequestSingleViewController.swift */,
+				7F3EDCE22108A73200120BED /* RequestMultipleViewController.swift */,
+				7F3EDCE42108A73A00120BED /* RequestTutorViewController.swift */,
+				7F3EDCE62108A74100120BED /* RequestDraftsViewController.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -202,13 +217,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FED50B12107201600FEF5E7 /* TabBarViewController.swift in Sources */,
-				7FE7E4EA2108238100F115D1 /* EmbedController.swift in Sources */,
+				7F3EDCEF2108AC5000120BED /* SegmentedControlHighlight.swift in Sources */,
+				7F3EDCE52108A73A00120BED /* RequestTutorViewController.swift in Sources */,
 				7FED50B921075DF500FEF5E7 /* ColorsFonts.swift in Sources */,
 				7FED50C1210769B500FEF5E7 /* UserSettingsViewController.swift in Sources */,
+				7F3EDCEB2108A75300120BED /* UserCurrentViewController.swift in Sources */,
 				7F09180C2106423500C33F60 /* LoginViewController.swift in Sources */,
 				7F0917FA21062B1000C33F60 /* FirstViewController.swift in Sources */,
 				7FED50BD2107699D00FEF5E7 /* BarNewestViewController.swift in Sources */,
 				7FE7E4EC21082DC100F115D1 /* BarRewardingViewController.swift in Sources */,
+				7F3EDCE72108A74100120BED /* RequestDraftsViewController.swift in Sources */,
 				7F09180E21064D1400C33F60 /* SignUpViewController.swift in Sources */,
 				7FED50BF210769AF00FEF5E7 /* RequestSingleViewController.swift in Sources */,
 				7FED50B32107211B00FEF5E7 /* BarMainViewController.swift in Sources */,
@@ -216,6 +234,8 @@
 				7F0918102106517300C33F60 /* LaunchScreen.swift in Sources */,
 				7FED50B52107212400FEF5E7 /* RequestMainViewController.swift in Sources */,
 				7FE7E4EE21082DC800F115D1 /* BarSavedViewController.swift in Sources */,
+				7F3EDCE92108A74D00120BED /* UserStatsViewController.swift in Sources */,
+				7F3EDCE32108A73200120BED /* RequestMultipleViewController.swift in Sources */,
 				7FED50B72107212900FEF5E7 /* UserMainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
