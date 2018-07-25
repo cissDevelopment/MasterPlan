@@ -13,7 +13,7 @@ class RequestMainViewController: UIViewController {
     let requestSegmentedControl: UISegmentedControl = {
         let requestItems = ["Single", "Multiple", "Tutor", "Drafts"]
         let segmentedControl = UISegmentedControl(items: requestItems)
-        segmentedControl.backgroundColor = mainBlue
+        segmentedControl.backgroundColor = secondaryBlue
         segmentedControl.tintColor = segmentedControl.backgroundColor
         let frame = UIScreen.main.bounds
         segmentedControl.frame = CGRect(x: frame.minX, y: frame.minY + 100,

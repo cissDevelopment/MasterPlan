@@ -10,10 +10,12 @@ import UIKit
 
 class BarMainViewController: UIViewController {
     
+    private var embedController: EmbedController?
+    
     let barSegmentedControl: UISegmentedControl = {
         let barItems = ["Newest", "Rewarding", "Saved"]
        let segmentedControl = UISegmentedControl(items: barItems)
-        segmentedControl.backgroundColor = mainBlue
+        segmentedControl.backgroundColor = secondaryBlue
         segmentedControl.tintColor = segmentedControl.backgroundColor
         let frame = UIScreen.main.bounds
         segmentedControl.frame = CGRect(x: frame.minX, y: frame.minY + 100,
@@ -21,15 +23,32 @@ class BarMainViewController: UIViewController {
         segmentedControl.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.white, .font: segmentedControlFont!], for: .normal)
         segmentedControl.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.white, .font: segmentedControlFont!], for: .selected)
         
+        segmentedControl.addTarget(self, action: #selector(segmentSelection(sender:)), for: .valueChanged)
+        
         return segmentedControl
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        view.backgroundColor = .red
         
         view.addSubview(barSegmentedControl)
         
+        embedController = EmbedController(rootViewController: self)
+        
+        segmentSelection(sender: barSegmentedControl).view.frame = CGRect(x: barSegmentedControl.frame.minX, y: barSegmentedControl.frame.maxY, width: view.frame.width, height: view.frame.height-49)
+        
+        embedController?.append(viewController: segmentSelection(sender: barSegmentedControl))
+        
     }
-
+    
+    @objc func segmentSelection(sender: UISegmentedControl) -> UIViewController {
+        switch sender.selectedSegmentIndex {
+        case 1:
+            return BarRewardingViewController()
+        case 2:
+            return BarSavedViewController()
+        default:
+            return BarNewestViewController()
+        }
+    }
 }

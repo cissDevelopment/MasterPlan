@@ -13,7 +13,7 @@ class UserMainViewController: UIViewController {
     let userSegmentedControl: UISegmentedControl = {
         let userItems = ["Stats", "Current", "Settings"]
         let segmentedControl = UISegmentedControl(items: userItems)
-        segmentedControl.backgroundColor = mainBlue
+        segmentedControl.backgroundColor = secondaryBlue
         segmentedControl.tintColor = segmentedControl.backgroundColor
         let frame = UIScreen.main.bounds
         segmentedControl.frame = CGRect(x: frame.minX, y: frame.minY + 100,

@@ -13,22 +13,10 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tabBar.backgroundColor = secondaryBlue
-        setupTabBar()
-        
-        view.addSubview(topView)
-        
-        topView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        topView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-        topView.heightAnchor.constraint(equalToConstant: 100).isActive = true
-    }
-    
-    let topView: UIView = {
-       let view = UIView()
         view.backgroundColor = mainBlue
         
-        return view
-    }()
+        setupTabBar()
+    }
     
     func setupTabBar() {
         let barController = BarMainViewController()
@@ -42,6 +30,9 @@ class TabBarController: UITabBarController {
         let userController = UserMainViewController()
         userController.tabBarItem.image = #imageLiteral(resourceName: "User").withRenderingMode(.alwaysOriginal)
         userController.tabBarItem.selectedImage = #imageLiteral(resourceName: "UserPressed").withRenderingMode(.alwaysOriginal)
+        
+        tabBar.backgroundColor = secondaryBlue
+        tabBar.isTranslucent = false
         
         viewControllers = [barController, requestController, userController]
         
