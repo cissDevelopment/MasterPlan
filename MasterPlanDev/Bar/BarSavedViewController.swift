@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BarSavedViewController: UIViewController {
+class BarSavedViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

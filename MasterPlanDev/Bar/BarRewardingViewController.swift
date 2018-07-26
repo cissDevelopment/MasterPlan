@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BarRewardingViewController: UIViewController {
+class BarRewardingViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -21,6 +21,7 @@
 		7F3EDCE92108A74D00120BED /* UserStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3EDCE82108A74D00120BED /* UserStatsViewController.swift */; };
 		7F3EDCEB2108A75300120BED /* UserCurrentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3EDCEA2108A75300120BED /* UserCurrentViewController.swift */; };
 		7F3EDCEF2108AC5000120BED /* SegmentedControlHighlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3EDCEE2108AC5000120BED /* SegmentedControlHighlight.swift */; };
+		7F9E296B2109B29C00EC1BEA /* ServiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9E296A2109B29C00EC1BEA /* ServiceCell.swift */; };
 		7FE7E4EC21082DC100F115D1 /* BarRewardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE7E4EB21082DC100F115D1 /* BarRewardingViewController.swift */; };
 		7FE7E4EE21082DC800F115D1 /* BarSavedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE7E4ED21082DC800F115D1 /* BarSavedViewController.swift */; };
 		7FED50B12107201600FEF5E7 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FED50B02107201600FEF5E7 /* TabBarViewController.swift */; };
@@ -50,6 +51,7 @@
 		7F3EDCE82108A74D00120BED /* UserStatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatsViewController.swift; sourceTree = "<group>"; };
 		7F3EDCEA2108A75300120BED /* UserCurrentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCurrentViewController.swift; sourceTree = "<group>"; };
 		7F3EDCEE2108AC5000120BED /* SegmentedControlHighlight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlHighlight.swift; sourceTree = "<group>"; };
+		7F9E296A2109B29C00EC1BEA /* ServiceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCell.swift; sourceTree = "<group>"; };
 		7FE7E4EB21082DC100F115D1 /* BarRewardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarRewardingViewController.swift; sourceTree = "<group>"; };
 		7FE7E4ED21082DC800F115D1 /* BarSavedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarSavedViewController.swift; sourceTree = "<group>"; };
 		7FED50B02107201600FEF5E7 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 			children = (
 				7FED50B22107211B00FEF5E7 /* BarMainViewController.swift */,
 				7FED50BC2107699D00FEF5E7 /* BarNewestViewController.swift */,
+				7F9E296A2109B29C00EC1BEA /* ServiceCell.swift */,
 				7FE7E4EB21082DC100F115D1 /* BarRewardingViewController.swift */,
 				7FE7E4ED21082DC800F115D1 /* BarSavedViewController.swift */,
 			);
@@ -233,6 +236,7 @@
 				7F0917F821062B1000C33F60 /* AppDelegate.swift in Sources */,
 				7F0918102106517300C33F60 /* LaunchScreen.swift in Sources */,
 				7FED50B52107212400FEF5E7 /* RequestMainViewController.swift in Sources */,
+				7F9E296B2109B29C00EC1BEA /* ServiceCell.swift in Sources */,
 				7FE7E4EE21082DC800F115D1 /* BarSavedViewController.swift in Sources */,
 				7F3EDCE92108A74D00120BED /* UserStatsViewController.swift in Sources */,
 				7F3EDCE32108A73200120BED /* RequestMultipleViewController.swift in Sources */,

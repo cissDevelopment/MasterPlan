@@ -13,6 +13,7 @@ class BarMainViewController: UIViewController {
     let barSegmentedControl: UISegmentedControl = {
         let barItems = ["Newest", "Rewarding", "Saved"]
        let segmentedControl = UISegmentedControl(items: barItems)
+        segmentedControl.selectedSegmentIndex = 0
         segmentedControl.addTarget(self, action: #selector(selectionDidChange(_:)), for: .valueChanged)
         
         return segmentedControl
@@ -31,10 +32,9 @@ class BarMainViewController: UIViewController {
         view.addSubview(barSegmentedControl)
         view.addSubview(containerView)
         
-        barSegmentedControl.addUnderlineForSelectedSegment()
+        setDefaultVC()
         
-        // Default VC
-        containerView.addSubview(BarNewestViewController().view)
+        barSegmentedControl.addUnderlineForSelectedSegment()
         
         containerView.topAnchor.constraint(equalTo: barSegmentedControl.bottomAnchor).isActive = true
         containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -49).isActive = true
@@ -64,7 +64,7 @@ class BarMainViewController: UIViewController {
         }
     }
     
-    private func add(asChildViewController viewController: UIViewController) {
+    private func add(asChildViewController viewController: UITableViewController) {
         // Add Child View Controller
         addChildViewController(viewController)
         
@@ -78,7 +78,7 @@ class BarMainViewController: UIViewController {
         viewController.didMove(toParentViewController: self)
     }
     
-    private func remove(asChildViewController viewController: UIViewController) {
+    private func remove(asChildViewController viewController: UITableViewController) {
         // Notify Child View Controller
         viewController.willMove(toParentViewController: nil)
         
@@ -87,6 +87,10 @@ class BarMainViewController: UIViewController {
         
         // Notify Child View Controller
         viewController.removeFromParentViewController()
+    }
+    
+    private func setDefaultVC() {
+        containerView.addSubview(BarNewestViewController().view)
     }
     
 }
