@@ -8,7 +8,11 @@
 
 import UIKit
 
-class UserMainViewController: UIViewController {
+class UserMainViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    var imagepicker = UIImagePickerController()
+    
+    
     
     let firstname : UILabel = {
         let label = UILabel()
@@ -25,7 +29,21 @@ class UserMainViewController: UIViewController {
         return label
     }()
     
+    
+    let view2: UIView = {
+        let view = UIView()
+        
+        return view
+    }()
+    
     let view1 : UIView = {
+        let view = UIView()
+        
+        return view
+        
+    }()
+    
+    let view3 :  UIView = {
         let view = UIView()
         
         return view
@@ -61,7 +79,7 @@ class UserMainViewController: UIViewController {
     
     let changepic: UIButton = {
         let image1 = UIButton()
-        image1.setImage(#imageLiteral(resourceName: "yellow"), for: UIControlState.normal)
+        image1.backgroundColor = lightYellow
         image1.layer.borderWidth = 0
         image1.layer.masksToBounds = false
         image1.layer.borderColor = UIColor.black.cgColor
@@ -70,7 +88,7 @@ class UserMainViewController: UIViewController {
         image1.translatesAutoresizingMaskIntoConstraints = false
         image1.widthAnchor.constraint(equalToConstant: 120).isActive = true
         image1.heightAnchor.constraint(equalToConstant: 120).isActive = true
-       // image1.addTarget(self, action: #selector(changepicAction(sender:)), for: .touchUpInside)
+        image1.addTarget(self, action: #selector(changepicAction(sender:)), for: .touchUpInside)
         
         
         return image1
@@ -89,11 +107,20 @@ class UserMainViewController: UIViewController {
     }()
 
     
+    
+    
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.addSubview(userSegmentedControl)
         view.addSubview(view1)
+        view.addSubview(view2)
+        view.addSubview(view3)
+        
 
         userSegmentedControl.addUnderlineForSelectedSegment()
         
@@ -122,53 +149,89 @@ class UserMainViewController: UIViewController {
         lastname.topAnchor.constraint(equalTo: firstname.topAnchor, constant:50).isActive = true
 
 }
+    
+    
+    
+    
+    
+    
 @objc func selectionDidChange(_ sender: UISegmentedControl) {
     updateView()
     userSegmentedControl.changeUnderlinePosition()
 }
 
     
-//    private func setupLayout(){
-//
-//        profilepic.topAnchor.constraint(equalTo: view1.topAnchor, constant:20).isActive = true
-//        profilepic.leftAnchor.constraint(equalTo: view1.leftAnchor, constant: 20).isActive = true
-//
-//        changepic.topAnchor.constraint(equalTo: view1.topAnchor, constant: 35).isActive = true
-//        changepic.leftAnchor.constraint(equalTo:view1.leftAnchor, constant: 35).isActive = true
-//
-//        firstname.leftAnchor.constraint(equalTo: changepic.rightAnchor, constant:30).isActive = true
-//        firstname.topAnchor.constraint(equalTo: view1.topAnchor, constant:35).isActive = true
-//
-//        lastname.leftAnchor.constraint(equalTo: changepic.rightAnchor, constant:30).isActive = true
-//        lastname.topAnchor.constraint(equalTo: firstname.topAnchor, constant:50).isActive = true
-//    }
+    private func setupLayoutview1(){
+        userSegmentedControl.changeUnderlinePosition()
+        view1.backgroundColor = lightBlue
+        
+        
+        view1.addSubview(profilepic)
+        view1.addSubview(changepic)
+        view1.addSubview(firstname)
+        view1.addSubview(lastname)
+        profilepic.topAnchor.constraint(equalTo: view1.topAnchor, constant:20).isActive = true
+        profilepic.leftAnchor.constraint(equalTo: view1.leftAnchor, constant: 20).isActive = true
+        
+        changepic.topAnchor.constraint(equalTo: view1.topAnchor, constant: 35).isActive = true
+        changepic.leftAnchor.constraint(equalTo:view1.leftAnchor, constant: 35).isActive = true
+        
+        firstname.leftAnchor.constraint(equalTo: changepic.rightAnchor, constant:30).isActive = true
+        firstname.topAnchor.constraint(equalTo: view1.topAnchor, constant:35).isActive = true
+        
+        lastname.leftAnchor.constraint(equalTo: changepic.rightAnchor, constant:30).isActive = true
+        lastname.topAnchor.constraint(equalTo: firstname.topAnchor, constant:50).isActive = true
+        
+    }
+    
+    private func setupLayoutView2(){
+        
+        
+        
+    }
+    
+    
+    private func setupLayoutView3(){
+        
+        
+    }
+    
 
+    @objc func changepicAction (sender: UIButton!) {
+        print ("something!")
+        imagepicker.delegate = self
+        imagepicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        
+        self.present(imagepicker, animated:true, completion:nil)
+
+    
+    
+    }
+    
+    func imagePickerController(_ _picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String:Any]){
+        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        
+        changepic.setBackgroundImage(image, for: UIControlState.normal)
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
     private func updateView() {
         
         if userSegmentedControl.selectedSegmentIndex == 0 {
             view1.isHidden = false
-            userSegmentedControl.changeUnderlinePosition()
-            view1.backgroundColor = lightBlue
-            view1.addSubview(profilepic)
-            view1.addSubview(changepic)
-            view1.addSubview(firstname)
-            view1.addSubview(lastname)
-            profilepic.topAnchor.constraint(equalTo: view1.topAnchor, constant:20).isActive = true
-            profilepic.leftAnchor.constraint(equalTo: view1.leftAnchor, constant: 20).isActive = true
+            view2.isHidden = true
+            view3.isHidden = true
             
-            changepic.topAnchor.constraint(equalTo: view1.topAnchor, constant: 35).isActive = true
-            changepic.leftAnchor.constraint(equalTo:view1.leftAnchor, constant: 35).isActive = true
-            
-            firstname.leftAnchor.constraint(equalTo: changepic.rightAnchor, constant:30).isActive = true
-            firstname.topAnchor.constraint(equalTo: view1.topAnchor, constant:35).isActive = true
-            
-            lastname.leftAnchor.constraint(equalTo: changepic.rightAnchor, constant:30).isActive = true
-            lastname.topAnchor.constraint(equalTo: firstname.topAnchor, constant:50).isActive = true
+            setupLayoutview1()
             
         } else if userSegmentedControl.selectedSegmentIndex == 1 {
             userSegmentedControl.changeUnderlinePosition()
             view1.isHidden = true
-            
+            view2.isHidden = false
+            view3.isHidden = true
+            print("view 2!")
+            setupLayoutView2()
             
             
             
@@ -176,8 +239,13 @@ class UserMainViewController: UIViewController {
         } else {
             userSegmentedControl.changeUnderlinePosition()
             view1.isHidden = true
+            view2.isHidden = true
+            view3.isHidden = false
+            print("view 3!")
+            setupLayoutView3()
         }
 }
+
 
 
 

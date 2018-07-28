@@ -64,7 +64,7 @@ class UserStatsViewController: UIViewController {
         image1.translatesAutoresizingMaskIntoConstraints = false
         image1.widthAnchor.constraint(equalToConstant: 120).isActive = true
         image1.heightAnchor.constraint(equalToConstant: 120).isActive = true
-        image1.addTarget(self, action: #selector(changepicAction(sender:)), for: .touchUpInside)
+//        image1.addTarget(self, action: #selector(changepicAction(sender:)), for: .touchUpInside)
 
         
         return image1
@@ -98,15 +98,15 @@ class UserStatsViewController: UIViewController {
         lastname.topAnchor.constraint(equalTo: firstname.topAnchor, constant:50).isActive = true
     }
     
-    @objc func changepicAction (sender: UIButton!) {
-        print ("something!")
-        changepic.backgroundColor = .red
-        
-//        imagePicker.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
-//       imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+//    @objc func changepicAction (sender: UIButton!) {
+//        print ("something!")
+//        changepic.backgroundColor = .red
 //
-//       self.present(imagePicker, animated:true, completion:nil)
-    }
-    
+//        imagepicker.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
+//        imagepicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+//
+//       self.present(imagepicker, animated:true, completion:nil)
+//    }
+//
 
 }
