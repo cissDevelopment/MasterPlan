@@ -101,6 +101,7 @@
 				7F09180D21064D1400C33F60 /* SignUpViewController.swift */,
 				7FED50B02107201600FEF5E7 /* TabBarViewController.swift */,
 				7F3EDCEE2108AC5000120BED /* SegmentedControlHighlight.swift */,
+				7F9E296A2109B29C00EC1BEA /* ServiceCell.swift */,
 				7FED50C2210769BD00FEF5E7 /* Bar */,
 				7FED50C4210769C800FEF5E7 /* Request */,
 				7FED50C3210769C300FEF5E7 /* User */,
@@ -118,7 +119,6 @@
 			children = (
 				7FED50B22107211B00FEF5E7 /* BarMainViewController.swift */,
 				7FED50BC2107699D00FEF5E7 /* BarNewestViewController.swift */,
-				7F9E296A2109B29C00EC1BEA /* ServiceCell.swift */,
 				7FE7E4EB21082DC100F115D1 /* BarRewardingViewController.swift */,
 				7FE7E4ED21082DC800F115D1 /* BarSavedViewController.swift */,
 			);
