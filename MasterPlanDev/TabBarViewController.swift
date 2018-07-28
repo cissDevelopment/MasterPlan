@@ -19,11 +19,13 @@ class TabBarController: UITabBarController {
         view.backgroundColor = mainBlue
         view.addSubview(name)
         
+
         let moreButton = UIButton()
         let moreImage = UIImage(cgImage: #imageLiteral(resourceName: "More").cgImage!)
         moreButton.setImage(moreImage, for: .normal)
         moreButton.imageEdgeInsets = UIEdgeInsetsMake(buttonSize, buttonSize, buttonSize, buttonSize)
         view.addSubview(moreButton)
+        moreButton.addTarget(self, action: #selector(showMore(sender:)), for: .touchUpInside)
         
         moreButton.translatesAutoresizingMaskIntoConstraints = false
         
@@ -88,4 +90,12 @@ class TabBarController: UITabBarController {
         return label
     }()
 
+    @objc func showMore(sender: UIButton!){
+        let containerView = UIView(frame: CGRect(x: -140.0, y: 70, width: 140, height: 617))
+        containerView.backgroundColor = lightBlue
+        self.view.addSubview(containerView)
+        UIView.animate(withDuration: 0.5) {
+            containerView.transform = CGAffineTransform(translationX: 140, y: 0)
+        }
+    }
 }
