@@ -40,7 +40,6 @@ class BarMainViewController: UIViewController {
         containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -49).isActive = true
         containerView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         containerView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-        
     }
     
     @objc func selectionDidChange(_ sender: UISegmentedControl) {

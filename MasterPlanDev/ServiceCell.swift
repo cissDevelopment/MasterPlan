@@ -20,7 +20,6 @@ class serviceCell: UITableViewCell {
     
     let name: UITextView = {
         let textView = UITextView()
-        let text = "Name of "
         textView.isEditable = false
         textView.backgroundColor = .clear
         
