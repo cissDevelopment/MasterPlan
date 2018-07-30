@@ -1,15 +1,10 @@
-//
-//  UserStatsViewController.swift
-//  MasterPlanDev
-//
-//  Created by Yoochan Shin on 2018/7/25.
-//  Copyright © 2018 YoochanShin. All rights reserved.
-//
+
 
 import UIKit
 
-class UserStatsViewController: UIViewController {
+class UserStatsViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    var imagepicker = UIImagePickerController()
     
     let firstname : UILabel = {
         let label = UILabel()
@@ -26,6 +21,8 @@ class UserStatsViewController: UIViewController {
         return label
     }()
     
+
+    
     let lastname : UILabel = {
         let label = UILabel()
         label.text = "Shou"
@@ -41,7 +38,8 @@ class UserStatsViewController: UIViewController {
     }()
     
     let profilepic: UIImageView  = {
-        let image = UIImageView(image: #imageLiteral(resourceName: "darkblue"))
+        let image = UIImageView()
+        image.backgroundColor = mainBlue
         image.layer.borderWidth = 0
         image.layer.masksToBounds = false
         image.layer.borderColor = UIColor.black.cgColor
@@ -55,7 +53,7 @@ class UserStatsViewController: UIViewController {
     
     let changepic: UIButton = {
         let image1 = UIButton()
-        image1.setImage(#imageLiteral(resourceName: "yellow"), for: UIControlState.normal)
+        image1.backgroundColor = lightYellow
         image1.layer.borderWidth = 0
         image1.layer.masksToBounds = false
         image1.layer.borderColor = UIColor.black.cgColor
@@ -64,14 +62,15 @@ class UserStatsViewController: UIViewController {
         image1.translatesAutoresizingMaskIntoConstraints = false
         image1.widthAnchor.constraint(equalToConstant: 120).isActive = true
         image1.heightAnchor.constraint(equalToConstant: 120).isActive = true
-//        image1.addTarget(self, action: #selector(changepicAction(sender:)), for: .touchUpInside)
-
+        image1.addTarget(self, action: #selector(changepicAction(sender:)), for: .touchUpInside)
+        
         
         return image1
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.backgroundColor = lightBlue
         view.addSubview(profilepic)
         view.addSubview(changepic)
@@ -85,28 +84,38 @@ class UserStatsViewController: UIViewController {
     
     
     private func setupLayout(){
-        profilepic.topAnchor.constraint(equalTo: view.topAnchor, constant:20).isActive = true
+        profilepic.topAnchor.constraint(equalTo: view.topAnchor, constant:140).isActive = true
         profilepic.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
-        
-        changepic.topAnchor.constraint(equalTo: view.topAnchor, constant: 35).isActive = true
+
+        changepic.topAnchor.constraint(equalTo: view.topAnchor, constant: 155).isActive = true
         changepic.leftAnchor.constraint(equalTo:view.leftAnchor, constant: 35).isActive = true
-        
+
         firstname.leftAnchor.constraint(equalTo: changepic.rightAnchor, constant:30).isActive = true
-        firstname.topAnchor.constraint(equalTo: view.topAnchor, constant:35).isActive = true
-        
+        firstname.topAnchor.constraint(equalTo: view.topAnchor, constant:155).isActive = true
+
         lastname.leftAnchor.constraint(equalTo: changepic.rightAnchor, constant:30).isActive = true
         lastname.topAnchor.constraint(equalTo: firstname.topAnchor, constant:50).isActive = true
     }
     
-//    @objc func changepicAction (sender: UIButton!) {
-//        print ("something!")
-//        changepic.backgroundColor = .red
-//
-//        imagepicker.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
-//        imagepicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
-//
-//       self.present(imagepicker, animated:true, completion:nil)
-//    }
-//
+    @objc func changepicAction (sender: UIButton!) {
+        print ("something!")
+        imagepicker.delegate = self
+        imagepicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        
+        self.present(imagepicker, animated:true, completion:nil)
+        
+        
+        
+    }
+    
+    func imagePickerController(_ _picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String:Any]){
+        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        
+        changepic.setBackgroundImage(image, for: UIControlState.normal)
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
+
 
 }

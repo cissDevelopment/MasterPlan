@@ -13,6 +13,7 @@ class BarMainViewController: UIViewController {
     let barSegmentedControl: UISegmentedControl = {
         let barItems = ["Newest", "Rewarding", "Saved"]
        let segmentedControl = UISegmentedControl(items: barItems)
+        
         segmentedControl.selectedSegmentIndex = 0
         segmentedControl.addTarget(self, action: #selector(selectionDidChange(_:)), for: .valueChanged)
         
@@ -32,8 +33,8 @@ class BarMainViewController: UIViewController {
         view.addSubview(barSegmentedControl)
         view.addSubview(containerView)
         
-        setDefaultVC()
-        
+        //setDefaultVC()
+        add(asChildViewController: BarNewestViewController())
         barSegmentedControl.addUnderlineForSelectedSegment()
         
         containerView.topAnchor.constraint(equalTo: barSegmentedControl.bottomAnchor).isActive = true
