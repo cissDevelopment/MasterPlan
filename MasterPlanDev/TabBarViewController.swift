@@ -107,7 +107,11 @@ class TabBarController: UITabBarController {
         
         requestController.tabBarItem.selectedImage =  #imageLiteral(resourceName: "RequestPressed").withRenderingMode(.alwaysOriginal)
         
+        let currentController = CurrentMainViewController()
         
+        currentController.tabBarItem.image = #imageLiteral(resourceName: "Request").withRenderingMode(.alwaysOriginal)
+        
+        currentController.tabBarItem.selectedImage =  #imageLiteral(resourceName: "RequestPressed").withRenderingMode(.alwaysOriginal)
         
         let userController = UserMainViewController()
         
@@ -123,7 +127,7 @@ class TabBarController: UITabBarController {
         
         
         
-        viewControllers = [barController, requestController, userController]
+        viewControllers = [barController, requestController,currentController,  userController]
         
         
         
