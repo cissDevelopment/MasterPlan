@@ -131,6 +131,12 @@ class UserMainViewController: UIViewController, UIImagePickerControllerDelegate,
         view1.addSubview(changepic)
         view1.addSubview(firstname)
         view1.addSubview(lastname)
+        view1.addSubview(accservice)
+        view1.addSubview(hours)
+        view1.addSubview(weekservice)
+        view1.addSubview(weekhours)
+        view1.addSubview(weekrank)
+        view1.addSubview(rank)
         
         profilepic.topAnchor.constraint(equalTo: view1.topAnchor, constant:20).isActive = true
         profilepic.leftAnchor.constraint(equalTo: view1.leftAnchor, constant: 20).isActive = true
@@ -143,6 +149,24 @@ class UserMainViewController: UIViewController, UIImagePickerControllerDelegate,
         
         lastname.leftAnchor.constraint(equalTo: changepic.rightAnchor, constant:30).isActive = true
         lastname.topAnchor.constraint(equalTo: firstname.topAnchor, constant:50).isActive = true
+        
+        accservice.topAnchor.constraint(equalTo: changepic.bottomAnchor, constant: 30).isActive = true
+        accservice.leftAnchor.constraint(equalTo: view1.leftAnchor, constant: 20).isActive = true
+        
+        hours.topAnchor.constraint(equalTo: accservice.bottomAnchor, constant: 10).isActive = true
+        hours.leftAnchor.constraint(equalTo: view1.leftAnchor, constant: 20).isActive = true
+        
+        weekservice.topAnchor.constraint(equalTo: hours.bottomAnchor, constant: 20).isActive = true
+        weekservice.leftAnchor.constraint(equalTo: view1.leftAnchor, constant:20).isActive = true
+        
+        weekhours.topAnchor.constraint(equalTo: weekservice.bottomAnchor, constant:10).isActive = true
+        weekhours.leftAnchor.constraint(equalTo: view1.leftAnchor, constant:20).isActive = true
+        
+        weekrank.topAnchor.constraint(equalTo: weekhours.bottomAnchor, constant:10).isActive = true
+        weekrank.leftAnchor.constraint(equalTo: view1.leftAnchor, constant:20).isActive = true
+        
+        rank.topAnchor.constraint(equalTo: weekrank.bottomAnchor, constant:10).isActive = true
+        rank.leftAnchor.constraint(equalTo: view1.leftAnchor, constant:20).isActive = true
     }
     
     @objc func selectionDidChange(_ sender: UISegmentedControl) {
