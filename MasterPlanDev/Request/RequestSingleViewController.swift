@@ -61,11 +61,11 @@ class RequestSingleViewController: UIViewController {
 
         viewSingle.backgroundColor = mainBlue
         
-       // profilepic.topAnchor.constraint(equalTo: viewSingle.topAnchor, constant:20).isActive = true
-     //   profilepic.leftAnchor.constraint(equalTo: viewSingle.leftAnchor, constant: 20).isActive = true
+        profilepic.topAnchor.constraint(equalTo: viewSingle.topAnchor, constant:20).isActive = true
+        profilepic.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
 
-        
-       // changepic.leftAnchor.constraint(equalTo: viewSingle.leftAnchor, constant:20).isActive = true
+        changepic.centerXAnchor.constraint(equalTo: profilepic.centerXAnchor).isActive = true
+        changepic.centerYAnchor.constraint(equalTo: profilepic.centerYAnchor).isActive = true
 
         
         
