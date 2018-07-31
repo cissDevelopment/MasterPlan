@@ -8,7 +8,107 @@
 
 import UIKit
 
+let containerViewRequest: UIView = {
+    let view = UIView()
+    view.translatesAutoresizingMaskIntoConstraints = false
+    
+    return view
+}()
+
+
+
+
+
+
+
+
+
+
 class RequestMainViewController: UIViewController {
+    
+    
+    let view2: UIView = {
+        let view = UIView()
+        
+        return view
+    }()
+    
+    let view1 : UIView = {
+        let view = UIView()
+        
+        return view
+    }()
+    
+    let view3 :  UIView = {
+        let view = UIView()
+        
+        return view
+    }()
+    
+    let scrollView1 : UIScrollView = {
+        let scrollView = UIScrollView()
+        
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return scrollView
+        
+    }()
+    
+    let scrollView2 : UIScrollView = {
+        let scrollView = UIScrollView()
+        
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return scrollView
+        
+    }()
+    
+    let scrollView3 : UIScrollView = {
+        let scrollView = UIScrollView()
+        
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return scrollView
+        
+    }()
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    let profilepic: UIImageView  = {
+        let image = UIImageView()
+        image.backgroundColor = mainBlue
+        image.layer.borderWidth = 0
+        image.layer.masksToBounds = false
+        image.layer.borderColor = UIColor.black.cgColor
+        image.layer.cornerRadius = 75
+        image.clipsToBounds = true
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        image.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        return image
+    }()
+    
+    let changepic: UIImageView = {
+        let image1 = UIImageView()
+        image1.image = profilepicture.image
+        image1.layer.borderWidth = 0
+        image1.layer.masksToBounds = false
+        image1.layer.borderColor = UIColor.black.cgColor
+        image1.layer.cornerRadius = 60
+        image1.clipsToBounds = true
+        image1.translatesAutoresizingMaskIntoConstraints = false
+        image1.widthAnchor.constraint(equalToConstant: 120).isActive = true
+        image1.heightAnchor.constraint(equalToConstant: 120).isActive = true
+
+
+        return image1
+    }()
     
     let requestSegmentedControl: UISegmentedControl = {
         let requestItems = ["Single", "Multiple", "Tutor", "Drafts"]
@@ -20,27 +120,59 @@ class RequestMainViewController: UIViewController {
         
     }()
 
-    let containerView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        
-        return view
-    }()
+
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.addSubview(requestSegmentedControl)
+        view.addSubview(view1)
+        view.addSubview(view2)
+        view.addSubview(view3)
+        
+        
+        view2.isHidden = true
+        view3.isHidden = true
+        view1.isHidden = false
+        
+        
+        
         requestSegmentedControl.addUnderlineForSelectedSegment()
-        view.addSubview(containerView)
         
-        // Default VC
-        containerView.addSubview(RequestSingleViewController().view)
+        view1.translatesAutoresizingMaskIntoConstraints = false
+        view1.topAnchor.constraint(equalTo: requestSegmentedControl.bottomAnchor).isActive = true
+        view1.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -49).isActive = true
+        view1.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        view1.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         
-        containerView.topAnchor.constraint(equalTo: requestSegmentedControl.bottomAnchor).isActive = true
-        containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -49).isActive = true
-        containerView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        containerView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        view2.translatesAutoresizingMaskIntoConstraints = false
+        view2.topAnchor.constraint(equalTo: requestSegmentedControl.bottomAnchor).isActive = true
+        view2.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -49).isActive = true
+        view2.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        view2.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        
+        view3.translatesAutoresizingMaskIntoConstraints = false
+        view3.topAnchor.constraint(equalTo: requestSegmentedControl.bottomAnchor).isActive = true
+        view3.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -49).isActive = true
+        view3.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        view3.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        
+        
+        
+        view1.backgroundColor = lightBlue
+        view1.addSubview(profilepic)
+        view1.addSubview(changepic)
+        
+        profilepic.topAnchor.constraint(equalTo: view1.topAnchor, constant:20).isActive = true
+        profilepic.leftAnchor.constraint(equalTo: view1.leftAnchor, constant: 20).isActive = true
+        
+        changepic.centerXAnchor.constraint(equalTo: profilepic.centerXAnchor).isActive = true
+        changepic.centerYAnchor.constraint(equalTo: profilepic.centerYAnchor).isActive = true
+        
+        
+        
         
     }
     
@@ -51,50 +183,58 @@ class RequestMainViewController: UIViewController {
     
     private func updateView() {
         if requestSegmentedControl.selectedSegmentIndex == 0 {
-            remove(asChildViewController: RequestMultipleViewController())
-            remove(asChildViewController: RequestTutorViewController())
-            remove(asChildViewController: RequestDraftsViewController())
-            add(asChildViewController: RequestSingleViewController())
-        } else if requestSegmentedControl.selectedSegmentIndex == 1 {
-            remove(asChildViewController: RequestSingleViewController())
-            remove(asChildViewController: RequestTutorViewController())
-            remove(asChildViewController: RequestDraftsViewController())
-            add(asChildViewController: RequestMultipleViewController())
-        } else if requestSegmentedControl.selectedSegmentIndex == 2 {
-            remove(asChildViewController: RequestSingleViewController())
-            remove(asChildViewController: RequestMultipleViewController())
-            remove(asChildViewController: RequestDraftsViewController())
-            add(asChildViewController: RequestTutorViewController())
-        } else {
-            remove(asChildViewController: RequestSingleViewController())
-            remove(asChildViewController: RequestMultipleViewController())
-            remove(asChildViewController: RequestTutorViewController())
-            add(asChildViewController: RequestDraftsViewController())
+            view1.isHidden = false
+            view2.isHidden = true
+            view3.isHidden = true
+            setupLayoutview1()
+        }
+        else if requestSegmentedControl.selectedSegmentIndex == 1{
+            requestSegmentedControl.changeUnderlinePosition()
+            view1.isHidden = true
+            view2.isHidden = false
+            view3.isHidden = true
+            print("view 3!")
+            setupLayoutView2()
+            
+        }
+        else{
+            requestSegmentedControl.changeUnderlinePosition()
+            view1.isHidden = true
+            view2.isHidden = true
+            view3.isHidden = false
+            setupLayoutView3()
+            
         }
     }
     
-    private func add(asChildViewController viewController: UIViewController) {
-        // Add Child View Controller
-        addChildViewController(viewController)
+    private func setupLayoutview1()
+    {
+        requestSegmentedControl.changeUnderlinePosition()
         
-        // Add Child View as Subview
-        containerView.addSubview(viewController.view)
+        scrollView1.backgroundColor = lightBlue
         
-        // Configure Child View
-        viewController.view.translatesAutoresizingMaskIntoConstraints = false
-        
-        // Notify Child View Controller
-        viewController.didMove(toParentViewController: self)
+        view1.addSubview(scrollView1)
     }
     
-    private func remove(asChildViewController viewController: UIViewController) {
-        // Notify Child View Controller
-        viewController.willMove(toParentViewController: nil)
+    private func setupLayoutView2(){
+        requestSegmentedControl.changeUnderlinePosition()
         
-        // Remove Child View From Superview
-        viewController.view.removeFromSuperview()
+        scrollView2.backgroundColor = lightBlue
         
-        // Notify Child View Controller
-        viewController.removeFromParentViewController()
+        view2.addSubview(scrollView2)
     }
+    
+    private func setupLayoutView3()
+    {
+        requestSegmentedControl.changeUnderlinePosition()
+        
+        scrollView3.backgroundColor = lightBlue
+        
+        view3.addSubview(scrollView3)
+    }
+    
+    
+    
+    
+    
 }
