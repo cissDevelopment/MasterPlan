@@ -329,6 +329,8 @@ class UserSettingsViewController: UIViewController {
 //        self.present(imagepicker, animated:true, completion:nil)
     }
     
+    
+    
     func imagePickerController(_ _picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String:Any]){
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         
