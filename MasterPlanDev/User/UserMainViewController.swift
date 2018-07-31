@@ -251,6 +251,7 @@ class UserMainViewController: UIViewController, UIImagePickerControllerDelegate,
         button.titleLabel?.textColor = .white
         
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(segueToOrganizationsTableViewController), for: .touchUpInside)
         
         return button
     }()
@@ -276,6 +277,7 @@ class UserMainViewController: UIViewController, UIImagePickerControllerDelegate,
         button.titleLabel?.textColor = .white
         
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(segueToOrganizationsTableViewController), for: .touchUpInside)
         
         return button
     }()
@@ -454,10 +456,6 @@ class UserMainViewController: UIViewController, UIImagePickerControllerDelegate,
         scrollView.addSubview(save)
         scrollView.addSubview(signOut)
         
-
-        
-        
-        
         scrollView.contentSize = CGSize(width: view3.frame.width, height: 800)
         scrollView.leftAnchor.constraint(equalTo: view3.leftAnchor).isActive = true
         scrollView.rightAnchor.constraint(equalTo: view3.rightAnchor).isActive = true
@@ -538,6 +536,11 @@ class UserMainViewController: UIViewController, UIImagePickerControllerDelegate,
     @objc func segueToFirstViewController() {
         let page = FirstViewController()
         present(page, animated: true, completion: nil)
+    }
+    
+    @objc func segueToOrganizationsTableViewController() {
+        let page = OrganizationsTableViewController()
+        present(page, animated: true, completion:  nil)
     }
     
     func imagePickerController(_ _picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String:Any]){
