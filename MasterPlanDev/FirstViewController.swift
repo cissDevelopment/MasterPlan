@@ -50,7 +50,7 @@ class FirstViewController: UIViewController {
         button.backgroundColor = .clear
         button.translatesAutoresizingMaskIntoConstraints = false
         
-        button.addTarget(self, action: #selector(signUpAction(sender:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(segueToSignUpViewController), for: .touchUpInside)
         
         return button
     }()
@@ -67,7 +67,7 @@ class FirstViewController: UIViewController {
         button.backgroundColor = .white
         button.translatesAutoresizingMaskIntoConstraints = false
         
-        button.addTarget(self, action: #selector(loginAction(sender:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(segueToLoginViewController), for: .touchUpInside)
         
         return button
     }()
@@ -99,12 +99,14 @@ class FirstViewController: UIViewController {
         login.heightAnchor.constraint(equalToConstant: CGFloat(40)).isActive = true
     }
     
-    @objc func loginAction(sender: UIButton!) {
-        performSegue(withIdentifier: "Login", sender: login)
+    @objc func segueToLoginViewController() {
+        let page = LoginViewController()
+        present(page, animated: true, completion: nil)
     }
     
-    @objc func signUpAction(sender: UIButton!) {
-        performSegue(withIdentifier: "Sign Up", sender: signUp)
+    @objc func segueToSignUpViewController() {
+        let page = SignUpViewController()
+        present(page, animated: true, completion: nil)
     }
 
 }

@@ -410,6 +410,8 @@ class UserMainViewController: UIViewController, UIImagePickerControllerDelegate,
         button.layer.cornerRadius = 20
         button.translatesAutoresizingMaskIntoConstraints = false
         
+        button.addTarget(self, action: #selector(segueToFirstViewController), for: .touchUpInside)
+        
         return button
     }()
     
@@ -533,7 +535,10 @@ class UserMainViewController: UIViewController, UIImagePickerControllerDelegate,
         self.present(imagepicker, animated:true, completion:nil)
     }
     
-    
+    @objc func segueToFirstViewController() {
+        let page = FirstViewController()
+        present(page, animated: true, completion: nil)
+    }
     
     func imagePickerController(_ _picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String:Any]){
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage

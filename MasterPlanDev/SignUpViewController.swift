@@ -97,7 +97,7 @@ class SignUpViewController: UIViewController {
         button.backgroundColor = .clear
         button.translatesAutoresizingMaskIntoConstraints = false
         
-        button.addTarget(self, action: #selector(alreadyHaveAnAccountAction(sender:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(segueToLoginViewController), for: .touchUpInside)
         
         return button
     }()
@@ -157,11 +157,17 @@ class SignUpViewController: UIViewController {
             createAlert(title: "Please fill out all  information.", message: "", button: "Okay")
         } else if !(firstName.text?.isEmpty)! && !(lastName.text?.isEmpty)! && !(email.text?.isEmpty)! && ((password.text!).count < 8) {
             createAlert(title: "Password must contain at least eight characters.", message: "", button: "Okay")
-        } else {performSegue(withIdentifier: "Sign Up -> Tab Bar", sender: join)}
+        } else {segueToTabBarViewController()}
     }
     
-    @objc func alreadyHaveAnAccountAction(sender: UIButton!) {
-        performSegue(withIdentifier: "Already have an account?", sender: alreadyHaveAnAccount)
+    @objc func segueToLoginViewController() {
+        let page = LoginViewController()
+        present(page, animated: true, completion: nil)
+    }
+    
+    @objc func segueToTabBarViewController() {
+        let page = TabBarViewController()
+        present(page, animated: true, completion: nil)
     }
     
     func createAlert (title: String, message: String, button: String)
