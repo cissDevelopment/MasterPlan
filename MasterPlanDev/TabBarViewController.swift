@@ -22,26 +22,39 @@ class TabBarViewController: UITabBarController {
 
     let buttonSize: CGFloat = 20
     
-    let containerView : UIView = {
+    // More ContainerView below
+    
+    let tintedButton : UIButton = {
+        let button = UIButton()
+        
+        button.backgroundColor = UIColor.black
+        button.frame = CGRect(x: 0, y: 0, width: 414, height: 736)
+        button.alpha = 0.3
+        
+        return button
+    }()
+    
+    let moreContainerView : UIView = {
         let view = UIView()
-        let spacing = 35
-
+        let spacing: CGFloat = 30
+        let height: CGFloat = 40
+        let color = darkGray
+        let borderColor = darkGray.cgColor
+        
         view.backgroundColor = lightBlue
-        view.frame = CGRect(x: -140, y: 70, width: 220, height: 617)
-
+        view.frame = CGRect(x: -140, y: 70, width: 200, height: 617)
+        
         let intro: UIButton = {
             let button = UIButton()
             let font = UIFont(name: "Avenir-Medium", size: 20)
             
-            button.setAttributedTitle(NSAttributedString(string: "Introduction", attributes: [.font : font!]), for: .normal)
-            button.titleLabel?.textColor = .white
-            button.layer.cornerRadius = CGFloat(20)
-            button.layer.borderWidth = 2
-            button.layer.borderColor = white.cgColor
-            button.backgroundColor = .clear
+            button.setAttributedTitle(NSAttributedString(string: "   Introduction", attributes: [.font : font!]), for: .normal)
+            button.titleLabel?.textColor = color
+            button.contentHorizontalAlignment = UIControlContentHorizontalAlignment.left
+            //        button.layer.borderWidth = 2
+            //        button.layer.borderColor = borderColor
+            button.titleLabel?.textColor = color
             button.translatesAutoresizingMaskIntoConstraints = false
-            
-    //        button.addTarget(self, action: #selector(signUpAction(sender:)), for: .touchUpInside)
             
             return button
         }()
@@ -50,11 +63,11 @@ class TabBarViewController: UITabBarController {
             let button = UIButton()
             let font = UIFont(name: "Avenir-Medium", size: 20)
             
-            button.setAttributedTitle(NSAttributedString(string: "FAQ", attributes: [.font : font!]), for: .normal)
-            button.titleLabel?.textColor = .white
-            button.layer.cornerRadius = CGFloat(20)
-            button.layer.borderWidth = 2
-            button.layer.borderColor = white.cgColor
+            button.setAttributedTitle(NSAttributedString(string: "   FAQ", attributes: [.font : font!]), for: .normal)
+            button.titleLabel?.textColor = color
+            button.contentHorizontalAlignment = UIControlContentHorizontalAlignment.left
+            //        button.layer.borderWidth = 2
+            //        button.layer.borderColor = borderColor
             button.backgroundColor = .clear
             button.translatesAutoresizingMaskIntoConstraints = false
             
@@ -67,11 +80,11 @@ class TabBarViewController: UITabBarController {
             let button = UIButton()
             let font = UIFont(name: "Avenir-Medium", size: 20)
             
-            button.setAttributedTitle(NSAttributedString(string: "Contact Us", attributes: [.font : font!]), for: .normal)
-            button.titleLabel?.textColor = .white
-            button.layer.cornerRadius = CGFloat(20)
-            button.layer.borderWidth = 2
-            button.layer.borderColor = white.cgColor
+            button.setAttributedTitle(NSAttributedString(string: "   Contact Us", attributes: [.font : font!]), for: .normal)
+            button.titleLabel?.textColor = color
+            button.contentHorizontalAlignment = UIControlContentHorizontalAlignment.left
+            //        button.layer.borderWidth = 2
+            //        button.layer.borderColor = borderColor
             button.backgroundColor = .clear
             button.translatesAutoresizingMaskIntoConstraints = false
             
@@ -84,11 +97,11 @@ class TabBarViewController: UITabBarController {
             let button = UIButton()
             let font = UIFont(name: "Avenir-Medium", size: 20)
             
-            button.setAttributedTitle(NSAttributedString(string: "Sign Out", attributes: [.font : font!]), for: .normal)
-            button.titleLabel?.textColor = .white
-            button.layer.cornerRadius = CGFloat(20)
-            button.layer.borderWidth = 2
-            button.layer.borderColor = white.cgColor
+            button.setAttributedTitle(NSAttributedString(string: "   Sign Out", attributes: [.font : font!]), for: .normal)
+            button.titleLabel?.textColor = color
+            button.contentHorizontalAlignment = UIControlContentHorizontalAlignment.left
+            //        button.layer.borderWidth = 2
+            //        button.layer.borderColor = borderColor
             button.backgroundColor = .clear
             button.translatesAutoresizingMaskIntoConstraints = false
             
@@ -100,39 +113,29 @@ class TabBarViewController: UITabBarController {
         view.addSubview(intro)
         intro.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         intro.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
-        intro.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        intro.heightAnchor.constraint(equalToConstant: CGFloat(40)).isActive = true
+        intro.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
+        intro.heightAnchor.constraint(equalToConstant: height).isActive = true
         
         view.addSubview(question)
         question.topAnchor.constraint(equalTo: intro.bottomAnchor, constant: CGFloat(spacing)).isActive = true
         question.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        question.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        question.heightAnchor.constraint(equalToConstant: CGFloat(40)).isActive = true
+        question.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
+        question.heightAnchor.constraint(equalToConstant: height).isActive = true
         
         view.addSubview(contact)
         contact.topAnchor.constraint(equalTo: question
             .bottomAnchor, constant: CGFloat(spacing)).isActive = true
         contact.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        contact.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        contact.heightAnchor.constraint(equalToConstant: CGFloat(40)).isActive = true
+        contact.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
+        contact.heightAnchor.constraint(equalToConstant: height).isActive = true
         
         view.addSubview(signOut)
         signOut.topAnchor.constraint(equalTo: contact.bottomAnchor, constant: CGFloat(spacing)).isActive = true
         signOut.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        signOut.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        signOut.heightAnchor.constraint(equalToConstant: CGFloat(40)).isActive = true
+        signOut.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
+        signOut.heightAnchor.constraint(equalToConstant: height).isActive = true
         
         return view
-    }()
-    
-    let tintedButton : UIButton = {
-        let button = UIButton()
-        
-        button.backgroundColor = UIColor.black
-        button.frame = CGRect(x: 0, y: 0, width: 414, height: 736)
-        button.alpha = 0.3
-        
-        return button
     }()
     
     
@@ -194,7 +197,7 @@ class TabBarViewController: UITabBarController {
         
         tabBar.backgroundColor = secondaryBlue
         
-        //        tabBar.isTranslucent = false
+        //tabBar.isTranslucent = false
         
         viewControllers = [barController, requestController,currentController,  userController]
         
@@ -222,20 +225,22 @@ class TabBarViewController: UITabBarController {
         return label
     }()
 
+    let animationLength: Double = 0.25
+    
     @objc func showMore(sender: UIButton!){
         
         view.addSubview(tintedButton)
-        view.addSubview(containerView)
+        view.addSubview(moreContainerView)
 
-        UIView.animate(withDuration: 0.5) {
-            self.containerView.transform = CGAffineTransform(translationX: 140, y: 0)
+        UIView.animate(withDuration: animationLength) {
+            self.moreContainerView.transform = CGAffineTransform(translationX: 140, y: 0)
         }
 
     }
     
     @objc func closeMenu(sender: UIButton!){
-        UIView.animate(withDuration: 0.5){
-            self.containerView.transform = CGAffineTransform(translationX: -140, y: 0)
+        UIView.animate(withDuration: animationLength){
+            self.moreContainerView.transform = CGAffineTransform(translationX: -140, y: 0)
         }
         tintedButton.removeFromSuperview()
     }
