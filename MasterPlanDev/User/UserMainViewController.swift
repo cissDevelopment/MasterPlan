@@ -1,5 +1,11 @@
 import UIKit
 
+let profilepicture: UIImageView = {
+    let image = UIImageView()
+
+    return image
+
+}()
 
 class UserMainViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -8,7 +14,21 @@ class UserMainViewController: UIViewController, UIImagePickerControllerDelegate,
     var imagepicker = UIImagePickerController()
     
 
-    
+    let changepic: UIButton = {
+        let image1 = UIButton()
+        image1.backgroundColor = lightYellow
+        image1.layer.borderWidth = 0
+        image1.layer.masksToBounds = false
+        image1.layer.borderColor = UIColor.black.cgColor
+        image1.layer.cornerRadius = 60
+        image1.clipsToBounds = true
+        image1.translatesAutoresizingMaskIntoConstraints = false
+        image1.widthAnchor.constraint(equalToConstant: 120).isActive = true
+        image1.heightAnchor.constraint(equalToConstant: 120).isActive = true
+        image1.addTarget(self, action: #selector(changepicAction(sender:)), for: .touchUpInside)
+        
+        return image1
+    }()
     
     let firstname : UILabel = {
         let label = UILabel()
@@ -73,21 +93,7 @@ class UserMainViewController: UIViewController, UIImagePickerControllerDelegate,
     
     
     
-    let changepic: UIButton = {
-        let image1 = UIButton()
-        image1.backgroundColor = lightYellow
-        image1.layer.borderWidth = 0
-        image1.layer.masksToBounds = false
-        image1.layer.borderColor = UIColor.black.cgColor
-        image1.layer.cornerRadius = 60
-        image1.clipsToBounds = true
-        image1.translatesAutoresizingMaskIntoConstraints = false
-        image1.widthAnchor.constraint(equalToConstant: 120).isActive = true
-        image1.heightAnchor.constraint(equalToConstant: 120).isActive = true
-        image1.addTarget(self, action: #selector(changepicAction(sender:)), for: .touchUpInside)
-        
-        return image1
-    }()
+
     
     let userSegmentedControl: UISegmentedControl = {
         let userItems = ["Stats", "Settings"]
@@ -106,6 +112,13 @@ class UserMainViewController: UIViewController, UIImagePickerControllerDelegate,
         view.addSubview(view2)
         view.addSubview(view3)
         
+        
+        view2.isHidden = true
+        view3.isHidden = true
+        view1.isHidden = false
+        
+        
+
         userSegmentedControl.addUnderlineForSelectedSegment()
         
         view1.translatesAutoresizingMaskIntoConstraints = false
@@ -125,6 +138,8 @@ class UserMainViewController: UIViewController, UIImagePickerControllerDelegate,
         view3.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -49).isActive = true
         view3.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         view3.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        
+        userSegmentedControl.changeUnderlinePosition()
         
         view1.backgroundColor = lightBlue
         view1.addSubview(profilepic)
@@ -257,6 +272,8 @@ class UserMainViewController: UIViewController, UIImagePickerControllerDelegate,
         view1.addSubview(weekhours)
         view1.addSubview(weekrank)
         view1.addSubview(rank)
+        
+        
 
         profilepic.topAnchor.constraint(equalTo: view1.topAnchor, constant:20).isActive = true
         profilepic.leftAnchor.constraint(equalTo: view1.leftAnchor, constant: 20).isActive = true
@@ -607,6 +624,7 @@ class UserMainViewController: UIViewController, UIImagePickerControllerDelegate,
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         
         changepic.setBackgroundImage(image, for: UIControlState.normal)
+        profilepicture.image = image
         dismiss(animated: true, completion: nil)
         
     }

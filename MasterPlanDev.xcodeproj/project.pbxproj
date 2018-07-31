@@ -122,6 +122,7 @@
 		7FED50C2210769BD00FEF5E7 /* Bar */ = {
 			isa = PBXGroup;
 			children = (
+				7FED50B42107212400FEF5E7 /* RequestMainViewController.swift */,
 				7FED50B22107211B00FEF5E7 /* BarMainViewController.swift */,
 				7FED50BC2107699D00FEF5E7 /* BarNewestViewController.swift */,
 				7FE7E4EB21082DC100F115D1 /* BarRewardingViewController.swift */,
@@ -144,7 +145,6 @@
 		7FED50C4210769C800FEF5E7 /* Request */ = {
 			isa = PBXGroup;
 			children = (
-				7FED50B42107212400FEF5E7 /* RequestMainViewController.swift */,
 				7FED50BE210769AF00FEF5E7 /* RequestSingleViewController.swift */,
 				7F3EDCE22108A73200120BED /* RequestMultipleViewController.swift */,
 				7F3EDCE42108A73A00120BED /* RequestTutorViewController.swift */,

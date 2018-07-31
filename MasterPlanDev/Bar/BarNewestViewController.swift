@@ -27,10 +27,12 @@ class BarNewestViewController: UITableViewController {
         tableView.separatorColor = .white
         tableView.separatorStyle = .singleLine
         tableView.separatorInset = .init(top: 0, left: 0, bottom: 0, right: 0)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        //tableView.topAnchor.constraint(equalTo: view.topAnchor, constant:50).isActive = true
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 3
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
