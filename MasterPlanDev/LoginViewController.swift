@@ -60,7 +60,7 @@ class LoginViewController: UIViewController {
         button.backgroundColor = .white
         button.translatesAutoresizingMaskIntoConstraints = false
         
-        button.addTarget(self, action: #selector(signInAction(Sender:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(segueToTabBarViewController), for: .touchUpInside)
         
         return button
     }()
@@ -74,7 +74,7 @@ class LoginViewController: UIViewController {
         button.backgroundColor = .clear
         button.translatesAutoresizingMaskIntoConstraints = false
         
-        button.addTarget(self, action: #selector(createANewAccountAction(Sender:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(segueToSignUpViewController), for: .touchUpInside)
         
         return button
     }()
@@ -134,12 +134,14 @@ class LoginViewController: UIViewController {
         forgotPassword.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30).isActive = true
     }
     
-    @objc func signInAction (Sender: UIButton!) {
-        performSegue(withIdentifier: "Login -> Tab Bar", sender: signIn)
+    @objc func segueToTabBarViewController() {
+        let page = TabBarViewController()
+        present(page, animated: true, completion: nil)
     }
     
-    @objc func createANewAccountAction (Sender: UIButton!) {
-        performSegue(withIdentifier: "Create a new account", sender: createANewAccount)
+    @objc func segueToSignUpViewController() {
+        let page = SignUpViewController()
+        present(page, animated: true, completion: nil)
     }
     
     @objc func forgotPasswordAction (Sender: UIButton!) {
