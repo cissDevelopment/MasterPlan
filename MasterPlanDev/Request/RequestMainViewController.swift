@@ -73,9 +73,35 @@ class RequestMainViewController: UIViewController {
     }()
     
     
+    let servicename: UITextView = {
+        let textView = UITextView(frame: CGRect(x:20.0, y:90.0, width:250.0, height:100.0))
+        textView.text = "Name of the Service"
+        textView.textColor = white
+        textView.backgroundColor = lightYellow
+        textView.allowsEditingTextAttributes = true
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.isEditable = true
+       return textView
+    }()
+    
+    let _label: UILabel = {
+        let label = UILabel()
+        label.text = "_______________"
+        label.textColor = white
+        label.font = UIFont.init(name: "Avenir-Heavy", size : 50)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.adjustsFontSizeToFitWidth = true
+        return label
+    }()
     
     
-    
+    let Goallabel: UILabel = {
+        let label = UILabel()
+        label.text = "Goal"
+        label.font = UIFont.init(name: "Avenir-Heavy", size : 30)
+        
+        return label
+    }()
     
     
     
@@ -96,6 +122,7 @@ class RequestMainViewController: UIViewController {
     
     let changepic: UIImageView = {
         let image1 = UIImageView()
+        image1.backgroundColor = lightYellow
         image1.image = profilepicture.image
         image1.layer.borderWidth = 0
         image1.layer.masksToBounds = false
@@ -148,12 +175,14 @@ class RequestMainViewController: UIViewController {
         view1.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         
         view2.translatesAutoresizingMaskIntoConstraints = false
+        view2.backgroundColor = lightBlue
         view2.topAnchor.constraint(equalTo: requestSegmentedControl.bottomAnchor).isActive = true
         view2.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -49).isActive = true
         view2.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         view2.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         
         view3.translatesAutoresizingMaskIntoConstraints = false
+        view3.backgroundColor = lightBlue
         view3.topAnchor.constraint(equalTo: requestSegmentedControl.bottomAnchor).isActive = true
         view3.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -49).isActive = true
         view3.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -164,6 +193,8 @@ class RequestMainViewController: UIViewController {
         view1.backgroundColor = lightBlue
         view1.addSubview(profilepic)
         view1.addSubview(changepic)
+        view1.addSubview(servicename)
+        view1.addSubview(_label)
         
         profilepic.topAnchor.constraint(equalTo: view1.topAnchor, constant:20).isActive = true
         profilepic.leftAnchor.constraint(equalTo: view1.leftAnchor, constant: 20).isActive = true
@@ -171,6 +202,12 @@ class RequestMainViewController: UIViewController {
         changepic.centerXAnchor.constraint(equalTo: profilepic.centerXAnchor).isActive = true
         changepic.centerYAnchor.constraint(equalTo: profilepic.centerYAnchor).isActive = true
         
+        servicename.topAnchor.constraint(equalTo: view1.topAnchor, constant:50).isActive = true
+        servicename.leftAnchor.constraint(equalTo: profilepic.rightAnchor, constant:20).isActive = true
+        
+        _label.topAnchor.constraint(equalTo: changepic.bottomAnchor, constant:0).isActive = true
+        _label.leftAnchor.constraint(equalTo: view1.leftAnchor, constant:20).isActive = true
+        _label.rightAnchor.constraint(equalTo: view1.rightAnchor, constant:20).isActive = true
         
         
         

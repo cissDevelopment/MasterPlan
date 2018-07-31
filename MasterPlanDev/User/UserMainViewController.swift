@@ -17,6 +17,7 @@ class UserMainViewController: UIViewController, UIImagePickerControllerDelegate,
     let changepic: UIButton = {
         let image1 = UIButton()
         image1.backgroundColor = lightYellow
+        image1.setBackgroundImage(profilepicture.image, for: UIControlState.normal)
         image1.layer.borderWidth = 0
         image1.layer.masksToBounds = false
         image1.layer.borderColor = UIColor.black.cgColor
@@ -43,6 +44,8 @@ class UserMainViewController: UIViewController, UIImagePickerControllerDelegate,
         
         return label
     }()
+    
+    
     
     let view2: UIView = {
         let view = UIView()
