@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		716D37A921104320001B3A13 /* OrganizationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716D37A821104320001B3A13 /* OrganizationsTableViewController.swift */; };
 		71D3DA8221103DAF00994498 /* ButtonHighlighted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D3DA8121103DAF00994498 /* ButtonHighlighted.swift */; };
 		7F0917F821062B1000C33F60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0917F721062B1000C33F60 /* AppDelegate.swift */; };
 		7F0917FA21062B1000C33F60 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0917F921062B1000C33F60 /* FirstViewController.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		716D37A821104320001B3A13 /* OrganizationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationsTableViewController.swift; sourceTree = "<group>"; };
 		71D3DA8121103DAF00994498 /* ButtonHighlighted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonHighlighted.swift; sourceTree = "<group>"; };
 		7F0917F421062B1000C33F60 /* MasterPlanDev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MasterPlanDev.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F0917F721062B1000C33F60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +83,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		716D37A621104257001B3A13 /* Universal */ = {
+			isa = PBXGroup;
+			children = (
+				7FED50B821075DF500FEF5E7 /* ColorsFonts.swift */,
+				716D37A821104320001B3A13 /* OrganizationsTableViewController.swift */,
+				7FED50B02107201600FEF5E7 /* TabBarViewController.swift */,
+				71D3DA8121103DAF00994498 /* ButtonHighlighted.swift */,
+				7F3EDCEE2108AC5000120BED /* SegmentedControlHighlight.swift */,
+				7F9E296A2109B29C00EC1BEA /* ServiceCell.swift */,
+			);
+			path = Universal;
+			sourceTree = "<group>";
+		};
+		716D37A721104273001B3A13 /* Firsts */ = {
+			isa = PBXGroup;
+			children = (
+				7F0917F921062B1000C33F60 /* FirstViewController.swift */,
+				7F09180B2106423400C33F60 /* LoginViewController.swift */,
+				7F09180D21064D1400C33F60 /* SignUpViewController.swift */,
+			);
+			path = Firsts;
+			sourceTree = "<group>";
+		};
 		7F0917EB21062B1000C33F60 = {
 			isa = PBXGroup;
 			children = (
@@ -101,14 +126,8 @@
 			isa = PBXGroup;
 			children = (
 				7F0917F721062B1000C33F60 /* AppDelegate.swift */,
-				7F0917F921062B1000C33F60 /* FirstViewController.swift */,
-				7FED50B821075DF500FEF5E7 /* ColorsFonts.swift */,
-				7F09180B2106423400C33F60 /* LoginViewController.swift */,
-				7F09180D21064D1400C33F60 /* SignUpViewController.swift */,
-				7FED50B02107201600FEF5E7 /* TabBarViewController.swift */,
-				71D3DA8121103DAF00994498 /* ButtonHighlighted.swift */,
-				7F3EDCEE2108AC5000120BED /* SegmentedControlHighlight.swift */,
-				7F9E296A2109B29C00EC1BEA /* ServiceCell.swift */,
+				716D37A721104273001B3A13 /* Firsts */,
+				716D37A621104257001B3A13 /* Universal */,
 				7FED50C2210769BD00FEF5E7 /* Bar */,
 				7FED50C4210769C800FEF5E7 /* Request */,
 				C684EB48210D831D007F8A55 /* Current */,
@@ -250,6 +269,7 @@
 				C684EB4A210D83AB007F8A55 /* CurrentViewController.swift in Sources */,
 				7F09180E21064D1400C33F60 /* SignUpViewController.swift in Sources */,
 				7FED50BF210769AF00FEF5E7 /* RequestSingleViewController.swift in Sources */,
+				716D37A921104320001B3A13 /* OrganizationsTableViewController.swift in Sources */,
 				7FED50B32107211B00FEF5E7 /* BarMainViewController.swift in Sources */,
 				7F0917F821062B1000C33F60 /* AppDelegate.swift in Sources */,
 				7F0918102106517300C33F60 /* LaunchScreen.swift in Sources */,
