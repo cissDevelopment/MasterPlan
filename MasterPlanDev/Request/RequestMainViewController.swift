@@ -143,6 +143,17 @@ class RequestMainViewController: UIViewController {
         return label
     }()
     
+    let ___label: UILabel = {
+        let label = UILabel()
+        label.text = "_______________"
+        label.textColor = white
+        label.font = UIFont.init(name: "Avenir-Heavy", size : 50)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.adjustsFontSizeToFitWidth = true
+        return label
+    }()
+    
+    
     
     let Goallabel: UILabel = {
         let label = UILabel()
@@ -203,6 +214,95 @@ class RequestMainViewController: UIViewController {
         
     }()
     
+    let datelabel: UILabel = {
+        let label = UILabel()
+        label.text = "Date:"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.init(name: "Avenir-Heavy", size:20)
+        label.textColor = .gray
+        return label
+    }()
+    
+    let startingtime: UILabel = {
+        let label = UILabel()
+        label.text = "Start Time:"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.init(name: "Avenir-Heavy", size:20)
+        label.textColor = .gray
+        return label
+    }()
+    
+    let estimatedlength: UILabel = {
+        let label = UILabel()
+        label.text = "Length:"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.init(name: "Avenir-Heavy", size:20)
+        label.textColor = .gray
+        return label
+    }()
+    
+    let detailslabel: UILabel = {
+        let label = UILabel()
+        label.text = "Details"
+        label.adjustsFontSizeToFitWidth = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.init(name: "Avenir-Heavy", size : 35)
+        label.textColor = .white
+        label.adjustsFontSizeToFitWidth = true
+        label.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        label.heightAnchor.constraint(equalToConstant: 75).isActive = true
+        
+        return label
+        
+        
+        
+    }()
+    
+    let optionallabel: UILabel = {
+        
+        let label = UILabel()
+        label.text = "(optional)"
+        label.adjustsFontSizeToFitWidth = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.init(name: "Avenir-Heavy", size : 30)
+        label.textColor = .white
+        label.adjustsFontSizeToFitWidth = true
+        label.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        label.heightAnchor.constraint(equalToConstant: 75).isActive = true
+        
+        return label
+        
+        
+        
+        
+    }()
+    
+    let detailsDescription: UITextView = {
+        let textView = UITextView()
+        textView.text = "Optional description here such as range, level of comprehension, materials, etc"
+        textView.font = UIFont.boldSystemFont(ofSize: 15)
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.backgroundColor = .red
+        textView.isEditable = true
+        textView.isHidden = false
+        return textView
+    }()
+    
+    let submit : UIButton = {
+        let button = UIButton()
+        
+        button.backgroundColor = mainBlue
+        button.setAttributedTitle(NSAttributedString(string: "Submit!", attributes: [.font : UIFont(name: "Avenir-Medium", size: 20)!]), for: .normal)
+        button.titleLabel?.textColor = .white
+        button.layer.cornerRadius = 20
+        button.translatesAutoresizingMaskIntoConstraints = false
+        
+        
+        return button
+    }()
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -240,6 +340,14 @@ class RequestMainViewController: UIViewController {
         view1.addSubview(subjectchoice)
         view1.addSubview(__label)
         view1.addSubview(chapterlabel)
+        view1.addSubview(datelabel)
+        view1.addSubview(startingtime)
+        view1.addSubview(estimatedlength)
+        view1.addSubview(___label)
+        view1.addSubview(detailslabel)
+        view1.addSubview(optionallabel)
+        view1.addSubview(detailsDescription)
+        view1.addSubview(submit)
  
         
         profilepic.topAnchor.constraint(equalTo: view1.topAnchor, constant:20).isActive = true
@@ -275,6 +383,32 @@ class RequestMainViewController: UIViewController {
         
         chapterlabel.topAnchor.constraint(equalTo: __label.bottomAnchor, constant:-5 ).isActive = true
         chapterlabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant:20).isActive = true
+        
+        datelabel.topAnchor.constraint(equalTo: __label.bottomAnchor, constant:0).isActive = true
+        datelabel.leftAnchor.constraint(equalTo: view.leftAnchor , constant:165).isActive = true
+        
+        startingtime.topAnchor.constraint(equalTo: datelabel.bottomAnchor, constant: 0).isActive = true
+        startingtime.leftAnchor.constraint(equalTo: view.leftAnchor, constant:165).isActive = true
+        
+        estimatedlength.topAnchor.constraint(equalTo: startingtime.bottomAnchor).isActive = true
+        estimatedlength.leftAnchor.constraint(equalTo: view.leftAnchor, constant:165).isActive = true
+        
+        ___label.topAnchor.constraint(equalTo: estimatedlength.bottomAnchor, constant: -40).isActive = true
+        ___label.leftAnchor.constraint(equalTo: view1.leftAnchor, constant:20).isActive = true
+        ___label.rightAnchor.constraint(equalTo: view1.rightAnchor, constant:20).isActive = true
+        
+        detailslabel.topAnchor.constraint(equalTo: ___label.bottomAnchor, constant:-10).isActive = true
+        detailslabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant:20).isActive = true
+        
+        optionallabel.topAnchor.constraint(equalTo: detailslabel.bottomAnchor, constant: -20).isActive = true
+        optionallabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant:20).isActive = true
+        
+        detailsDescription.topAnchor.constraint(equalTo: view.topAnchor, constant: -10).isActive = true
+        detailsDescription.leftAnchor.constraint(equalTo: detailslabel.rightAnchor, constant: 20).isActive = true
+        
+        submit.topAnchor.constraint(equalTo: optionallabel.bottomAnchor, constant: 10).isActive = true
+        submit.leftAnchor.constraint(equalTo: view.leftAnchor, constant:20).isActive = true
+        submit.rightAnchor.constraint(equalTo: view.rightAnchor, constant:-20).isActive = true
         
     }
     
