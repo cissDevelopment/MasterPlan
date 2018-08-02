@@ -15,21 +15,31 @@
 import UIKit
 
 
-class TabBarViewController: UITabBarController {
+class TabBarViewController: UITabBarController, UISearchBarDelegate {
 
     let margin: CGFloat = 10
-    
 
     let buttonSize: CGFloat = 20
     
+    private var mySearchBar: UISearchBar!
+
     // More ContainerView below
     
-    let tintedButton : UIButton = {
+    let exitMenuButton : UIButton = {
         let button = UIButton()
         
         button.backgroundColor = UIColor.black
         button.frame = CGRect(x: 0, y: 0, width: 414, height: 736)
         button.alpha = 0.3
+        
+        return button
+    }()
+    
+    let exitSearchButton : UIButton = {
+        let button = UIButton()
+        
+        button.backgroundColor = UIColor.clear
+        button.frame = CGRect (x: 0, y: 0, width: 414, height: 736)
         
         return button
     }()
@@ -146,13 +156,40 @@ class TabBarViewController: UITabBarController {
         view.backgroundColor = mainBlue
         view.addSubview(name)
         
+        mySearchBar = UISearchBar()
+        mySearchBar.delegate = self
+        mySearchBar.frame = CGRect(x: 414, y: 30, width: 350, height: 40)
+        mySearchBar.backgroundColor = mainBlue
+//        Change SearchBar text to white
+        let textFieldInsideSearchBar = mySearchBar.value(forKey: "searchField") as? UITextField    
+        textFieldInsideSearchBar?.textColor = UIColor.white
+        
+   //     mySearchBar.layer.position = CGPoint(x: self.view.bounds.width/2, y: 100)
+
+        
+        // hide cancel button
+        mySearchBar.showsCancelButton = false
+        
+        // hide bookmark button
+        mySearchBar.showsBookmarkButton = false
+        
+        // set Default bar status.
+        mySearchBar.searchBarStyle = .minimal
+        
+        // set placeholder
+        mySearchBar.placeholder = "Input text"
+        
+        // change the color of cursol and cancel button.
+        mySearchBar.tintColor = UIColor.white
+
+
         let moreButton = UIButton()
         moreButton.setImage(#imageLiteral(resourceName: "More"), for: .normal)
         moreButton.imageEdgeInsets = UIEdgeInsetsMake(buttonSize, buttonSize, buttonSize, buttonSize)
         
         view.addSubview(moreButton)
         moreButton.addTarget(self, action: #selector(showMore(sender:)), for: .touchUpInside)
-        tintedButton.addTarget(self, action: #selector(closeMenu(sender:)), for: .touchUpInside)
+        exitMenuButton.addTarget(self, action: #selector(closeMenu(sender:)), for: .touchUpInside)
         
         moreButton.translatesAutoresizingMaskIntoConstraints = false
         
@@ -161,6 +198,9 @@ class TabBarViewController: UITabBarController {
         searchButton.imageEdgeInsets = UIEdgeInsetsMake(buttonSize*1.2, buttonSize*1.2, buttonSize*1.2, buttonSize*1.2)
         
         view.addSubview(searchButton)
+        searchButton.addTarget(self, action: #selector(showSearch(sender: )), for: .touchUpInside)
+        exitSearchButton.addTarget(self, action: #selector(closeSearch(sender: )), for: .touchUpInside)
+        
         searchButton.translatesAutoresizingMaskIntoConstraints = false
         
         name.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -229,7 +269,7 @@ class TabBarViewController: UITabBarController {
     
     @objc func showMore(sender: UIButton!){
         
-        view.addSubview(tintedButton)
+        view.addSubview(exitMenuButton)
         view.addSubview(moreContainerView)
 
         UIView.animate(withDuration: animationLength) {
@@ -242,9 +282,24 @@ class TabBarViewController: UITabBarController {
         UIView.animate(withDuration: animationLength){
             self.moreContainerView.transform = CGAffineTransform(translationX: -140, y: 0)
         }
-        tintedButton.removeFromSuperview()
+        exitMenuButton.removeFromSuperview()
     }
     
+    @objc func showSearch (sender: UIButton!){
+        view.addSubview(exitSearchButton)
+        view.addSubview(mySearchBar)
+        
+        UIView.animate(withDuration: animationLength){
+            self.mySearchBar.transform = CGAffineTransform(translationX: -384, y: 0)
+        }
+    }
+    
+    @objc func closeSearch (sender: UIButton!){
+        UIView.animate(withDuration: animationLength){
+            self.mySearchBar.transform = CGAffineTransform(translationX: 384, y: 0)
+        }
+        exitSearchButton.removeFromSuperview()
+    }
 
 }
 
