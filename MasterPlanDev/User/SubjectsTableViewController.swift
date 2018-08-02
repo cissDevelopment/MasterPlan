@@ -75,6 +75,7 @@ class SubjectsTableViewController: UITableViewController {
         if let cell = tableView.cellForRow(at: indexPath) {
             if cell.accessoryType == .none {
                 cell.accessoryType = .checkmark
+                cell.tintColor = .white
             } else {
                 cell.accessoryType = .none
             }

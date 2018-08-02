@@ -91,26 +91,26 @@ class RequestMainViewController: UIViewController {
     
     let tutorrequest: UILabel = {
         let label = UILabel()
-        label.shadowColor = .black
         label.backgroundColor = secondaryBlue
-        label.text = "        Tutor Request Page"
+        label.text = "Tutor Request Page"
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor  = .white
         label.font = UIFont.init(name: "Avenir-Heavy", size:30)
         
         return label
     }()
-
-    let subjectchoice : UIPickerView =  {
-        let PickerView = UIPickerView()
-        
-        PickerView.translatesAutoresizingMaskIntoConstraints = false
-        PickerView.backgroundColor = white
-        
-        return PickerView
-        
-    }()
     
+    let subjectDisclosure: UIButton = {
+        let button = UIButton()
+        
+        button.setAttributedTitle(NSAttributedString(string: ">", attributes: [.font : UIFont(name: "Avenir-Black", size: 20)!]), for: .normal)
+        button.titleLabel?.textColor = .white
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(segueToSubjectsTableViewController), for: .touchUpInside)
+        
+        return button
+    }()
     
     let servicename: UITextView = {
         let textView = UITextView(frame: CGRect(x:20.0, y:90.0, width:250.0, height:100.0))
@@ -153,8 +153,6 @@ class RequestMainViewController: UIViewController {
         return label
     }()
     
-    
-    
     let Goallabel: UILabel = {
         let label = UILabel()
         label.text = "Goal"
@@ -162,9 +160,6 @@ class RequestMainViewController: UIViewController {
         
         return label
     }()
-    
-    
-    
     
     let profilepic: UIImageView  = {
         let image = UIImageView()
@@ -182,8 +177,7 @@ class RequestMainViewController: UIViewController {
     
     let subjectlabel: UILabel = {
         let label = UILabel()
-        label.text = "Subject"
-        label.adjustsFontSizeToFitWidth = true
+        label.text = "Subject: "
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.init(name: "Avenir-Heavy", size : 30)
         label.textColor = .white
@@ -192,9 +186,18 @@ class RequestMainViewController: UIViewController {
         label.heightAnchor.constraint(equalToConstant: 75).isActive = true
         
         return label
+    }()
+    
+    let chosenSubjectLabel : UILabel = {
+        let label = UILabel()
         
+        label.text = ""
+        label.adjustsFontSizeToFitWidth = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont(name: "Avenir-Medium", size: 30)
+        label.textColor = .white
         
-        
+        return label
     }()
     
     let chapterlabel: UILabel = {
@@ -209,9 +212,6 @@ class RequestMainViewController: UIViewController {
         label.heightAnchor.constraint(equalToConstant: 75).isActive = true
         
         return label
-        
-        
-        
     }()
     
     let datelabel: UILabel = {
@@ -253,9 +253,6 @@ class RequestMainViewController: UIViewController {
         label.heightAnchor.constraint(equalToConstant: 75).isActive = true
         
         return label
-        
-        
-        
     }()
     
     let optionallabel: UILabel = {
@@ -271,10 +268,6 @@ class RequestMainViewController: UIViewController {
         label.heightAnchor.constraint(equalToConstant: 75).isActive = true
         
         return label
-        
-        
-        
-        
     }()
     
     let detailsDescription: UITextView = {
@@ -337,7 +330,8 @@ class RequestMainViewController: UIViewController {
         view1.addSubview(anonymous)
         view1.addSubview(request)
         view1.addSubview(subjectlabel)
-        view1.addSubview(subjectchoice)
+        view1.addSubview(chosenSubjectLabel)
+        view1.addSubview(subjectDisclosure)
         view1.addSubview(__label)
         view1.addSubview(chapterlabel)
         view1.addSubview(datelabel)
@@ -372,10 +366,12 @@ class RequestMainViewController: UIViewController {
         subjectlabel.topAnchor.constraint(equalTo: _label.bottomAnchor, constant: -5).isActive = true
         subjectlabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
         
-        subjectchoice.topAnchor.constraint(equalTo: _label.bottomAnchor, constant: 20).isActive = true
-        subjectchoice.leftAnchor.constraint(equalTo: subjectlabel.rightAnchor, constant: -20).isActive = true
-        subjectchoice.bottomAnchor.constraint(equalTo: subjectchoice.topAnchor, constant:30).isActive = true
-        subjectchoice.rightAnchor.constraint(equalTo: view1.rightAnchor, constant: -20).isActive = true
+        chosenSubjectLabel.leftAnchor.constraint(equalTo: subjectlabel.rightAnchor).isActive = true
+        chosenSubjectLabel.rightAnchor.constraint(equalTo: subjectDisclosure.leftAnchor).isActive = true
+        chosenSubjectLabel.centerYAnchor.constraint(equalTo: subjectlabel.centerYAnchor).isActive = true
+        
+        subjectDisclosure.centerYAnchor.constraint(equalTo: subjectlabel.centerYAnchor).isActive = true
+        subjectDisclosure.rightAnchor.constraint(equalTo: view1.rightAnchor, constant: -20).isActive = true
         
         __label.topAnchor.constraint(equalTo: subjectlabel.bottomAnchor, constant: -40).isActive = true
         __label.leftAnchor.constraint(equalTo: view1.leftAnchor, constant:20).isActive = true
@@ -415,7 +411,10 @@ class RequestMainViewController: UIViewController {
 
     
     
-    
+    @objc func segueToSubjectsTableViewController() {
+        let page = SubjectsTableViewController()
+        present(page, animated: true, completion:  nil)
+    }
     
     
     
