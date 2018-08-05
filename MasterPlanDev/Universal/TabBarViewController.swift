@@ -318,7 +318,7 @@ class TabBarViewController: UITabBarController, UISearchBarDelegate {
             button.backgroundColor = .clear
             button.translatesAutoresizingMaskIntoConstraints = false
             
-            button.addTarget(self, action: #selector(signOutAction), for: .touchUpInside)
+            button.addTarget(self, action: #selector(segueToFirstViewController), for: .touchUpInside)
             
             return button
         }()
@@ -555,13 +555,6 @@ class TabBarViewController: UITabBarController, UISearchBarDelegate {
         UIView.animate(withDuration: moreElementTime) {
             self.faqView.transform = CGAffineTransform(translationX: 140, y: 0)
         }
-        
-    }
-    
-    @objc func signOutAction() {
-        let page = LoginViewController()
-        present(page, animated: true, completion:  nil)
-        
         
     }
     
