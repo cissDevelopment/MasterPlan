@@ -46,6 +46,9 @@ class TabBarViewController: UITabBarController, UISearchBarDelegate {
     
     
     
+    // FAQ VIEW
+    
+    
     let faqView : UIView = {
         let fview = UIView()
         let spacing: CGFloat = 30
@@ -53,7 +56,17 @@ class TabBarViewController: UITabBarController, UISearchBarDelegate {
         let color = darkGray
         let borderColor = darkGray.cgColor
         fview.backgroundColor = lightBlue
-        fview.frame = CGRect(x: -140, y: 70, width: 200, height: 617)
+        fview.frame = CGRect(x: -140, y: 70, width: 400, height: 617)
+        
+        let faqpage : UILabel = {
+            let label = UILabel()
+            label.text = "FAQ"
+            label.textColor = .black
+            label.font = UIFont.init(name: "Avenir-Heavy", size : 30)
+            label.translatesAutoresizingMaskIntoConstraints = false
+            label.adjustsFontSizeToFitWidth = true
+            return label
+        }()
         
         let backButton: UIButton = {
             let button = UIButton()
@@ -67,28 +80,59 @@ class TabBarViewController: UITabBarController, UISearchBarDelegate {
         
         let faqText: UITextView = {
             let textView = UITextView()
-            textView.text = "Name of the Service"
+            textView.text = """
+            Q: Why are you guys so awesome?
+            
+            A: Virginity power
+            
+            Q: Who did the most work for this project?
+            
+            A: Joshua Shou of course!
+            
+            Q: How do I request a tutor?
+            
+            A: There's literally a request page you dumbnugget
+            
+            Q: How do I access the FAQ section?
+            
+            A: Stare at the screen and ask that question again
+
+            Q: Why didn't Joshua Cheng do anything?
+            
+            A: Cuz he's a dumbass little shit that doesn't know responsibility
+
+            """
+            
+            
             let font = UIFont(name: "Avenir-Medium", size: 20)
             textView.font = font
             textView.textColor = .black
             textView.backgroundColor = lightBlue
             //textView.allowsEditingTextAttributes = true
             textView.translatesAutoresizingMaskIntoConstraints = false
-            textView.isEditable = true
+            textView.isEditable = false
             
             
             return textView
         }()
         
+
+        
         fview.addSubview(backButton)
         fview.addSubview(faqText)
+        fview.addSubview(faqpage)
         
         backButton.leftAnchor.constraint(equalTo: fview.leftAnchor, constant:10).isActive = true
         backButton.topAnchor.constraint(equalTo: fview.topAnchor, constant: 20).isActive = true
         //backButton.widthAnchor.constraint(equalToConstant: fview.frame.width).isActive = true
         backButton.heightAnchor.constraint(equalToConstant: height).isActive = true
         
-        faqText.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 20).isActive = true
+        faqpage.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant:20).isActive = true
+        faqpage.leftAnchor.constraint(equalTo: fview.leftAnchor, constant: 20).isActive = true
+        faqpage.rightAnchor.constraint(equalTo: fview.rightAnchor, constant:20).isActive = true
+        faqpage.centerXAnchor.constraint(equalTo: fview.centerXAnchor).isActive = true
+        
+        faqText.topAnchor.constraint(equalTo: faqpage.bottomAnchor, constant: 20).isActive = true
         faqText.leftAnchor.constraint(equalTo: fview.leftAnchor, constant: 20).isActive = true
         faqText.rightAnchor.constraint(equalTo: fview.rightAnchor, constant: -20).isActive = true
         faqText.bottomAnchor.constraint(equalTo: fview.bottomAnchor).isActive = true
@@ -96,6 +140,105 @@ class TabBarViewController: UITabBarController, UISearchBarDelegate {
         
         return fview
     }()
+    
+    //CONTACT VIEW
+    
+    let contactView: UIView = {
+        let view = UIView()
+        let spacing: CGFloat = 30
+        let height: CGFloat = 40
+        let color = darkGray
+        let borderColor = darkGray.cgColor
+        view.backgroundColor = lightBlue
+        view.frame = CGRect(x: -140, y: 70, width: 400, height: 617)
+        
+        let contactpage : UILabel = {
+            let label = UILabel()
+            label.text = "Contact Us"
+            label.textColor = .black
+            label.font = UIFont.init(name: "Avenir-Heavy", size : 30)
+            label.translatesAutoresizingMaskIntoConstraints = false
+            label.adjustsFontSizeToFitWidth = true
+            return label
+        }()
+        
+        
+        let contacttext : UITextView = {
+           let textView = UITextView()
+            textView.text = """
+            Coders:
+            
+            Joshua Shou
+            Email: joshua2019175@concordiashanghai.org
+            Phone: 15801734028
+            Yoochan Shin
+            Email: yoochan2019303@concordiashanghai.org
+            Phone: 18121012351
+            Ryan Chen
+            Email: ryan2019279@concordiashanghai.org
+            Phone: 13801812195
+            
+            Server:
+            Joshua Cheng
+            Email: dumbassirressponsiblejerk@gmail.org
+            Phone: 1800- doyourjobBOY
+            (This guy will take weeks to respond if you contact him)
+            
+            Design:
+            Allison Chen
+            Email: allison2019155@concordiashanghai.org
+            Phone:
+            """
+            textView.translatesAutoresizingMaskIntoConstraints = false
+            
+            let font = UIFont(name: "Avenir-Medium", size: 18)
+            textView.font = font
+            textView.textColor = .black
+            textView.backgroundColor = lightBlue
+            //textView.allowsEditingTextAttributes = true
+            textView.translatesAutoresizingMaskIntoConstraints = false
+            textView.isEditable = false
+            
+            return textView
+        }()
+        
+        let backButton: UIButton = {
+            let button = UIButton()
+            let font = UIFont(name: "Avenir-Medium", size: 20)
+            
+            button.setAttributedTitle(NSAttributedString(string: "<- Back", attributes: [.font : font!]), for: .normal)
+            button.translatesAutoresizingMaskIntoConstraints = false
+            button.addTarget(self, action: #selector(backAction), for: .touchUpInside)
+            return button
+        }()
+        
+        view.addSubview(contactpage)
+        view.addSubview(backButton)
+        view.addSubview(contacttext)
+        
+        backButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant:10).isActive = true
+        backButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
+        //backButton.widthAnchor.constraint(equalToConstant: fview.frame.width).isActive = true
+        backButton.heightAnchor.constraint(equalToConstant: height).isActive = true
+        
+        contactpage.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 0).isActive = true
+        contactpage.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
+        contactpage.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
+        //contactpage.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        
+        contacttext.topAnchor.constraint(equalTo: contactpage.bottomAnchor, constant: 20).isActive = true
+        contacttext.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
+        contacttext.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
+        contacttext.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        
+        return view
+    }()
+    
+    
+    
+    
+    
+    
     
     
     
@@ -157,7 +300,8 @@ class TabBarViewController: UITabBarController, UISearchBarDelegate {
             button.backgroundColor = .clear
             button.translatesAutoresizingMaskIntoConstraints = false
             
-            //        button.addTarget(self, action: #selector(signUpAction(sender:)), for: .touchUpInside)
+            
+            button.addTarget(self, action: #selector(contactAction), for: .touchUpInside)
             
             return button
         }()
@@ -174,7 +318,7 @@ class TabBarViewController: UITabBarController, UISearchBarDelegate {
             button.backgroundColor = .clear
             button.translatesAutoresizingMaskIntoConstraints = false
             
-            button.addTarget(self, action: #selector(segueToFirstViewController), for: .touchUpInside)
+            button.addTarget(self, action: #selector(signOutAction), for: .touchUpInside)
             
             return button
         }()
@@ -353,6 +497,7 @@ class TabBarViewController: UITabBarController, UISearchBarDelegate {
             self.faqView.transform = CGAffineTransform(translationX: -140, y: 0)
         }
         faqView.removeFromSuperview()
+        contactView.removeFromSuperview()
     }
     
     @objc func segueToFirstViewController() {
@@ -376,15 +521,30 @@ class TabBarViewController: UITabBarController, UISearchBarDelegate {
         exitSearchButton.removeFromSuperview()
     }
     
+    
     @objc func backAction() {
         view.addSubview(exitMenuButton)
+        
         faqView.removeFromSuperview()
+        contactView.removeFromSuperview()
+        
         view.addSubview(moreContainerView)
         
         UIView.animate(withDuration: animationLength) {
             self.faqView.transform = CGAffineTransform(translationX: 140, y: 0)
         }
         
+        
+    }
+    
+    @objc func contactAction() {
+        view.addSubview(exitMenuButton)
+        
+        moreContainerView.removeFromSuperview()
+        view.addSubview(contactView)
+        UIView.animate(withDuration: animationLength) {
+            self.contactView.transform = CGAffineTransform(translationX: 140, y: 0)
+        }
         
     }
     
@@ -397,6 +557,13 @@ class TabBarViewController: UITabBarController, UISearchBarDelegate {
         UIView.animate(withDuration: animationLength) {
             self.faqView.transform = CGAffineTransform(translationX: 140, y: 0)
         }
+        
+    }
+    
+    @objc func signOutAction() {
+        let page = LoginViewController()
+        present(page, animated: true, completion:  nil)
+        
         
     }
     
