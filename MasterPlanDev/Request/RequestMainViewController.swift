@@ -218,7 +218,7 @@ class RequestMainViewController: UIViewController {
         label.text = "Date:"
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.init(name: "Avenir-Heavy", size:20)
-        label.textColor = .gray
+        label.textColor = .white
         return label
     }()
     
@@ -227,7 +227,7 @@ class RequestMainViewController: UIViewController {
         label.text = "Start Time:"
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.init(name: "Avenir-Heavy", size:20)
-        label.textColor = .gray
+        label.textColor = .white
         return label
     }()
     
@@ -236,7 +236,7 @@ class RequestMainViewController: UIViewController {
         label.text = "Length:"
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.init(name: "Avenir-Heavy", size:20)
-        label.textColor = .gray
+        label.textColor = .white
         return label
     }()
     
@@ -248,8 +248,6 @@ class RequestMainViewController: UIViewController {
         label.font = UIFont.init(name: "Avenir-Heavy", size : 35)
         label.textColor = .white
         label.adjustsFontSizeToFitWidth = true
-        label.widthAnchor.constraint(equalToConstant: 200).isActive = true
-        label.heightAnchor.constraint(equalToConstant: 75).isActive = true
         
         return label
     }()
@@ -260,11 +258,9 @@ class RequestMainViewController: UIViewController {
         label.text = "(optional)"
         label.adjustsFontSizeToFitWidth = true
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.init(name: "Avenir-Heavy", size : 30)
+        label.font = UIFont.init(name: "Avenir-Medium", size : 30)
         label.textColor = .white
         label.adjustsFontSizeToFitWidth = true
-        label.widthAnchor.constraint(equalToConstant: 200).isActive = true
-        label.heightAnchor.constraint(equalToConstant: 75).isActive = true
         
         return label
     }()
@@ -272,11 +268,11 @@ class RequestMainViewController: UIViewController {
     let detailsDescription: UITextView = {
         let textView = UITextView()
         textView.text = "Optional description here such as range, level of comprehension, materials, etc"
-        textView.font = UIFont.boldSystemFont(ofSize: 15)
+        textView.textColor = .white
+        textView.font = UIFont(name: "Avenir-Medium", size: 15)
         textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.backgroundColor = .red
+        textView.backgroundColor = .clear
         textView.isEditable = true
-        textView.isHidden = false
         return textView
     }()
     
@@ -390,16 +386,18 @@ class RequestMainViewController: UIViewController {
         ___label.leftAnchor.constraint(equalTo: view1.leftAnchor, constant:20).isActive = true
         ___label.rightAnchor.constraint(equalTo: view1.rightAnchor, constant:20).isActive = true
         
-        detailslabel.topAnchor.constraint(equalTo: ___label.bottomAnchor, constant:-10).isActive = true
+        detailslabel.topAnchor.constraint(equalTo: ___label.bottomAnchor, constant: 10).isActive = true
         detailslabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant:20).isActive = true
         
-        optionallabel.topAnchor.constraint(equalTo: detailslabel.bottomAnchor, constant: -20).isActive = true
-        optionallabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant:20).isActive = true
+        optionallabel.topAnchor.constraint(equalTo: detailslabel.bottomAnchor).isActive = true
+        optionallabel.leftAnchor.constraint(equalTo: detailslabel.leftAnchor).isActive = true
         
-        detailsDescription.topAnchor.constraint(equalTo: view.topAnchor, constant: -10).isActive = true
-        detailsDescription.leftAnchor.constraint(equalTo: detailslabel.rightAnchor, constant: 20).isActive = true
+        detailsDescription.topAnchor.constraint(equalTo: detailslabel.topAnchor).isActive = true
+        detailsDescription.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
+        detailsDescription.bottomAnchor.constraint(equalTo: optionallabel.bottomAnchor).isActive = true
+        detailsDescription.widthAnchor.constraint(equalToConstant: 225).isActive = true
         
-        submit.topAnchor.constraint(equalTo: optionallabel.bottomAnchor, constant: 10).isActive = true
+        submit.topAnchor.constraint(equalTo: optionallabel.bottomAnchor, constant: 30).isActive = true
         submit.leftAnchor.constraint(equalTo: view.leftAnchor, constant:20).isActive = true
         submit.rightAnchor.constraint(equalTo: view.rightAnchor, constant:-20).isActive = true
         
