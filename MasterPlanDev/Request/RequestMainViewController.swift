@@ -32,13 +32,6 @@ let changepicuniversal: UIImageView = {
     return image1
 }()
 
-
-
-
-
-
-
-
 class RequestMainViewController: UIViewController {
     
     
@@ -89,15 +82,21 @@ class RequestMainViewController: UIViewController {
     }()
     
     
-    let tutorrequest: UILabel = {
+    let tutorRequest: UIView = {
+        let view = UIView()
+        view.backgroundColor = secondaryBlue
         let label = UILabel()
-        label.backgroundColor = secondaryBlue
-        label.text = "Tutor Request Page"
-        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Tutor Request"
         label.textColor  = .white
-        label.font = UIFont.init(name: "Avenir-Heavy", size:30)
+        label.font = UIFont(name: "Avenir-Heavy", size: 30)
+        view.addSubview(label)
+        label.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        label.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        label.translatesAutoresizingMaskIntoConstraints = false
         
-        return label
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        return view
     }()
     
     let subjectDisclosure: UIButton = {
@@ -301,20 +300,18 @@ class RequestMainViewController: UIViewController {
         
 
         view.addSubview(view1)
-        view.addSubview(tutorrequest)
+        view.addSubview(tutorRequest)
 
         view1.isHidden = false
         
         
-        tutorrequest.topAnchor.constraint(equalTo: view.topAnchor, constant:80).isActive = true
-        tutorrequest.bottomAnchor.constraint(equalTo: view1.topAnchor).isActive = true
-        tutorrequest.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        tutorrequest.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        
-        
+        tutorRequest.topAnchor.constraint(equalTo: view.topAnchor, constant:80).isActive = true
+        tutorRequest.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        tutorRequest.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        tutorRequest.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
         view1.translatesAutoresizingMaskIntoConstraints = false
-        view1.topAnchor.constraint(equalTo: tutorrequest.bottomAnchor).isActive = true
+        view1.topAnchor.constraint(equalTo: tutorRequest.bottomAnchor).isActive = true
         view1.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -49).isActive = true
         view1.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         view1.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true

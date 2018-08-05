@@ -17,16 +17,21 @@ class CurrentMainViewController: UIViewController {
         return view
     }()
     
-    let current: UILabel = {
+    let current: UIView = {
+        let view = UIView()
+        view.backgroundColor = secondaryBlue
         let label = UILabel()
-        label.shadowColor = .black
-        label.backgroundColor = secondaryBlue
-        label.text = "             Current Page"
-        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Current"
         label.textColor  = .white
-        label.font = UIFont.init(name: "Avenir-Heavy", size:30)
+        label.font = UIFont(name: "Avenir-Medium", size: 30)
+        view.addSubview(label)
+        label.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        label.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.translatesAutoresizingMaskIntoConstraints = false
 
-        return label
+        return view
     }()
     
     
@@ -37,11 +42,10 @@ class CurrentMainViewController: UIViewController {
         view.addSubview(containerView)
         view.addSubview(current)
         
-        current.topAnchor.constraint(equalTo: view.topAnchor, constant:70).isActive = true
-        current.bottomAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
-        current.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        current.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        
+        current.topAnchor.constraint(equalTo: view.topAnchor, constant: 80).isActive = true
+        current.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        current.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        current.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         
         containerView.topAnchor.constraint(equalTo: current.bottomAnchor).isActive = true
         containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -49).isActive = true
@@ -66,6 +70,11 @@ class CurrentMainViewController: UIViewController {
         
         // Add Child View as Subview
         containerView.addSubview(viewController.view)
+        
+        viewController.view.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
+        viewController.view.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
+        viewController.view.leftAnchor.constraint(equalTo: containerView.leftAnchor).isActive = true
+        viewController.view.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
         
         // Configure Child View
         viewController.view.translatesAutoresizingMaskIntoConstraints = false
