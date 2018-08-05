@@ -581,7 +581,13 @@ class UserMainViewController: UIViewController, UIImagePickerControllerDelegate,
     
     @objc func segueToSubjectsViewController() {
         let page = SubjectsViewController()
-        present(page, animated: true, completion:  nil)
+        let transition = CATransition()
+        transition.duration = 0.5
+        transition.type = kCATransitionPush
+        transition.subtype = kCATransitionFromRight
+        transition.timingFunction = CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseInEaseOut)
+        view.window!.layer.add(transition, forKey: kCATransition)
+        present(page, animated: false, completion: nil)
     }
     
     func imagePickerController(_ _picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String:Any]){
