@@ -87,11 +87,11 @@ class RequestMainViewController: UIViewController {
         view.backgroundColor = secondaryBlue
         let label = UILabel()
         label.backgroundColor = secondaryBlue
-        label.text = "Tutor Request Page"
+        label.text = "Tutor Request"
         
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor  = .white
-        label.font = UIFont(name: "Avenir-Heavy", size: 30)
+        label.font = UIFont(name: "Avenir-Medium", size: 30)
         view.addSubview(label)
         label.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         label.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
@@ -422,7 +422,13 @@ class RequestMainViewController: UIViewController {
     
     @objc func segueToSubjectsViewController() {
         let page = SubjectsViewController()
-        present(page, animated: true, completion:  nil)
+        let transition = CATransition()
+        transition.duration = subjectsTime
+        transition.type = kCATransitionPush
+        transition.subtype = kCATransitionFromRight
+        transition.timingFunction = CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseInEaseOut)
+        view.window!.layer.add(transition, forKey: kCATransition)
+        present(page, animated: false, completion: nil)
     }
     
     
