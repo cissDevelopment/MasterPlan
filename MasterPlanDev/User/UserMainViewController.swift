@@ -1,4 +1,5 @@
 import UIKit
+import UserNotifications
 
 let profilepicture: UIImageView = {
     let image = UIImageView()
@@ -7,12 +8,32 @@ let profilepicture: UIImageView = {
 
 }()
 
+
+
+
+
+
+
+
 class UserMainViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     
     
     var imagepicker = UIImagePickerController()
     
+    let emailNotificationSwitch : UISwitch = {
+        let mySwitch = UISwitch()
+        
+        mySwitch.isOn = false
+        mySwitch.tintColor = .white
+        mySwitch.onTintColor = mainBlue
+        mySwitch.thumbTintColor = lightYellow
+        
+        mySwitch.translatesAutoresizingMaskIntoConstraints = false
+        mySwitch.addTarget(self, action: #selector(switchAction), for: UIControlEvents.valueChanged)
+        
+        return mySwitch
+    }()
 
     let changepic: UIButton = {
         let image1 = UIButton()
@@ -109,6 +130,9 @@ class UserMainViewController: UIViewController, UIImagePickerControllerDelegate,
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        navigationController?.navigationBar.prefersLargeTitles = true // Large title
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in})
         
         view.addSubview(userSegmentedControl)
         view.addSubview(view1)
@@ -384,7 +408,7 @@ class UserMainViewController: UIViewController, UIImagePickerControllerDelegate,
     let emailNotification : UILabel = {
         let label = UILabel()
         
-        label.text = "Email notification: "
+        label.text = "Enable notifications: "
         
         label.textColor = .white
         label.font = settingsElementFont
@@ -395,23 +419,12 @@ class UserMainViewController: UIViewController, UIImagePickerControllerDelegate,
         return label
     }()
     
-    let emailNotificationSwitch : UISwitch = {
-        let mySwitch = UISwitch()
-        
-        mySwitch.isOn = true
-        mySwitch.tintColor = .white
-        mySwitch.onTintColor = mainBlue
-        mySwitch.thumbTintColor = lightYellow
-        
-        mySwitch.translatesAutoresizingMaskIntoConstraints = false
-        
-        return mySwitch
-    }()
+
     
     let enableNotification : UILabel = {
         let label = UILabel()
         
-        label.text = "Enable notification: "
+        label.text = "Email notification: "
         
         label.textColor = .white
         label.font = settingsElementFont
@@ -425,7 +438,7 @@ class UserMainViewController: UIViewController, UIImagePickerControllerDelegate,
     let enableNotificationSwitch : UISwitch = {
         let mySwitch = UISwitch()
         
-        mySwitch.isOn = true
+        mySwitch.isOn = false
         mySwitch.tintColor = .white
         mySwitch.onTintColor = mainBlue
         mySwitch.thumbTintColor = lightYellow
@@ -535,10 +548,7 @@ class UserMainViewController: UIViewController, UIImagePickerControllerDelegate,
         scrollView.addSubview(emailNotificationSwitch)
         scrollView.addSubview(enableNotification)
         scrollView.addSubview(enableNotificationSwitch)
-        scrollView.addSubview(hideRanking)
-        scrollView.addSubview(hideRankingSwitch)
-        scrollView.addSubview(cancel)
-        scrollView.addSubview(save)
+
         scrollView.addSubview(signOut)
         
         scrollView.contentSize = CGSize(width: view3.frame.width, height: 800)
@@ -588,27 +598,12 @@ class UserMainViewController: UIViewController, UIImagePickerControllerDelegate,
         enableNotificationSwitch.centerYAnchor.constraint(equalTo: enableNotification.centerYAnchor).isActive = true
         enableNotificationSwitch.transform = CGAffineTransform(scaleX: 1.25, y: 1.25)
         
-        hideRanking.leftAnchor.constraint(equalTo: profilepic.leftAnchor).isActive  = true
-        hideRanking.topAnchor.constraint(equalTo: enableNotification.bottomAnchor, constant: spacing).isActive = true
+     
         
-        hideRankingSwitch.rightAnchor.constraint(equalTo: view3.rightAnchor, constant: -25).isActive = true
-        hideRankingSwitch.centerYAnchor.constraint(equalTo: hideRanking.centerYAnchor).isActive = true
-        hideRankingSwitch.transform = CGAffineTransform(scaleX: 1.25, y: 1.25)
-        
-        cancel.topAnchor.constraint(equalTo: hideRanking.bottomAnchor, constant: spacing).isActive = true
-        cancel.leftAnchor.constraint(equalTo: view3.leftAnchor, constant: 20).isActive = true
-        cancel.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        cancel.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        
-        save.topAnchor.constraint(equalTo: hideRanking.bottomAnchor, constant: spacing).isActive = true
-        save.rightAnchor.constraint(equalTo: view3.rightAnchor, constant: -20).isActive = true
-        save.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        save.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        
-        signOut.topAnchor.constraint(equalTo: cancel.bottomAnchor, constant: spacing).isActive = true
+        signOut.topAnchor.constraint(equalTo: enableNotificationSwitch.bottomAnchor, constant: spacing).isActive = true
         signOut.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        signOut.leftAnchor.constraint(equalTo: cancel.leftAnchor).isActive = true
-        signOut.rightAnchor.constraint(equalTo: save.rightAnchor).isActive = true
+        signOut.leftAnchor.constraint(equalTo: view.leftAnchor, constant:20).isActive = true
+        signOut.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
     }
     
     @objc func changepicAction (sender: UIButton!) {
@@ -635,6 +630,33 @@ class UserMainViewController: UIViewController, UIImagePickerControllerDelegate,
         profilepicture.image = image
         changepicuniversal.image = image
         dismiss(animated: true, completion: nil)
+        
+    }
+    
+    @objc func switchAction(_ sender: Any ) {
+
+        if emailNotificationSwitch.isOn
+        {
+        
+            let content = UNMutableNotificationContent()
+            content.title = "You have tasks to complete!"
+            content.subtitle = ""
+            content.body = "Joshua Shou is a genius omg"
+            let alarmTime = Date().addingTimeInterval(60)
+            let components = Calendar.current.dateComponents([.weekday,
+                                                              .hour, .minute], from: alarmTime)
+            let trigger = UNCalendarNotificationTrigger(dateMatching:
+                components, repeats: true)
+            let request = UNNotificationRequest(identifier:
+                "taskreminder", content: content, trigger: trigger)
+            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        }
+            
+        else
+        {
+            UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        }
+        
         
     }
     

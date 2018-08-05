@@ -361,7 +361,7 @@ class RequestMainViewController: UIViewController {
         
         _label.topAnchor.constraint(equalTo: changepicuniversal.bottomAnchor, constant:-10).isActive = true
         _label.leftAnchor.constraint(equalTo: view1.leftAnchor, constant:20).isActive = true
-        _label.rightAnchor.constraint(equalTo: view1.rightAnchor, constant:20).isActive = true
+        _label.rightAnchor.constraint(equalTo: view1.rightAnchor, constant:-20).isActive = true
         
         anonymous.leftAnchor.constraint(equalTo: changepicuniversal.rightAnchor, constant:30).isActive = true
         anonymous.topAnchor.constraint(equalTo: view1.topAnchor, constant:10).isActive = true
@@ -379,7 +379,7 @@ class RequestMainViewController: UIViewController {
         
         __label.topAnchor.constraint(equalTo: subjectlabel.bottomAnchor, constant: -40).isActive = true
         __label.leftAnchor.constraint(equalTo: view1.leftAnchor, constant:20).isActive = true
-        __label.rightAnchor.constraint(equalTo: view1.rightAnchor, constant:20).isActive = true
+        __label.rightAnchor.constraint(equalTo: view1.rightAnchor, constant:-20).isActive = true
         
         chapterlabel.topAnchor.constraint(equalTo: __label.bottomAnchor, constant:-5 ).isActive = true
         chapterlabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant:20).isActive = true
@@ -395,7 +395,7 @@ class RequestMainViewController: UIViewController {
         
         ___label.topAnchor.constraint(equalTo: estimatedlength.bottomAnchor, constant: -40).isActive = true
         ___label.leftAnchor.constraint(equalTo: view1.leftAnchor, constant:20).isActive = true
-        ___label.rightAnchor.constraint(equalTo: view1.rightAnchor, constant:20).isActive = true
+        ___label.rightAnchor.constraint(equalTo: view1.rightAnchor, constant:-20).isActive = true
         
         detailslabel.topAnchor.constraint(equalTo: ___label.bottomAnchor, constant:-10).isActive = true
         detailslabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant:20).isActive = true
