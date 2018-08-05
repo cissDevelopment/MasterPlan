@@ -8,31 +8,31 @@ let profilepicture: UIImageView = {
 
 }()
 
-
-
-
-
-
-
-
 class UserMainViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setUp()
+    }
     
     var imagepicker = UIImagePickerController()
     
-    let emailNotificationSwitch : UISwitch = {
-        let mySwitch = UISwitch()
+    let user: UIView = {
+        let view = UIView()
+        view.backgroundColor = secondaryBlue
+        let label = UILabel()
+        label.text = "User"
+        label.textColor  = .white
+        label.font = UIFont(name: "Avenir-Medium", size: 30)
+        view.addSubview(label)
+        label.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        label.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        label.translatesAutoresizingMaskIntoConstraints = false
         
-        mySwitch.isOn = false
-        mySwitch.tintColor = .white
-        mySwitch.onTintColor = mainBlue
-        mySwitch.thumbTintColor = lightYellow
+        view.translatesAutoresizingMaskIntoConstraints = false
         
-        mySwitch.translatesAutoresizingMaskIntoConstraints = false
-        mySwitch.addTarget(self, action: #selector(switchAction), for: UIControlEvents.valueChanged)
-        
-        return mySwitch
+        return view
     }()
 
     let changepic: UIButton = {
@@ -66,26 +66,6 @@ class UserMainViewController: UIViewController, UIImagePickerControllerDelegate,
         return label
     }()
     
-    
-    
-    let view2: UIView = {
-        let view = UIView()
-        
-        return view
-    }()
-    
-    let view1 : UIView = {
-        let view = UIView()
-        
-        return view
-    }()
-    
-    let view3 :  UIView = {
-        let view = UIView()
-        
-        return view
-    }()
-    
     let lastname : UILabel = {
         let label = UILabel()
         label.text = "Shou"
@@ -115,229 +95,34 @@ class UserMainViewController: UIViewController, UIImagePickerControllerDelegate,
         return image
     }()
     
+    let accumulatedService : UILabel = {
+        let label = UILabel()
+        
+        label.text = "Accumulated service: "
+        
+        label.textColor = .white
+        label.font = settingsElementFont
+        label.textAlignment = .left
+        label.sizeToFit()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
     
-    
+    let hours : UILabel = {
+        let label = UILabel()
+        
+        label.text = "52"
+        
+        label.textColor = .white
+        label.font = settingsElementFont
+        label.textAlignment = .left
+        label.sizeToFit()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
 
-    
-    let userSegmentedControl: UISegmentedControl = {
-        let userItems = ["Stats", "Settings"]
-        let segmentedControl = UISegmentedControl(items: userItems)
-        segmentedControl.addTarget(self, action: #selector(selectionDidChange(_:)), for: .valueChanged)
-        
-        return segmentedControl
-    }()
-    
-    override func viewDidLoad() {
-        
-        super.viewDidLoad()
-        
-        navigationController?.navigationBar.prefersLargeTitles = true // Large title
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in})
-        
-        view.addSubview(userSegmentedControl)
-        view.addSubview(view1)
-        view.addSubview(view2)
-        view.addSubview(view3)
-        
-        
-        view2.isHidden = true
-        view3.isHidden = true
-        view1.isHidden = false
-        
-        
-
-        userSegmentedControl.addUnderlineForSelectedSegment()
-        
-        view1.translatesAutoresizingMaskIntoConstraints = false
-        view1.topAnchor.constraint(equalTo: userSegmentedControl.bottomAnchor).isActive = true
-        view1.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -49).isActive = true
-        view1.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        view1.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-        
-        view2.translatesAutoresizingMaskIntoConstraints = false
-        view2.topAnchor.constraint(equalTo: userSegmentedControl.bottomAnchor).isActive = true
-        view2.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -49).isActive = true
-        view2.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        view2.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-        
-        view3.translatesAutoresizingMaskIntoConstraints = false
-        view3.topAnchor.constraint(equalTo: userSegmentedControl.bottomAnchor).isActive = true
-        view3.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -49).isActive = true
-        view3.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        view3.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-        
-        userSegmentedControl.changeUnderlinePosition()
-        
-        view1.backgroundColor = lightBlue
-        view1.addSubview(profilepic)
-        view1.addSubview(changepic)
-        view1.addSubview(firstname)
-        view1.addSubview(lastname)
-        view1.addSubview(accservice)
-        view1.addSubview(hours)
-        view1.addSubview(weekservice)
-        view1.addSubview(weekhours)
-       // view1.addSubview(weekrank)
-        //view1.addSubview(rank)
-        
-        profilepic.topAnchor.constraint(equalTo: view1.topAnchor, constant:20).isActive = true
-        profilepic.leftAnchor.constraint(equalTo: view1.leftAnchor, constant: 20).isActive = true
-        
-        changepic.topAnchor.constraint(equalTo: view1.topAnchor, constant: 35).isActive = true
-        changepic.leftAnchor.constraint(equalTo:view1.leftAnchor, constant: 35).isActive = true
-        
-        firstname.leftAnchor.constraint(equalTo: changepic.rightAnchor, constant:30).isActive = true
-        firstname.topAnchor.constraint(equalTo: view1.topAnchor, constant:35).isActive = true
-        
-        lastname.leftAnchor.constraint(equalTo: changepic.rightAnchor, constant:30).isActive = true
-        lastname.topAnchor.constraint(equalTo: firstname.topAnchor, constant:50).isActive = true
-        
-        accservice.topAnchor.constraint(equalTo: changepic.bottomAnchor, constant: 30).isActive = true
-        accservice.leftAnchor.constraint(equalTo: view1.leftAnchor, constant: 20).isActive = true
-        
-        hours.topAnchor.constraint(equalTo: accservice.bottomAnchor, constant: 10).isActive = true
-        hours.leftAnchor.constraint(equalTo: view1.leftAnchor, constant: 20).isActive = true
-        
-        weekservice.topAnchor.constraint(equalTo: hours.bottomAnchor, constant: 20).isActive = true
-        weekservice.leftAnchor.constraint(equalTo: view1.leftAnchor, constant:20).isActive = true
-        
-        weekhours.topAnchor.constraint(equalTo: weekservice.bottomAnchor, constant:10).isActive = true
-        weekhours.leftAnchor.constraint(equalTo: view1.leftAnchor, constant:20).isActive = true
-        
-//        weekrank.topAnchor.constraint(equalTo: weekhours.bottomAnchor, constant:10).isActive = true
-//        weekrank.leftAnchor.constraint(equalTo: view1.leftAnchor, constant:20).isActive = true
-//        
-//        rank.topAnchor.constraint(equalTo: weekrank.bottomAnchor, constant:10).isActive = true
-//        rank.leftAnchor.constraint(equalTo: view1.leftAnchor, constant:20).isActive = true
-    }
-    
-    @objc func selectionDidChange(_ sender: UISegmentedControl) {
-        
-        updateView()
-        userSegmentedControl.changeUnderlinePosition()
-        
-    }
-    
-    let accservice: UILabel = {
-        let label = UILabel()
-        label.text = "Accumulated Service"
-        label.backgroundColor = lightBlue
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .white
-        label.font = UIFont.init(name: "Avenir-Heavy", size:25)
-        
-        return label
-    }()
-    
-    let hours: UILabel = {
-        let label = UILabel()
-        label.text = "521 hours"
-        label.backgroundColor = lightBlue
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .white
-        label.font = UIFont.init(name: "Avenir-Heavy", size:50)
-        
-        return label
-    }()
-    
-    let weekservice: UILabel = {
-        let label = UILabel()
-        label.text = "Week 5 Service"
-        label.backgroundColor = lightBlue
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .white
-        label.font = UIFont.init(name: "Avenir-Heavy", size:25)
-        
-        return label
-    }()
-    
-    let weekhours: UILabel = {
-        let label = UILabel()
-        label.text = "13.5 Hours"
-        label.backgroundColor = lightBlue
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .white
-        label.font = UIFont.init(name: "Avenir-Heavy", size:50)
-        
-        return label
-    }()
-    
-    let weekrank: UILabel = {
-        let label = UILabel()
-        label.text = "Week 5 Ranking"
-        label.backgroundColor = lightBlue
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .white
-        label.font = UIFont.init(name: "Avenir-Heavy", size: 25)
-        
-        return label
-    }()
-    
-    let rank: UILabel = {
-        let label = UILabel()
-        label.text = "30/285"
-        label.backgroundColor = lightBlue
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .white
-        label.font = UIFont.init(name: "Avenir-Heavy", size:50)
-        
-        return label
-    }()
-    
-    private func setupLayoutview1(){
-        
-        userSegmentedControl.changeUnderlinePosition()
-        
-        view1.backgroundColor = lightBlue
-        view1.addSubview(profilepic)
-        view1.addSubview(changepic)
-        view1.addSubview(firstname)
-        view1.addSubview(lastname)
-        view1.addSubview(accservice)
-        view1.addSubview(hours)
-        view1.addSubview(weekservice)
-        view1.addSubview(weekhours)
-        //view1.addSubview(weekrank)
-        //view1.addSubview(rank)
-        
-        
-
-        profilepic.topAnchor.constraint(equalTo: view1.topAnchor, constant:20).isActive = true
-        profilepic.leftAnchor.constraint(equalTo: view1.leftAnchor, constant: 20).isActive = true
-        
-        changepic.topAnchor.constraint(equalTo: view1.topAnchor, constant: 35).isActive = true
-        changepic.leftAnchor.constraint(equalTo:view1.leftAnchor, constant: 35).isActive = true
-        
-        firstname.leftAnchor.constraint(equalTo: changepic.rightAnchor, constant:30).isActive = true
-        firstname.topAnchor.constraint(equalTo: view1.topAnchor, constant:35).isActive = true
-        
-        lastname.leftAnchor.constraint(equalTo: changepic.rightAnchor, constant:30).isActive = true
-        lastname.topAnchor.constraint(equalTo: firstname.topAnchor, constant:50).isActive = true
-        
-        accservice.topAnchor.constraint(equalTo: changepic.bottomAnchor, constant: 30).isActive = true
-        accservice.leftAnchor.constraint(equalTo: view1.leftAnchor, constant: 20).isActive = true
-        
-        hours.topAnchor.constraint(equalTo: accservice.bottomAnchor, constant: 10).isActive = true
-        hours.leftAnchor.constraint(equalTo: view1.leftAnchor, constant: 20).isActive = true
-        
-        weekservice.topAnchor.constraint(equalTo: hours.bottomAnchor, constant: 20).isActive = true
-        weekservice.leftAnchor.constraint(equalTo: view1.leftAnchor, constant:20).isActive = true
-        
-        weekhours.topAnchor.constraint(equalTo: weekservice.bottomAnchor, constant:10).isActive = true
-        weekhours.leftAnchor.constraint(equalTo: view1.leftAnchor, constant:20).isActive = true
-        
-        
-        
-//        weekrank.topAnchor.constraint(equalTo: weekhours.bottomAnchor, constant:10).isActive = true
-//        weekrank.leftAnchor.constraint(equalTo: view1.leftAnchor, constant:20).isActive = true
-//
-//        rank.topAnchor.constraint(equalTo: weekrank.bottomAnchor, constant:10).isActive = true
-//        rank.leftAnchor.constraint(equalTo: view1.leftAnchor, constant:20).isActive = true
-        
-    }
-    
-
-    
     
     let subjectsNotified : UILabel = {
         let label = UILabel()
@@ -409,7 +194,19 @@ class UserMainViewController: UIViewController, UIImagePickerControllerDelegate,
         return label
     }()
     
-
+    let emailNotificationSwitch : UISwitch = {
+        let mySwitch = UISwitch()
+        
+        mySwitch.isOn = false
+        mySwitch.tintColor = .white
+        mySwitch.onTintColor = mainBlue
+        mySwitch.thumbTintColor = lightYellow
+        
+        mySwitch.translatesAutoresizingMaskIntoConstraints = false
+        mySwitch.addTarget(self, action: #selector(switchAction), for: UIControlEvents.valueChanged)
+        
+        return mySwitch
+    }()
     
     let enableNotification : UILabel = {
         let label = UILabel()
@@ -490,18 +287,17 @@ class UserMainViewController: UIViewController, UIImagePickerControllerDelegate,
     
     let spacing : CGFloat = 30
     
-    private func setupLayoutView3(){
-        
-        userSegmentedControl.changeUnderlinePosition()
-        
+    private func setUp(){
         scrollView.backgroundColor = lightBlue
         
-        view3.addSubview(scrollView)
+        view.addSubview(scrollView)
         
         scrollView.addSubview(profilepic)
         scrollView.addSubview(changepic)
         scrollView.addSubview(firstname)
         scrollView.addSubview(lastname)
+        scrollView.addSubview(accumulatedService)
+        scrollView.addSubview(hours)
         scrollView.addSubview(subjectsNotified)
         scrollView.addSubview(subjectsNotifiedDisclosure)
         scrollView.addSubview(phoneNumber)
@@ -510,14 +306,23 @@ class UserMainViewController: UIViewController, UIImagePickerControllerDelegate,
         scrollView.addSubview(emailNotificationSwitch)
         scrollView.addSubview(enableNotification)
         scrollView.addSubview(enableNotificationSwitch)
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(user)
+        
+        user.translatesAutoresizingMaskIntoConstraints = false
+        
+        user.topAnchor.constraint(equalTo: view.topAnchor, constant: 80).isActive = true
+        user.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        user.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        user.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
 
         scrollView.addSubview(signOut)
         
-        scrollView.contentSize = CGSize(width: view3.frame.width, height: 700)
-        scrollView.leftAnchor.constraint(equalTo: view3.leftAnchor).isActive = true
-        scrollView.rightAnchor.constraint(equalTo: view3.rightAnchor).isActive = true
-        scrollView.topAnchor.constraint(equalTo: view3.topAnchor).isActive = true
-        scrollView.bottomAnchor.constraint(equalTo: view3.bottomAnchor).isActive = true
+        scrollView.contentSize = CGSize(width: view.frame.width, height: 700)
+        scrollView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        scrollView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        scrollView.topAnchor.constraint(equalTo: user.bottomAnchor).isActive = true
+        scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         
         profilepic.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:20).isActive = true
         profilepic.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 20).isActive = true
@@ -531,35 +336,40 @@ class UserMainViewController: UIViewController, UIImagePickerControllerDelegate,
         lastname.leftAnchor.constraint(equalTo: changepic.rightAnchor, constant:30).isActive = true
         lastname.topAnchor.constraint(equalTo: firstname.topAnchor, constant:50).isActive = true
         
-        subjectsNotified.leftAnchor.constraint(equalTo: profilepic.leftAnchor).isActive = true
-        subjectsNotified.topAnchor.constraint(equalTo: profilepic.bottomAnchor, constant: spacing).isActive = true
+        accumulatedService.leftAnchor.constraint(equalTo: profilepic.leftAnchor).isActive = true
+        accumulatedService.topAnchor.constraint(equalTo: profilepic.bottomAnchor, constant: spacing).isActive = true
         
-        subjectsNotifiedDisclosure.rightAnchor.constraint(equalTo: view3.rightAnchor, constant: -20).isActive = true
-        subjectsNotifiedDisclosure.centerYAnchor.constraint(equalTo: subjectsNotified.centerYAnchor).isActive = true
+        hours.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
+        hours.centerYAnchor.constraint(equalTo: accumulatedService.centerYAnchor).isActive = true
+        
+        subjectsNotified.leftAnchor.constraint(equalTo: profilepic.leftAnchor).isActive = true
+        subjectsNotified.topAnchor.constraint(equalTo: accumulatedService.bottomAnchor, constant: spacing).isActive = true
+        
+        subjectsNotifiedDisclosure.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
+        subjectsNotifiedDisclosure.topAnchor.constraint(equalTo: subjectsNotified.topAnchor).isActive = true
         
         phoneNumber.leftAnchor.constraint(equalTo: profilepic.leftAnchor).isActive = true
         phoneNumber.topAnchor.constraint(equalTo: subjectsNotified.bottomAnchor, constant: spacing).isActive = true
         
         phoneNumberEdit.leftAnchor.constraint(equalTo: phoneNumber.rightAnchor).isActive = true
-        phoneNumberEdit.rightAnchor.constraint(equalTo: view3.rightAnchor, constant: -20).isActive = true
+        phoneNumberEdit.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
         phoneNumberEdit.topAnchor.constraint(equalTo: phoneNumber.topAnchor).isActive = true
         phoneNumberEdit.bottomAnchor.constraint(equalTo: phoneNumber.bottomAnchor).isActive = true
         
         emailNotification.leftAnchor.constraint(equalTo: profilepic.leftAnchor).isActive = true
         emailNotification.topAnchor.constraint(equalTo: phoneNumber.bottomAnchor, constant: spacing).isActive = true
         
-        emailNotificationSwitch.rightAnchor.constraint(equalTo: view3.rightAnchor, constant: -25).isActive = true
+        emailNotificationSwitch.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -25).isActive = true
         emailNotificationSwitch.centerYAnchor.constraint(equalTo: emailNotification.centerYAnchor).isActive = true
         emailNotificationSwitch.transform = CGAffineTransform(scaleX: 1.25, y: 1.25)
         
         enableNotification.leftAnchor.constraint(equalTo: profilepic.leftAnchor).isActive = true
         enableNotification.topAnchor.constraint(equalTo: emailNotification.bottomAnchor, constant: spacing).isActive = true
         
-        enableNotificationSwitch.rightAnchor.constraint(equalTo: view3.rightAnchor, constant: -25).isActive = true
+        enableNotificationSwitch.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -25).isActive = true
         enableNotificationSwitch.centerYAnchor.constraint(equalTo: enableNotification.centerYAnchor).isActive = true
         enableNotificationSwitch.transform = CGAffineTransform(scaleX: 1.25, y: 1.25)
         
-     
         
         signOut.topAnchor.constraint(equalTo: enableNotificationSwitch.bottomAnchor, constant: spacing).isActive = true
         signOut.heightAnchor.constraint(equalToConstant: 40).isActive = true
@@ -626,24 +436,4 @@ class UserMainViewController: UIViewController, UIImagePickerControllerDelegate,
         
         
     }
-    
-    private func updateView() {
-        if userSegmentedControl.selectedSegmentIndex == 0 {
-            view1.isHidden = false
-            view2.isHidden = true
-            view3.isHidden = true
-            setupLayoutview1()
-        }
-         else {
-            userSegmentedControl.changeUnderlinePosition()
-            view1.isHidden = true
-            view2.isHidden = true
-            view3.isHidden = false
-            print("view 3!")
-            setupLayoutView3()
-            
-        }
-    }
-    
-    
 }
