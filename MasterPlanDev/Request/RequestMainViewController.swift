@@ -287,7 +287,7 @@ class RequestMainViewController: UIViewController {
         button.titleLabel?.textColor = .white
         button.layer.cornerRadius = 20
         button.translatesAutoresizingMaskIntoConstraints = false
-        
+        button.addTarget(self, action: #selector(submitAction), for: .touchUpInside)
         
         return button
     }()
@@ -408,6 +408,17 @@ class RequestMainViewController: UIViewController {
     
 
     
+    @objc func submitAction() {
+        submit.isHighlighted = true
+        detailsDescription.text = "Optional description here such as range, level of comprehension, materials, etc"
+        let page = TabBarViewController()
+        present(page, animated: true, completion : nil)
+        
+        
+        
+        
+        
+    }
     
     @objc func segueToSubjectsViewController() {
         let page = SubjectsViewController()

@@ -449,7 +449,7 @@ class TabBarViewController: UITabBarController, UISearchBarDelegate {
         
         //tabBar.isTranslucent = false
         
-        viewControllers = [barController, requestController,currentController,  userController]
+        viewControllers = [barController, requestController, currentController,  userController]
         
         guard let items = tabBar.items else { return }
         
