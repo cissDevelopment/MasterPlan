@@ -34,7 +34,7 @@ let changepicuniversal: UIImageView = {
 
 class RequestMainViewController: UIViewController {
     
-    
+
 
     let anonymous: UILabel = {
         let label = UILabel()
@@ -76,7 +76,10 @@ class RequestMainViewController: UIViewController {
         let scrollView = UIScrollView()
         
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-        
+        scrollView.alwaysBounceVertical = true
+        scrollView.alwaysBounceHorizontal = false
+        scrollView.showsHorizontalScrollIndicator = false
+
         return scrollView
         
     }()
@@ -298,111 +301,116 @@ class RequestMainViewController: UIViewController {
         super.viewDidLoad()
         
 
-        view.addSubview(view1)
+        view.addSubview(scrollView1)
         view.addSubview(tutorRequest)
 
-        view1.isHidden = false
+        scrollView1.isHidden = false
+        scrollView1.contentSize = CGSize(width: view.frame.width, height: 700)
         
+        scrollView1.topAnchor.constraint(equalTo: tutorRequest.bottomAnchor).isActive = true
+        scrollView1.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -49).isActive = true
+        scrollView1.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        scrollView1.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         
         tutorRequest.topAnchor.constraint(equalTo: view.topAnchor, constant:80).isActive = true
         tutorRequest.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         tutorRequest.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         tutorRequest.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
-        view1.translatesAutoresizingMaskIntoConstraints = false
-        view1.topAnchor.constraint(equalTo: tutorRequest.bottomAnchor).isActive = true
-        view1.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -49).isActive = true
-        view1.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        view1.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        scrollView1.translatesAutoresizingMaskIntoConstraints = false
+        scrollView1.topAnchor.constraint(equalTo: tutorRequest.bottomAnchor).isActive = true
+        scrollView1.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+        scrollView1.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        scrollView1.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         
 
     
         
-        view1.backgroundColor = lightBlue
-        view1.addSubview(profilepic)
-        view1.addSubview(changepicuniversal)
-        view1.addSubview(servicename)
-        view1.addSubview(_label)
-        view1.addSubview(anonymous)
-        view1.addSubview(request)
-        view1.addSubview(subjectlabel)
-        view1.addSubview(chosenSubjectLabel)
-        view1.addSubview(subjectDisclosure)
-        view1.addSubview(__label)
-        view1.addSubview(chapterlabel)
-        view1.addSubview(datelabel)
-        view1.addSubview(startingtime)
-        view1.addSubview(estimatedlength)
-        view1.addSubview(___label)
-        view1.addSubview(detailslabel)
-        view1.addSubview(optionallabel)
-        view1.addSubview(detailsDescription)
-        view1.addSubview(submit)
+        scrollView1.backgroundColor = lightBlue
+        scrollView1.addSubview(profilepic)
+        scrollView1.addSubview(changepicuniversal)
+        scrollView1.addSubview(servicename)
+        scrollView1.addSubview(_label)
+        scrollView1.addSubview(anonymous)
+        scrollView1.addSubview(request)
+        scrollView1.addSubview(subjectlabel)
+        scrollView1.addSubview(chosenSubjectLabel)
+        scrollView1.addSubview(subjectDisclosure)
+        scrollView1.addSubview(__label)
+        scrollView1.addSubview(chapterlabel)
+        scrollView1.addSubview(datelabel)
+        scrollView1.addSubview(startingtime)
+        scrollView1.addSubview(estimatedlength)
+        scrollView1.addSubview(___label)
+        scrollView1.addSubview(detailslabel)
+        scrollView1.addSubview(optionallabel)
+        scrollView1.addSubview(detailsDescription)
+        scrollView1.addSubview(submit)
  
         
-        profilepic.topAnchor.constraint(equalTo: view1.topAnchor, constant:20).isActive = true
-        profilepic.leftAnchor.constraint(equalTo: view1.leftAnchor, constant: 20).isActive = true
+        profilepic.topAnchor.constraint(equalTo: scrollView1.topAnchor, constant:20).isActive = true
+        profilepic.leftAnchor.constraint(equalTo: scrollView1.leftAnchor, constant: 20).isActive = true
         
         changepicuniversal.centerXAnchor.constraint(equalTo: profilepic.centerXAnchor).isActive = true
         changepicuniversal.centerYAnchor.constraint(equalTo: profilepic.centerYAnchor).isActive = true
         
-        servicename.topAnchor.constraint(equalTo: view1.topAnchor, constant:50).isActive = true
+        servicename.topAnchor.constraint(equalTo: scrollView1.topAnchor, constant:50).isActive = true
         servicename.leftAnchor.constraint(equalTo: profilepic.rightAnchor, constant:20).isActive = true
         
         _label.topAnchor.constraint(equalTo: changepicuniversal.bottomAnchor, constant:-10).isActive = true
-        _label.leftAnchor.constraint(equalTo: view1.leftAnchor, constant:20).isActive = true
-        _label.rightAnchor.constraint(equalTo: view1.rightAnchor, constant:-20).isActive = true
+        _label.leftAnchor.constraint(equalTo: scrollView1.leftAnchor, constant:20).isActive = true
+        _label.rightAnchor.constraint(equalTo: scrollView1.rightAnchor, constant:-20).isActive = true
         
         anonymous.leftAnchor.constraint(equalTo: changepicuniversal.rightAnchor, constant:30).isActive = true
-        anonymous.topAnchor.constraint(equalTo: view1.topAnchor, constant:10).isActive = true
+        anonymous.topAnchor.constraint(equalTo: scrollView1.topAnchor, constant:10).isActive = true
         
         request.leftAnchor.constraint(equalTo: changepicuniversal.rightAnchor, constant:30).isActive = true
         request.topAnchor.constraint(equalTo: anonymous.topAnchor, constant:50).isActive = true
         
         subjectlabel.topAnchor.constraint(equalTo: _label.bottomAnchor, constant: -5).isActive = true
-        subjectlabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
+        subjectlabel.leftAnchor.constraint(equalTo: scrollView1.leftAnchor, constant: 20).isActive = true
         
         chosenSubjectLabel.leftAnchor.constraint(equalTo: subjectlabel.rightAnchor).isActive = true
         chosenSubjectLabel.rightAnchor.constraint(equalTo: subjectDisclosure.leftAnchor).isActive = true
         chosenSubjectLabel.centerYAnchor.constraint(equalTo: subjectlabel.centerYAnchor).isActive = true
         
         subjectDisclosure.centerYAnchor.constraint(equalTo: subjectlabel.centerYAnchor).isActive = true
-        subjectDisclosure.rightAnchor.constraint(equalTo: view1.rightAnchor, constant: -20).isActive = true
+        subjectDisclosure.rightAnchor.constraint(equalTo: scrollView1.rightAnchor, constant: -20).isActive = true
         
         __label.topAnchor.constraint(equalTo: subjectlabel.bottomAnchor, constant: -40).isActive = true
-        __label.leftAnchor.constraint(equalTo: view1.leftAnchor, constant:20).isActive = true
-        __label.rightAnchor.constraint(equalTo: view1.rightAnchor, constant:-20).isActive = true
+        __label.leftAnchor.constraint(equalTo: scrollView1.leftAnchor, constant:20).isActive = true
+        __label.rightAnchor.constraint(equalTo: scrollView1.rightAnchor, constant:-20).isActive = true
         
         chapterlabel.topAnchor.constraint(equalTo: __label.bottomAnchor, constant:-5 ).isActive = true
-        chapterlabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant:20).isActive = true
+        chapterlabel.leftAnchor.constraint(equalTo: scrollView1.leftAnchor, constant:20).isActive = true
         
         datelabel.topAnchor.constraint(equalTo: __label.bottomAnchor, constant:0).isActive = true
-        datelabel.leftAnchor.constraint(equalTo: view.leftAnchor , constant:165).isActive = true
+        datelabel.leftAnchor.constraint(equalTo: scrollView1.leftAnchor , constant:165).isActive = true
         
         startingtime.topAnchor.constraint(equalTo: datelabel.bottomAnchor, constant: 0).isActive = true
-        startingtime.leftAnchor.constraint(equalTo: view.leftAnchor, constant:165).isActive = true
+        startingtime.leftAnchor.constraint(equalTo: scrollView1.leftAnchor, constant:165).isActive = true
         
         estimatedlength.topAnchor.constraint(equalTo: startingtime.bottomAnchor).isActive = true
-        estimatedlength.leftAnchor.constraint(equalTo: view.leftAnchor, constant:165).isActive = true
+        estimatedlength.leftAnchor.constraint(equalTo: scrollView1.leftAnchor, constant:165).isActive = true
         
         ___label.topAnchor.constraint(equalTo: estimatedlength.bottomAnchor, constant: -40).isActive = true
-        ___label.leftAnchor.constraint(equalTo: view1.leftAnchor, constant:20).isActive = true
-        ___label.rightAnchor.constraint(equalTo: view1.rightAnchor, constant:-20).isActive = true
+        ___label.leftAnchor.constraint(equalTo: scrollView1.leftAnchor, constant:20).isActive = true
+        ___label.rightAnchor.constraint(equalTo: scrollView1.rightAnchor, constant:-20).isActive = true
         
         detailslabel.topAnchor.constraint(equalTo: ___label.bottomAnchor, constant: 10).isActive = true
-        detailslabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant:20).isActive = true
+        detailslabel.leftAnchor.constraint(equalTo: scrollView1.leftAnchor, constant:20).isActive = true
         
         optionallabel.topAnchor.constraint(equalTo: detailslabel.bottomAnchor).isActive = true
         optionallabel.leftAnchor.constraint(equalTo: detailslabel.leftAnchor).isActive = true
         
         detailsDescription.topAnchor.constraint(equalTo: detailslabel.topAnchor).isActive = true
-        detailsDescription.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
+        detailsDescription.rightAnchor.constraint(equalTo: scrollView1.rightAnchor, constant: -20).isActive = true
         detailsDescription.bottomAnchor.constraint(equalTo: optionallabel.bottomAnchor).isActive = true
         detailsDescription.widthAnchor.constraint(equalToConstant: 225).isActive = true
         
         submit.topAnchor.constraint(equalTo: optionallabel.bottomAnchor, constant: 30).isActive = true
-        submit.leftAnchor.constraint(equalTo: view.leftAnchor, constant:20).isActive = true
-        submit.rightAnchor.constraint(equalTo: view.rightAnchor, constant:-20).isActive = true
+        submit.leftAnchor.constraint(equalTo: scrollView1.leftAnchor, constant:20).isActive = true
+        submit.rightAnchor.constraint(equalTo: scrollView1.rightAnchor, constant:-20).isActive = true
         
     }
     

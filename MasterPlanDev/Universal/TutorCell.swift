@@ -113,11 +113,12 @@ class TutorCell: UITableViewCell {
         profile.widthAnchor.constraint(equalToConstant: 80).isActive = true
         profile.heightAnchor.constraint(equalToConstant: 80).isActive = true
         
-//        requestor.topAnchor.constraint(equalTo: profile.topAnchor).isActive = true
-//        requestor.leftAnchor.constraint(equalTo: profile.rightAnchor, constant: 15).isActive = true
-//        
-//        name.topAnchor.constraint(equalTo: requestor.bottomAnchor, constant: barSpacing).isActive = true
-//        name.leftAnchor.constraint(equalTo: requestor.leftAnchor).isActive = true
+        requestor.topAnchor.constraint(equalTo: profile.topAnchor).isActive = true
+        requestor.leftAnchor.constraint(equalTo: profile.rightAnchor, constant: 15).isActive = true
+        
+        name.topAnchor.constraint(equalTo: requestor.bottomAnchor, constant: barSpacing).isActive = true
+        name.leftAnchor.constraint(equalTo: requestor.leftAnchor).isActive = true
+        
         name.rightAnchor.constraint(equalTo: rightAnchor, constant: -30).isActive = true
         name.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
