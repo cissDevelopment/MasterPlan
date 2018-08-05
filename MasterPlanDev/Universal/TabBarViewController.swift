@@ -115,7 +115,7 @@ class TabBarViewController: UITabBarController, UISearchBarDelegate {
             button.backgroundColor = .clear
             button.translatesAutoresizingMaskIntoConstraints = false
             
-            //        button.addTarget(self, action: #selector(signUpAction(sender:)), for: .touchUpInside)
+            button.addTarget(self, action: #selector(segueToFirstViewController), for: .touchUpInside)
             
             return button
         }()
@@ -283,6 +283,11 @@ class TabBarViewController: UITabBarController, UISearchBarDelegate {
             self.moreContainerView.transform = CGAffineTransform(translationX: -140, y: 0)
         }
         exitMenuButton.removeFromSuperview()
+    }
+    
+    @objc func segueToFirstViewController() {
+        let page = FirstViewController()
+        present(page, animated: true, completion: nil)
     }
     
     @objc func showSearch (sender: UIButton!){
