@@ -387,7 +387,7 @@ class TabBarViewController: UITabBarController, UISearchBarDelegate {
         mySearchBar.searchBarStyle = .minimal
         
         // set placeholder
-        mySearchBar.placeholder = "Input text"
+        mySearchBar.placeholder = "Search Tutor Requests"
         
         // change the color of cursol and cancel button.
         mySearchBar.tintColor = UIColor.white
