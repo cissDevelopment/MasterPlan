@@ -582,7 +582,7 @@ class UserMainViewController: UIViewController, UIImagePickerControllerDelegate,
     @objc func segueToSubjectsViewController() {
         let page = SubjectsViewController()
         let transition = CATransition()
-        transition.duration = 0.5
+        transition.duration = subjectsTime
         transition.type = kCATransitionPush
         transition.subtype = kCATransitionFromRight
         transition.timingFunction = CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseInEaseOut)

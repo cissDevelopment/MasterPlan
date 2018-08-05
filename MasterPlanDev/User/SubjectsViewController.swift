@@ -32,7 +32,7 @@ class SubjectsViewController: UIViewController {
     let backButton: UIButton = {
         let button = UIButton()
         
-        button.setAttributedTitle(NSAttributedString(string: "<", attributes: [.font : UIFont(name: "Avenir-Black", size: 30)!]), for: .normal)
+        button.setAttributedTitle(NSAttributedString(string: "<", attributes: [.font : UIFont(name: "Avenir-Black", size: 20)!]), for: .normal)
         button.titleLabel?.textColor = .white
         
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -70,7 +70,7 @@ class SubjectsViewController: UIViewController {
         topBar.addSubview(backButton)
         
         backButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
-        backButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 30).isActive = true
+        backButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
         
         let child = SubjectsTableViewController()
         addChildViewController(child)
@@ -93,6 +93,12 @@ class SubjectsViewController: UIViewController {
     }
     
     @objc func  dismissSubjectsViewController() {
-        dismiss(animated: true, completion: nil)
+        let transition = CATransition()
+        transition.duration = subjectsTime
+        transition.type = kCATransitionPush
+        transition.subtype = kCATransitionFromLeft
+        transition.timingFunction = CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseInEaseOut)
+        view.window!.layer.add(transition, forKey: kCATransition)
+        dismiss(animated: false, completion: nil)
     }
 }

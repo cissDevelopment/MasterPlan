@@ -474,26 +474,24 @@ class TabBarViewController: UITabBarController, UISearchBarDelegate {
         
         return label
     }()
-
-    let animationLength: Double = 0.25
     
     @objc func showMore(sender: UIButton!){
         
         view.addSubview(exitMenuButton)
         view.addSubview(moreContainerView)
 
-        UIView.animate(withDuration: animationLength) {
+        UIView.animate(withDuration: moreTime) {
             self.moreContainerView.transform = CGAffineTransform(translationX: 140, y: 0)
         }
 
     }
     
     @objc func closeMenu(sender: UIButton!){
-        UIView.animate(withDuration: animationLength){
+        UIView.animate(withDuration: moreTime){
             self.moreContainerView.transform = CGAffineTransform(translationX: -140, y: 0)
         }
         exitMenuButton.removeFromSuperview()
-        UIView.animate(withDuration: animationLength){
+        UIView.animate(withDuration: moreTime){
             self.faqView.transform = CGAffineTransform(translationX: -140, y: 0)
         }
         faqView.removeFromSuperview()
@@ -509,13 +507,13 @@ class TabBarViewController: UITabBarController, UISearchBarDelegate {
         view.addSubview(exitSearchButton)
         view.addSubview(mySearchBar)
         
-        UIView.animate(withDuration: animationLength){
+        UIView.animate(withDuration: searchTime){
             self.mySearchBar.transform = CGAffineTransform(translationX: -384, y: 0)
         }
     }
     
     @objc func closeSearch (sender: UIButton!){
-        UIView.animate(withDuration: animationLength){
+        UIView.animate(withDuration: searchTime){
             self.mySearchBar.transform = CGAffineTransform(translationX: 384, y: 0)
         }
         exitSearchButton.removeFromSuperview()
@@ -530,7 +528,7 @@ class TabBarViewController: UITabBarController, UISearchBarDelegate {
         
         view.addSubview(moreContainerView)
         
-        UIView.animate(withDuration: animationLength) {
+        UIView.animate(withDuration: moreElementTime) {
             self.faqView.transform = CGAffineTransform(translationX: 140, y: 0)
         }
         
@@ -542,7 +540,7 @@ class TabBarViewController: UITabBarController, UISearchBarDelegate {
         
         moreContainerView.removeFromSuperview()
         view.addSubview(contactView)
-        UIView.animate(withDuration: animationLength) {
+        UIView.animate(withDuration: moreElementTime) {
             self.contactView.transform = CGAffineTransform(translationX: 140, y: 0)
         }
         
@@ -554,7 +552,7 @@ class TabBarViewController: UITabBarController, UISearchBarDelegate {
         moreContainerView.removeFromSuperview()
         view.addSubview(faqView)
         
-        UIView.animate(withDuration: animationLength) {
+        UIView.animate(withDuration: moreElementTime) {
             self.faqView.transform = CGAffineTransform(translationX: 140, y: 0)
         }
         
