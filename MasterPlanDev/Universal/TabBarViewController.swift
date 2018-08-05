@@ -44,6 +44,62 @@ class TabBarViewController: UITabBarController, UISearchBarDelegate {
         return button
     }()
     
+    
+    
+    let faqView : UIView = {
+        let fview = UIView()
+        let spacing: CGFloat = 30
+        let height: CGFloat = 40
+        let color = darkGray
+        let borderColor = darkGray.cgColor
+        fview.backgroundColor = lightBlue
+        fview.frame = CGRect(x: -140, y: 70, width: 200, height: 617)
+        
+        let backButton: UIButton = {
+            let button = UIButton()
+            let font = UIFont(name: "Avenir-Medium", size: 20)
+            
+            button.setAttributedTitle(NSAttributedString(string: "<- Back", attributes: [.font : font!]), for: .normal)
+            button.translatesAutoresizingMaskIntoConstraints = false
+            button.addTarget(self, action: #selector(backAction), for: .touchUpInside)
+            return button
+        }()
+        
+        let faqText: UITextView = {
+            let textView = UITextView()
+            textView.text = "Name of the Service"
+            let font = UIFont(name: "Avenir-Medium", size: 20)
+            textView.font = font
+            textView.textColor = .black
+            textView.backgroundColor = lightBlue
+            //textView.allowsEditingTextAttributes = true
+            textView.translatesAutoresizingMaskIntoConstraints = false
+            textView.isEditable = true
+            
+            
+            return textView
+        }()
+        
+        fview.addSubview(backButton)
+        fview.addSubview(faqText)
+        
+        backButton.leftAnchor.constraint(equalTo: fview.leftAnchor, constant:10).isActive = true
+        backButton.topAnchor.constraint(equalTo: fview.topAnchor, constant: 20).isActive = true
+        //backButton.widthAnchor.constraint(equalToConstant: fview.frame.width).isActive = true
+        backButton.heightAnchor.constraint(equalToConstant: height).isActive = true
+        
+        faqText.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 20).isActive = true
+        faqText.leftAnchor.constraint(equalTo: fview.leftAnchor, constant: 20).isActive = true
+        faqText.rightAnchor.constraint(equalTo: fview.rightAnchor, constant: -20).isActive = true
+        faqText.bottomAnchor.constraint(equalTo: fview.bottomAnchor).isActive = true
+        
+        
+        return fview
+    }()
+    
+    
+    
+    
     let moreContainerView : UIView = {
         let view = UIView()
         let spacing: CGFloat = 30
@@ -65,9 +121,12 @@ class TabBarViewController: UITabBarController, UISearchBarDelegate {
             //        button.layer.borderColor = borderColor
             button.titleLabel?.textColor = color
             button.translatesAutoresizingMaskIntoConstraints = false
+
             
             return button
         }()
+        
+        
         
         let question: UIButton = {
             let button = UIButton()
@@ -80,11 +139,11 @@ class TabBarViewController: UITabBarController, UISearchBarDelegate {
             //        button.layer.borderColor = borderColor
             button.backgroundColor = .clear
             button.translatesAutoresizingMaskIntoConstraints = false
-            
-            //        button.addTarget(self, action: #selector(signUpAction(sender:)), for: .touchUpInside)
-            
+            button.addTarget(self, action: #selector(faqAction), for: .touchUpInside)
             return button
         }()
+        
+        
         
         let contact: UIButton = {
             let button = UIButton()
@@ -145,7 +204,14 @@ class TabBarViewController: UITabBarController, UISearchBarDelegate {
         signOut.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
         signOut.heightAnchor.constraint(equalToConstant: height).isActive = true
         
+
+
+        
         return view
+        
+        
+        
+        
     }()
     
     
@@ -283,6 +349,10 @@ class TabBarViewController: UITabBarController, UISearchBarDelegate {
             self.moreContainerView.transform = CGAffineTransform(translationX: -140, y: 0)
         }
         exitMenuButton.removeFromSuperview()
+        UIView.animate(withDuration: animationLength){
+            self.faqView.transform = CGAffineTransform(translationX: -140, y: 0)
+        }
+        faqView.removeFromSuperview()
     }
     
     @objc func segueToFirstViewController() {
@@ -305,6 +375,31 @@ class TabBarViewController: UITabBarController, UISearchBarDelegate {
         }
         exitSearchButton.removeFromSuperview()
     }
+    
+    @objc func backAction() {
+        view.addSubview(exitMenuButton)
+        faqView.removeFromSuperview()
+        view.addSubview(moreContainerView)
+        
+        UIView.animate(withDuration: animationLength) {
+            self.faqView.transform = CGAffineTransform(translationX: 140, y: 0)
+        }
+        
+        
+    }
+    
+    @objc func faqAction() {
+        view.addSubview(exitMenuButton)
+        //view.willRemoveSubview(moreContainerView)
+        moreContainerView.removeFromSuperview()
+        view.addSubview(faqView)
+        
+        UIView.animate(withDuration: animationLength) {
+            self.faqView.transform = CGAffineTransform(translationX: 140, y: 0)
+        }
+        
+    }
+    
 
 }
 
