@@ -93,6 +93,7 @@ class RequestMainViewController: UIViewController {
         let label = UILabel()
         label.backgroundColor = secondaryBlue
         label.text = "Tutor Request Page"
+        
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor  = .white
         label.font = UIFont.init(name: "Avenir-Heavy", size:30)
@@ -117,7 +118,7 @@ class RequestMainViewController: UIViewController {
         textView.text = "Name of the Service"
         textView.textColor = white
         textView.backgroundColor = lightYellow
-        textView.allowsEditingTextAttributes = true
+  //      textView.allowsEditingTextAttributes = true
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.isEditable = true
        return textView
