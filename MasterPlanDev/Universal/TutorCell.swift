@@ -8,7 +8,7 @@
 
 import UIKit
 
-class serviceCell: UITableViewCell {
+class TutorCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
@@ -45,16 +45,6 @@ class serviceCell: UITableViewCell {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
         return imageView
-    }()
-    
-    let requestor: UILabel = {
-        let label = UILabel()
-        label.text = "Requestor"
-        label.font = UIFont(name: "Avenir-Medium", size: 16)
-        label.textColor = .yellow
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
-        return label
     }()
     
     let organization: UILabel = {
@@ -101,7 +91,6 @@ class serviceCell: UITableViewCell {
     func setupViews() {
         addSubview(name)
         addSubview(profile)
-        addSubview(requestor)
         addSubview(organization)
         addSubview(dates)
         addSubview(people)
