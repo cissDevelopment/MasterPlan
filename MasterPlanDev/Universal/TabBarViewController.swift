@@ -500,6 +500,11 @@ class TabBarViewController: UITabBarController, UISearchBarDelegate {
         contactView.removeFromSuperview()
     }
     
+    @objc func segueToFirstViewController() {
+        let page = FirstViewController()
+        present(page, animated: true, completion: nil)
+    }
+    
     @objc func showSearch (sender: UIButton!){
         view.addSubview(exitSearchButton)
         view.addSubview(mySearchBar)

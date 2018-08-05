@@ -360,7 +360,7 @@ class UserMainViewController: UIViewController, UIImagePickerControllerDelegate,
         button.titleLabel?.textColor = .white
         
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(segueToSubjectsTableViewController), for: .touchUpInside)
+        button.addTarget(self, action: #selector(segueToSubjectsViewController), for: .touchUpInside)
         
         return button
     }()
@@ -579,8 +579,8 @@ class UserMainViewController: UIViewController, UIImagePickerControllerDelegate,
         present(page, animated: true, completion: nil)
     }
     
-    @objc func segueToSubjectsTableViewController() {
-        let page = SubjectsTableViewController()
+    @objc func segueToSubjectsViewController() {
+        let page = SubjectsViewController()
         present(page, animated: true, completion:  nil)
     }
     

@@ -10,6 +10,8 @@
 		716266032112E3C3003E3B7A /* CustomHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716266022112E3C3003E3B7A /* CustomHeaderView.swift */; };
 		717F80D12112D3D300627170 /* UserMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717F80CF2112D3D300627170 /* UserMainViewController.swift */; };
 		717F80D42112D45A00627170 /* SubjectsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717F80D32112D45A00627170 /* SubjectsTableViewController.swift */; };
+		71AEF9ED211697A7004190EE /* SubjectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AEF9EC211697A7004190EE /* SubjectsViewController.swift */; };
+		71AEF9EF21169B8D004190EE /* Subjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AEF9EE21169B8D004190EE /* Subjects.swift */; };
 		71D3DA8221103DAF00994498 /* ButtonHighlighted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D3DA8121103DAF00994498 /* ButtonHighlighted.swift */; };
 		7F0917F821062B1000C33F60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0917F721062B1000C33F60 /* AppDelegate.swift */; };
 		7F0917FA21062B1000C33F60 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0917F921062B1000C33F60 /* FirstViewController.swift */; };
@@ -43,6 +45,8 @@
 		716266022112E3C3003E3B7A /* CustomHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeaderView.swift; sourceTree = "<group>"; };
 		717F80CF2112D3D300627170 /* UserMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMainViewController.swift; sourceTree = "<group>"; };
 		717F80D32112D45A00627170 /* SubjectsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectsTableViewController.swift; sourceTree = "<group>"; };
+		71AEF9EC211697A7004190EE /* SubjectsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectsViewController.swift; sourceTree = "<group>"; };
+		71AEF9EE21169B8D004190EE /* Subjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subjects.swift; sourceTree = "<group>"; };
 		71D3DA8121103DAF00994498 /* ButtonHighlighted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonHighlighted.swift; sourceTree = "<group>"; };
 		7F0917F421062B1000C33F60 /* MasterPlanDev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MasterPlanDev.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F0917F721062B1000C33F60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -157,7 +161,9 @@
 			isa = PBXGroup;
 			children = (
 				717F80CF2112D3D300627170 /* UserMainViewController.swift */,
+				71AEF9EC211697A7004190EE /* SubjectsViewController.swift */,
 				717F80D32112D45A00627170 /* SubjectsTableViewController.swift */,
+				71AEF9EE21169B8D004190EE /* Subjects.swift */,
 				716266022112E3C3003E3B7A /* CustomHeaderView.swift */,
 				7F3EDCE82108A74D00120BED /* UserStatsViewController.swift */,
 				7F3EDCEA2108A75300120BED /* UserCurrentViewController.swift */,
@@ -259,6 +265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FED50B12107201600FEF5E7 /* TabBarViewController.swift in Sources */,
+				71AEF9EF21169B8D004190EE /* Subjects.swift in Sources */,
 				7F3EDCEF2108AC5000120BED /* SegmentedControlHighlight.swift in Sources */,
 				717F80D42112D45A00627170 /* SubjectsTableViewController.swift in Sources */,
 				7F3EDCE52108A73A00120BED /* RequestTutorViewController.swift in Sources */,
@@ -279,6 +286,7 @@
 				7F0917F821062B1000C33F60 /* AppDelegate.swift in Sources */,
 				7F0918102106517300C33F60 /* LaunchScreen.swift in Sources */,
 				C684EB4E210D965E007F8A55 /* CurrentMainViewController.swift in Sources */,
+				71AEF9ED211697A7004190EE /* SubjectsViewController.swift in Sources */,
 				7FED50B52107212400FEF5E7 /* RequestMainViewController.swift in Sources */,
 				7F9E296B2109B29C00EC1BEA /* ServiceCell.swift in Sources */,
 				7FE7E4EE21082DC800F115D1 /* BarSavedViewController.swift in Sources */,
