@@ -339,10 +339,10 @@ class UserMainViewController: UIViewController, UIImagePickerControllerDelegate,
 
     
     
-    let primaryOrganization : UILabel = {
+    let subjectsNotified : UILabel = {
         let label = UILabel()
         
-        label.text = "Primary organization: "
+        label.text = "Subjects notified: "
         
         label.textColor = .white
         label.font = settingsElementFont
@@ -353,40 +353,14 @@ class UserMainViewController: UIViewController, UIImagePickerControllerDelegate,
         return label
     }()
     
-    let primaryOrganizationDisclosure: UIButton = {
+    let subjectsNotifiedDisclosure: UIButton = {
         let button = UIButton()
         
         button.setAttributedTitle(NSAttributedString(string: ">", attributes: [.font : UIFont(name: "Avenir-Black", size: 20)!]), for: .normal)
         button.titleLabel?.textColor = .white
         
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(segueToOrganizationsTableViewController), for: .touchUpInside)
-        
-        return button
-    }()
-    
-    let affiliatedOrganizations : UILabel = {
-        let label = UILabel()
-        
-        label.text = "Affiliated organizations: "
-        
-        label.textColor = .white
-        label.font = settingsElementFont
-        label.textAlignment = .left
-        label.sizeToFit()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
-        return label
-    }()
-    
-    let affiliatedOrganizationsDisclosure: UIButton = {
-        let button = UIButton()
-        
-        button.setAttributedTitle(NSAttributedString(string: ">", attributes: [.font : UIFont(name: "Avenir-Black", size: 20)!]), for: .normal)
-        button.titleLabel?.textColor = .white
-        
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(segueToOrganizationsTableViewController), for: .touchUpInside)
+        button.addTarget(self, action: #selector(segueToSubjectsTableViewController), for: .touchUpInside)
         
         return button
     }()
@@ -403,6 +377,22 @@ class UserMainViewController: UIViewController, UIImagePickerControllerDelegate,
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
+    }()
+    
+    let phoneNumberEdit : UITextField = {
+        let textField = UITextField()
+        
+        textField.text = "181-2101-2351"
+        
+        textField.textColor = .white
+        textField.font = settingsElementFont
+        textField.backgroundColor = .clear
+        textField.tintColor = .white
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        
+        textField.returnKeyType = UIReturnKeyType.done
+        
+        return textField
     }()
     
     let emailNotification : UILabel = {
@@ -475,32 +465,6 @@ class UserMainViewController: UIViewController, UIImagePickerControllerDelegate,
         return mySwitch
     }()
     
-    let cancel : UIButton = {
-        let button = UIButton()
-        
-        button.backgroundColor = mainBlue
-        button.setAttributedTitle(NSAttributedString(string: "Cancel", attributes: [.font : UIFont(name: "Avenir-Medium", size: 20)!]), for: .normal)
-        button.titleLabel?.textColor = .white
-        button.layer.cornerRadius = 20
-        button.translatesAutoresizingMaskIntoConstraints = false
-        
-        
-        return button
-    }()
-    
-    let save : UIButton = {
-        let button = UIButton()
-        
-        button.backgroundColor = mainBlue
-        button.setAttributedTitle(NSAttributedString(string: "Save", attributes: [.font : UIFont(name: "Avenir-Medium", size: 20)!]), for: .normal)
-        button.titleLabel?.textColor = .white
-        button.layer.cornerRadius = 20
-        button.translatesAutoresizingMaskIntoConstraints = false
-        
-        
-        return button
-    }()
-    
     let signOut : UIButton = {
         let button = UIButton()
         
@@ -533,17 +497,15 @@ class UserMainViewController: UIViewController, UIImagePickerControllerDelegate,
         scrollView.backgroundColor = lightBlue
         
         view3.addSubview(scrollView)
-  
         
         scrollView.addSubview(profilepic)
         scrollView.addSubview(changepic)
         scrollView.addSubview(firstname)
         scrollView.addSubview(lastname)
-        scrollView.addSubview(primaryOrganization)
-        scrollView.addSubview(primaryOrganizationDisclosure)
-        scrollView.addSubview(affiliatedOrganizations)
-        scrollView.addSubview(affiliatedOrganizationsDisclosure)
+        scrollView.addSubview(subjectsNotified)
+        scrollView.addSubview(subjectsNotifiedDisclosure)
         scrollView.addSubview(phoneNumber)
+        scrollView.addSubview(phoneNumberEdit)
         scrollView.addSubview(emailNotification)
         scrollView.addSubview(emailNotificationSwitch)
         scrollView.addSubview(enableNotification)
@@ -551,7 +513,7 @@ class UserMainViewController: UIViewController, UIImagePickerControllerDelegate,
 
         scrollView.addSubview(signOut)
         
-        scrollView.contentSize = CGSize(width: view3.frame.width, height: 800)
+        scrollView.contentSize = CGSize(width: view3.frame.width, height: 700)
         scrollView.leftAnchor.constraint(equalTo: view3.leftAnchor).isActive = true
         scrollView.rightAnchor.constraint(equalTo: view3.rightAnchor).isActive = true
         scrollView.topAnchor.constraint(equalTo: view3.topAnchor).isActive = true
@@ -569,20 +531,19 @@ class UserMainViewController: UIViewController, UIImagePickerControllerDelegate,
         lastname.leftAnchor.constraint(equalTo: changepic.rightAnchor, constant:30).isActive = true
         lastname.topAnchor.constraint(equalTo: firstname.topAnchor, constant:50).isActive = true
         
-        primaryOrganization.leftAnchor.constraint(equalTo: profilepic.leftAnchor).isActive = true
-        primaryOrganization.topAnchor.constraint(equalTo: profilepic.bottomAnchor, constant: spacing).isActive = true
+        subjectsNotified.leftAnchor.constraint(equalTo: profilepic.leftAnchor).isActive = true
+        subjectsNotified.topAnchor.constraint(equalTo: profilepic.bottomAnchor, constant: spacing).isActive = true
         
-        primaryOrganizationDisclosure.rightAnchor.constraint(equalTo: view3.rightAnchor, constant: -20).isActive = true
-        primaryOrganizationDisclosure.centerYAnchor.constraint(equalTo: primaryOrganization.centerYAnchor).isActive = true
-        
-        affiliatedOrganizations.leftAnchor.constraint(equalTo: profilepic.leftAnchor).isActive = true
-        affiliatedOrganizations.topAnchor.constraint(equalTo: primaryOrganization.bottomAnchor, constant: spacing).isActive = true
-        
-        affiliatedOrganizationsDisclosure.rightAnchor.constraint(equalTo: view3.rightAnchor, constant: -20).isActive = true
-        affiliatedOrganizationsDisclosure.centerYAnchor.constraint(equalTo: affiliatedOrganizations.centerYAnchor).isActive = true
+        subjectsNotifiedDisclosure.rightAnchor.constraint(equalTo: view3.rightAnchor, constant: -20).isActive = true
+        subjectsNotifiedDisclosure.centerYAnchor.constraint(equalTo: subjectsNotified.centerYAnchor).isActive = true
         
         phoneNumber.leftAnchor.constraint(equalTo: profilepic.leftAnchor).isActive = true
-        phoneNumber.topAnchor.constraint(equalTo: affiliatedOrganizations.bottomAnchor, constant: spacing).isActive = true
+        phoneNumber.topAnchor.constraint(equalTo: subjectsNotified.bottomAnchor, constant: spacing).isActive = true
+        
+        phoneNumberEdit.leftAnchor.constraint(equalTo: phoneNumber.rightAnchor).isActive = true
+        phoneNumberEdit.rightAnchor.constraint(equalTo: view3.rightAnchor, constant: -20).isActive = true
+        phoneNumberEdit.topAnchor.constraint(equalTo: phoneNumber.topAnchor).isActive = true
+        phoneNumberEdit.bottomAnchor.constraint(equalTo: phoneNumber.bottomAnchor).isActive = true
         
         emailNotification.leftAnchor.constraint(equalTo: profilepic.leftAnchor).isActive = true
         emailNotification.topAnchor.constraint(equalTo: phoneNumber.bottomAnchor, constant: spacing).isActive = true
@@ -618,8 +579,8 @@ class UserMainViewController: UIViewController, UIImagePickerControllerDelegate,
         present(page, animated: true, completion: nil)
     }
     
-    @objc func segueToOrganizationsTableViewController() {
-        let page = OrganizationsTableViewController()
+    @objc func segueToSubjectsTableViewController() {
+        let page = SubjectsTableViewController()
         present(page, animated: true, completion:  nil)
     }
     
