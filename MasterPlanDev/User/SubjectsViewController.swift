@@ -72,16 +72,19 @@ class SubjectsViewController: UIViewController {
         backButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
         backButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 30).isActive = true
         
-        let subjectsView = SubjectsTableViewController().view!
+        let child = SubjectsTableViewController()
+        addChildViewController(child)
         
-        subjectsView.translatesAutoresizingMaskIntoConstraints = false
+        containerView.addSubview(child.view!)
         
-        containerView.addSubview(subjectsView)
+        child.view!.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
+        child.view!.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
+        child.view!.leftAnchor.constraint(equalTo: containerView.leftAnchor).isActive = true
+        child.view!.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
         
-        subjectsView.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
-        subjectsView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
-        subjectsView.leftAnchor.constraint(equalTo: containerView.leftAnchor).isActive = true
-        subjectsView.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
+        child.view!.translatesAutoresizingMaskIntoConstraints = false
+        
+        child.didMove(toParentViewController: self)
     }
 
     override func didReceiveMemoryWarning() {

@@ -47,6 +47,16 @@ class TutorCell: UITableViewCell {
         return imageView
     }()
     
+    let requestor: UILabel = {
+        let label = UILabel()
+        label.text = "Requestor"
+        label.font = UIFont(name: "Avenir-Medium", size: 16)
+        label.textColor = .yellow
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
+    
     let organization: UILabel = {
         let label = UILabel()
         label.text = "Organization"
@@ -91,6 +101,7 @@ class TutorCell: UITableViewCell {
     func setupViews() {
         addSubview(name)
         addSubview(profile)
+        addSubview(requestor)
         addSubview(organization)
         addSubview(dates)
         addSubview(people)
