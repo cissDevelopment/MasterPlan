@@ -23,7 +23,7 @@ class BarRewardingViewController: UITableViewController {
         tableView.delegate = self
         tableView.backgroundColor = lightYellow
         
-        view.backgroundColor = lightYellow
+        view.backgroundColor = lightBlue
         
         tableView.separatorColor = .white
         tableView.separatorStyle = .singleLine

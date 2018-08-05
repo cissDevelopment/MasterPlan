@@ -70,6 +70,10 @@ class BarMainViewController: UIViewController {
         
         // Add Child View as Subview
         containerView.addSubview(viewController.view)
+        viewController.view.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
+        viewController.view.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
+        viewController.view.leftAnchor.constraint(equalTo: containerView.leftAnchor).isActive = true
+        viewController.view.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
         
         // Configure Child View
         viewController.view.translatesAutoresizingMaskIntoConstraints = false

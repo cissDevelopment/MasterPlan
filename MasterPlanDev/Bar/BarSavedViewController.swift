@@ -22,7 +22,7 @@ class BarSavedViewController: UITableViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-        view.backgroundColor = .green
+        view.backgroundColor = lightBlue
         
         tableView.separatorColor = .white
         tableView.separatorStyle = .singleLine

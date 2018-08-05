@@ -22,7 +22,7 @@ class BarNewestViewController: UITableViewController {
         tableView.dataSource = self
         tableView.delegate = self
 
-        view.backgroundColor = mainBlue
+        view.backgroundColor = lightBlue
         
         tableView.separatorColor = .white
         tableView.separatorStyle = .singleLine
