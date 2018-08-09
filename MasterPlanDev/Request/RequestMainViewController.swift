@@ -388,48 +388,49 @@ class RequestMainViewController: UIViewController, UITextFieldDelegate {
         scrollView1.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         
 
-        // add an event called when value is changed.
-//        myDatePicker.frame = CGRect(x: 0,y: view.frame.height - 130,width: view.frame.width,height: 130)
 
+
+
+        scrollView1.backgroundColor = lightBlue
+        scrollView1.addSubview(profilepic)
+        scrollView1.addSubview(changepicuniversal)
+        scrollView1.addSubview(servicename)
+        scrollView1.addSubview(_label)
+        scrollView1.addSubview(anonymous)
+        scrollView1.addSubview(request)
+        scrollView1.addSubview(subjectlabel)
+        scrollView1.addSubview(chosenSubjectLabel)
+        scrollView1.addSubview(subjectDisclosure)
+        scrollView1.addSubview(__label)
+        scrollView1.addSubview(chapterlabel)
+        scrollView1.addSubview(datelabel)
+        scrollView1.addSubview(datePlaceholder)
+        scrollView1.addSubview(estimatedlength)
+        scrollView1.addSubview(lengthPlaceholder)
+        scrollView1.addSubview(___label)
+        scrollView1.addSubview(detailslabel)
+        scrollView1.addSubview(optionallabel)
+        scrollView1.addSubview(detailsDescription)
+        scrollView1.addSubview(submit)
+ 
+        
         myDatePicker.addTarget(self, action: #selector(onDidChangeDate(sender:)), for: .valueChanged)
         lengthPicker.addTarget(self, action: #selector(onDidChangeTime(sender:)), for: .valueChanged)
         
         // add DataPicker to the view
-        self.view1.addSubview(myDatePicker)
-        self.view1.addSubview(lengthPicker)
+        self.scrollView1.addSubview(myDatePicker)
+        self.scrollView1.addSubview(lengthPicker)
         
         // add toolBar to the view
-        self.view1.addSubview(toolBar)
+        self.scrollView1.addSubview(toolBar)
         
         
         self.datePlaceholder.delegate = self
         self.lengthPlaceholder.delegate = self
-
+        
         datePlaceholder.addTarget(self, action: #selector(dateChanged), for: UIControlEvents.touchDown)
         lengthPlaceholder.addTarget(self, action: #selector(timeChanged), for: UIControlEvents.touchDown)
-
-        view1.backgroundColor = lightBlue
-        view1.addSubview(profilepic)
-        view1.addSubview(changepicuniversal)
-        view1.addSubview(servicename)
-        view1.addSubview(_label)
-        view1.addSubview(anonymous)
-        view1.addSubview(request)
-        view1.addSubview(subjectlabel)
-        view1.addSubview(chosenSubjectLabel)
-        view1.addSubview(subjectDisclosure)
-        view1.addSubview(__label)
-        view1.addSubview(chapterlabel)
-        view1.addSubview(datelabel)
-        view1.addSubview(datePlaceholder)
-        view1.addSubview(estimatedlength)
-        view1.addSubview(lengthPlaceholder)
-        view1.addSubview(___label)
-        view1.addSubview(detailslabel)
-        view1.addSubview(optionallabel)
-        view1.addSubview(detailsDescription)
-        view1.addSubview(submit)
- 
+        
         
         profilepic.topAnchor.constraint(equalTo: scrollView1.topAnchor, constant:20).isActive = true
         profilepic.leftAnchor.constraint(equalTo: scrollView1.leftAnchor, constant: 20).isActive = true
@@ -471,10 +472,10 @@ class RequestMainViewController: UIViewController, UITextFieldDelegate {
         datelabel.leftAnchor.constraint(equalTo: scrollView1.leftAnchor , constant:165).isActive = true
         
         datePlaceholder.topAnchor.constraint(equalTo: datelabel.bottomAnchor, constant: 0).isActive = true
-        datePlaceholder.leftAnchor.constraint(equalTo: view.leftAnchor, constant:165).isActive = true
+        datePlaceholder.leftAnchor.constraint(equalTo: scrollView1.leftAnchor, constant:165).isActive = true
         
         estimatedlength.topAnchor.constraint(equalTo: datePlaceholder.bottomAnchor).isActive = true
-        estimatedlength.leftAnchor.constraint(equalTo: view.leftAnchor, constant:165).isActive = true
+        estimatedlength.leftAnchor.constraint(equalTo: scrollView1.leftAnchor, constant:165).isActive = true
         
         lengthPlaceholder.topAnchor.constraint(equalTo: estimatedlength.topAnchor, constant: 4).isActive = true
         lengthPlaceholder.leftAnchor.constraint(equalTo: estimatedlength.rightAnchor, constant: 5).isActive = true
@@ -484,19 +485,19 @@ class RequestMainViewController: UIViewController, UITextFieldDelegate {
         ___label.rightAnchor.constraint(equalTo: scrollView1.rightAnchor, constant:-20).isActive = true
         
         
-        toolBar.bottomAnchor.constraint(equalTo: myDatePicker.topAnchor, constant: 20).isActive = true
-        toolBar.centerXAnchor.constraint(equalTo: view1.centerXAnchor).isActive = true
-        toolBar.widthAnchor.constraint(equalTo: view1.widthAnchor).isActive = true
+        toolBar.topAnchor.constraint(equalTo: lengthPlaceholder.bottomAnchor).isActive = true
+        toolBar.centerXAnchor.constraint(equalTo: scrollView1.centerXAnchor).isActive = true
+        toolBar.widthAnchor.constraint(equalTo: scrollView1.widthAnchor).isActive = true
         
         myDatePicker.topAnchor.constraint(equalTo: toolBar.bottomAnchor).isActive = true
-        myDatePicker.centerXAnchor.constraint(equalTo: view1.centerXAnchor).isActive = true
-        myDatePicker.widthAnchor.constraint(equalTo: view1.widthAnchor).isActive = true
-        myDatePicker.bottomAnchor.constraint(equalTo: view1.bottomAnchor, constant: 20).isActive = true
+        myDatePicker.centerXAnchor.constraint(equalTo: scrollView1.centerXAnchor).isActive = true
+        myDatePicker.widthAnchor.constraint(equalTo: scrollView1.widthAnchor).isActive = true
+        myDatePicker.bottomAnchor.constraint(equalTo: scrollView1.bottomAnchor, constant: 20).isActive = true
         
         lengthPicker.topAnchor.constraint(equalTo: toolBar.bottomAnchor).isActive = true
-        lengthPicker.centerXAnchor.constraint(equalTo: view1.centerXAnchor).isActive = true
-        lengthPicker.widthAnchor.constraint(equalTo: view1.widthAnchor).isActive = true
-        lengthPicker.bottomAnchor.constraint(equalTo: view1.bottomAnchor, constant: 20).isActive = true
+        lengthPicker.centerXAnchor.constraint(equalTo: scrollView1.centerXAnchor).isActive = true
+        lengthPicker.widthAnchor.constraint(equalTo: scrollView1.widthAnchor).isActive = true
+        lengthPicker.bottomAnchor.constraint(equalTo: scrollView1.bottomAnchor, constant: 20).isActive = true
 
         
         detailslabel.topAnchor.constraint(equalTo: ___label.bottomAnchor, constant: 10).isActive = true
@@ -540,7 +541,7 @@ class RequestMainViewController: UIViewController, UITextFieldDelegate {
         view.window!.layer.add(transition, forKey: kCATransition)
         present(page, animated: false, completion: nil)
     }
-    
+   
     @IBAction func onDidChangeDateByOnStoryboard(sender: UIDatePicker) {
         self.onDidChangeDate(sender: sender)
     }
@@ -560,8 +561,8 @@ class RequestMainViewController: UIViewController, UITextFieldDelegate {
     
     
     @objc func dateChanged(textField: UITextField) {
-        self.view1.bringSubview(toFront: myDatePicker)
-        self.view1.bringSubview(toFront: toolBar)
+        self.scrollView1.bringSubview(toFront: myDatePicker)
+        self.scrollView1.bringSubview(toFront: toolBar)
         self.myDatePicker.isHidden = false
         self.toolBar.isHidden = false
     }
@@ -615,8 +616,8 @@ class RequestMainViewController: UIViewController, UITextFieldDelegate {
     
     
     @objc func timeChanged(textField: UITextField) {
-        self.view1.bringSubview(toFront: lengthPicker)
-        self.view1.bringSubview(toFront: toolBar)
+        self.scrollView1.bringSubview(toFront: lengthPicker)
+        self.scrollView1.bringSubview(toFront: toolBar)
         self.lengthPicker.isHidden = false
         self.toolBar.isHidden = false
     }
