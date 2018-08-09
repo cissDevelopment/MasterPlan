@@ -98,7 +98,7 @@ class UserMainViewController: UIViewController, UIImagePickerControllerDelegate,
     let accumulatedService : UILabel = {
         let label = UILabel()
         
-        label.text = "Accumulated service: "
+        label.text = "Accumulated service hours: "
         
         label.textColor = .white
         label.font = settingsElementFont
