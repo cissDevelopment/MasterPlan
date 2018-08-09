@@ -32,9 +32,55 @@ let changepicuniversal: UIImageView = {
     return image1
 }()
 
-class RequestMainViewController: UIViewController {
+class RequestMainViewController: UIViewController, UITextFieldDelegate {
+    
+    let myDatePicker: UIDatePicker = {
+        let datePicker = UIDatePicker()
+        // setting properties of the datePicker
+        datePicker.timeZone = NSTimeZone.local
+        datePicker.backgroundColor = UIColor.white
+        datePicker.layer.cornerRadius = 5.0
+        datePicker.layer.shadowOpacity = 0.5
+        datePicker.minuteInterval = 15
+        datePicker.minimumDate = Date()
+        datePicker.isHidden = true
+        datePicker.translatesAutoresizingMaskIntoConstraints = false
+        return datePicker
+    }()
     
     
+    let toolBar : UIToolbar = {
+        // ToolBar
+        let tool = UIToolbar()
+        tool.barStyle = .default
+        tool.isTranslucent = true
+        tool.tintColor = UIColor(red: 92/255, green: 216/255, blue: 255/255, alpha: 0.5)
+//        tool.sizeToFit()
+        // Adding Button ToolBar
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(RequestMainViewController.doneClick))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(RequestMainViewController.cancelClick))
+        tool.setItems([cancelButton, spaceButton, doneButton], animated: true)
+        tool.isUserInteractionEnabled = true
+        tool.isHidden = true
+        tool.translatesAutoresizingMaskIntoConstraints = false
+        return tool
+    }()
+    
+    let lengthPicker: UIDatePicker = {
+        let datePicker = UIDatePicker()
+        // setting properties of the datePicker
+        datePicker.timeZone = NSTimeZone.local
+        datePicker.backgroundColor = UIColor.white
+        datePicker.layer.cornerRadius = 5.0
+        datePicker.layer.shadowOpacity = 0.5
+        datePicker.isHidden = true
+        datePicker.translatesAutoresizingMaskIntoConstraints = false
+//      Format is correct, unsure about functionality
+        datePicker.datePickerMode = .countDownTimer
+        datePicker.minuteInterval = 15
+        return datePicker
+    }()
 
     let anonymous: UILabel = {
         let label = UILabel()
@@ -215,21 +261,30 @@ class RequestMainViewController: UIViewController {
     
     let datelabel: UILabel = {
         let label = UILabel()
-        label.text = "Date:"
+        label.text = "Date & Starting Time:"
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.init(name: "Avenir-Heavy", size:20)
         label.textColor = .white
         return label
     }()
     
-    let startingtime: UILabel = {
+    let datePlaceholder: UITextField = {
+        let text = UITextField()
+        text.placeholder = "dd/mm/yyyy"
+        text.translatesAutoresizingMaskIntoConstraints = false
+        text.font = UIFont.init(name: "Avenir-Heavy", size: 20)
+        text.textColor = .white
+        return text
+    }()
+    
+/*    let startingtime: UILabel = {
         let label = UILabel()
         label.text = "Start Time:"
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.init(name: "Avenir-Heavy", size:20)
         label.textColor = .white
         return label
-    }()
+    }()*/
     
     let estimatedlength: UILabel = {
         let label = UILabel()
@@ -238,6 +293,15 @@ class RequestMainViewController: UIViewController {
         label.font = UIFont.init(name: "Avenir-Heavy", size:20)
         label.textColor = .white
         return label
+    }()
+    
+    let lengthPlaceholder: UITextField = {
+        let text = UITextField()
+        text.placeholder = "Estimated Duration"
+        text.translatesAutoresizingMaskIntoConstraints = false
+        text.font = UIFont.init(name: "Avenir-Heavy", size: 16)
+        text.textColor = .white
+        return text
     }()
     
     let detailslabel: UILabel = {
@@ -313,8 +377,26 @@ class RequestMainViewController: UIViewController {
         view1.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         
 
-    
+        // add an event called when value is changed.
+//        myDatePicker.frame = CGRect(x: 0,y: view.frame.height - 130,width: view.frame.width,height: 130)
+
+        myDatePicker.addTarget(self, action: #selector(onDidChangeDate(sender:)), for: .valueChanged)
+        lengthPicker.addTarget(self, action: #selector(onDidChangeTime(sender:)), for: .valueChanged)
         
+        // add DataPicker to the view
+        self.view1.addSubview(myDatePicker)
+        self.view1.addSubview(lengthPicker)
+        
+        // add toolBar to the view
+        self.view1.addSubview(toolBar)
+        
+        
+        self.datePlaceholder.delegate = self
+        self.lengthPlaceholder.delegate = self
+
+        datePlaceholder.addTarget(self, action: #selector(dateChanged), for: UIControlEvents.touchDown)
+        lengthPlaceholder.addTarget(self, action: #selector(timeChanged), for: UIControlEvents.touchDown)
+
         view1.backgroundColor = lightBlue
         view1.addSubview(profilepic)
         view1.addSubview(changepicuniversal)
@@ -328,8 +410,9 @@ class RequestMainViewController: UIViewController {
         view1.addSubview(__label)
         view1.addSubview(chapterlabel)
         view1.addSubview(datelabel)
-        view1.addSubview(startingtime)
+        view1.addSubview(datePlaceholder)
         view1.addSubview(estimatedlength)
+        view1.addSubview(lengthPlaceholder)
         view1.addSubview(___label)
         view1.addSubview(detailslabel)
         view1.addSubview(optionallabel)
@@ -376,15 +459,34 @@ class RequestMainViewController: UIViewController {
         datelabel.topAnchor.constraint(equalTo: __label.bottomAnchor, constant:0).isActive = true
         datelabel.leftAnchor.constraint(equalTo: view.leftAnchor , constant:165).isActive = true
         
-        startingtime.topAnchor.constraint(equalTo: datelabel.bottomAnchor, constant: 0).isActive = true
-        startingtime.leftAnchor.constraint(equalTo: view.leftAnchor, constant:165).isActive = true
+        datePlaceholder.topAnchor.constraint(equalTo: datelabel.bottomAnchor, constant: 0).isActive = true
+        datePlaceholder.leftAnchor.constraint(equalTo: view.leftAnchor, constant:165).isActive = true
         
-        estimatedlength.topAnchor.constraint(equalTo: startingtime.bottomAnchor).isActive = true
+        estimatedlength.topAnchor.constraint(equalTo: datePlaceholder.bottomAnchor).isActive = true
         estimatedlength.leftAnchor.constraint(equalTo: view.leftAnchor, constant:165).isActive = true
+        
+        lengthPlaceholder.topAnchor.constraint(equalTo: estimatedlength.topAnchor, constant: 4).isActive = true
+        lengthPlaceholder.leftAnchor.constraint(equalTo: estimatedlength.rightAnchor, constant: 5).isActive = true
         
         ___label.topAnchor.constraint(equalTo: estimatedlength.bottomAnchor, constant: -40).isActive = true
         ___label.leftAnchor.constraint(equalTo: view1.leftAnchor, constant:20).isActive = true
         ___label.rightAnchor.constraint(equalTo: view1.rightAnchor, constant:20).isActive = true
+        
+        
+        toolBar.bottomAnchor.constraint(equalTo: myDatePicker.topAnchor, constant: 20).isActive = true
+        toolBar.centerXAnchor.constraint(equalTo: view1.centerXAnchor).isActive = true
+        toolBar.widthAnchor.constraint(equalTo: view1.widthAnchor).isActive = true
+        
+        myDatePicker.topAnchor.constraint(equalTo: toolBar.bottomAnchor).isActive = true
+        myDatePicker.centerXAnchor.constraint(equalTo: view1.centerXAnchor).isActive = true
+        myDatePicker.widthAnchor.constraint(equalTo: view1.widthAnchor).isActive = true
+        myDatePicker.bottomAnchor.constraint(equalTo: view1.bottomAnchor, constant: 20).isActive = true
+        
+        lengthPicker.topAnchor.constraint(equalTo: toolBar.bottomAnchor).isActive = true
+        lengthPicker.centerXAnchor.constraint(equalTo: view1.centerXAnchor).isActive = true
+        lengthPicker.widthAnchor.constraint(equalTo: view1.widthAnchor).isActive = true
+        lengthPicker.bottomAnchor.constraint(equalTo: view1.bottomAnchor, constant: 20).isActive = true
+
         
         detailslabel.topAnchor.constraint(equalTo: ___label.bottomAnchor, constant: 10).isActive = true
         detailslabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant:20).isActive = true
@@ -411,8 +513,85 @@ class RequestMainViewController: UIViewController {
         present(page, animated: true, completion:  nil)
     }
     
+    @IBAction func onDidChangeDateByOnStoryboard(sender: UIDatePicker) {
+        self.onDidChangeDate(sender: sender)
+    }
+//    DATE PICKER METHODS
+    
+    // called when the date picker called.
+    @objc internal func onDidChangeDate(sender: UIDatePicker){
+        
+        // date format
+        let myDateFormatter: DateFormatter = DateFormatter()
+        myDateFormatter.dateFormat = "MM/dd/yyyy hh:mm"
+        
+        // get the date string applied date format
+        let mySelectedDate: NSString = myDateFormatter.string(from: sender.date) as NSString
+        datePlaceholder.text = mySelectedDate as String
+    }
     
     
+    @objc func dateChanged(textField: UITextField) {
+        self.view1.bringSubview(toFront: myDatePicker)
+        self.view1.bringSubview(toFront: toolBar)
+        self.myDatePicker.isHidden = false
+        self.toolBar.isHidden = false
+    }
+    
+    @objc func doneClick() {
+        let dateFormatter1 = DateFormatter()
+        dateFormatter1.dateStyle = .medium
+        dateFormatter1.timeStyle = .none
+        //        setNotification()
+        //self.datePicker.resignFirstResponder()
+        myDatePicker.isHidden = true
+        lengthPicker.isHidden = true
+        self.toolBar.isHidden = true
+        
+    }
+    
+    @objc func cancelClick() {
+        if (myDatePicker.isHidden){
+            lengthPlaceholder.text = ""
+        }
+        else if (lengthPicker.isHidden){
+            datePlaceholder.text = ""
+        }
+        
+        myDatePicker.isHidden = true
+        lengthPicker.isHidden = true
+        self.toolBar.isHidden = true
+
+    }
+//    Prevents datePlaceholder from being edited by users
+     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        return false
+    }
+    
+//    LENGTH SELECTOR METHODS
+    @objc internal func onDidChangeTime(sender: UIDatePicker){
+        
+        // date format
+        let date = lengthPicker.date
+        let components = Calendar.current.dateComponents([.hour, .minute], from: date)
+        let hour = components.hour!
+        let minute = components.minute!
+        
+        /*let myDateFormatter: DateFormatter = DateFormatter()
+        myDateFormatter.dateFormat = "hh:mm"
+        
+        // get the date string applied date format
+        let mySelectedDate: NSString = myDateFormatter.string(from: sender.date) as NSString*/
+        lengthPlaceholder.text = String(hour) + " hours " + String(minute) + " minutes"
+    }
+    
+    
+    @objc func timeChanged(textField: UITextField) {
+        self.view1.bringSubview(toFront: lengthPicker)
+        self.view1.bringSubview(toFront: toolBar)
+        self.lengthPicker.isHidden = false
+        self.toolBar.isHidden = false
+    }
     
     
 }

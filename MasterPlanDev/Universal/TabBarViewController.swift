@@ -298,6 +298,7 @@ class TabBarViewController: UITabBarController, UISearchBarDelegate {
         UIView.animate(withDuration: animationLength){
             self.mySearchBar.transform = CGAffineTransform(translationX: 384, y: 0)
         }
+        mySearchBar.text = ""
         exitSearchButton.removeFromSuperview()
     }
 
