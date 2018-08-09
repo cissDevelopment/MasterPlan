@@ -14,7 +14,7 @@ class BarRewardingViewController: UITableViewController {
     
     override func viewDidLoad() {
         
-        tableView.register(serviceCell.self, forCellReuseIdentifier: "service")
+        tableView.register(TutorCell.self, forCellReuseIdentifier: "service")
         tableView.rowHeight = 200
         
         super.viewDidLoad()

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class serviceCell: UITableViewCell {
+class TutorCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
@@ -118,6 +118,7 @@ class serviceCell: UITableViewCell {
         
         name.topAnchor.constraint(equalTo: requestor.bottomAnchor, constant: barSpacing).isActive = true
         name.leftAnchor.constraint(equalTo: requestor.leftAnchor).isActive = true
+        
         name.rightAnchor.constraint(equalTo: rightAnchor, constant: -30).isActive = true
         name.heightAnchor.constraint(equalToConstant: 50).isActive = true
         

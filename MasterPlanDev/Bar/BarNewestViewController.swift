@@ -14,7 +14,7 @@ class BarNewestViewController: UITableViewController {
 
     override func viewDidLoad() {
         
-        tableView.register(serviceCell.self, forCellReuseIdentifier: "service")
+        tableView.register(TutorCell.self, forCellReuseIdentifier: "service")
         tableView.rowHeight = 200
         
         super.viewDidLoad()
@@ -32,7 +32,7 @@ class BarNewestViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 5
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
