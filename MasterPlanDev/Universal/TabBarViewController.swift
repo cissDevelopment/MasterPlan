@@ -252,7 +252,7 @@ class TabBarViewController: UITabBarController, UISearchBarDelegate {
         
         view.backgroundColor = lightBlue
         view.frame = CGRect(x: -140, y: 70, width: 200, height: 617)
-        
+        print(view.frame.height)
         let intro: UIButton = {
             let button = UIButton()
             let font = UIFont(name: "Avenir-Medium", size: 20)
@@ -516,6 +516,7 @@ class TabBarViewController: UITabBarController, UISearchBarDelegate {
         UIView.animate(withDuration: searchTime){
             self.mySearchBar.transform = CGAffineTransform(translationX: 384, y: 0)
         }
+        mySearchBar.text = ""
         exitSearchButton.removeFromSuperview()
     }
     
