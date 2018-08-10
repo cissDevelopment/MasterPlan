@@ -81,25 +81,17 @@ class TabBarViewController: UITabBarController, UISearchBarDelegate {
         let faqText: UITextView = {
             let textView = UITextView()
             textView.text = """
-            Q: Why are you guys so awesome?
+            Q: How do I sign up for specific subjects for tutoring?
             
-            A: Virginity power
-            
-            Q: Who did the most work for this project?
-            
-            A: Joshua Shou of course!
+            A: At the user page, you can pick specific subjects in the "subjects notified" section
             
             Q: How do I request a tutor?
             
-            A: There's literally a request page you dumbnugget
+            A: There is a request tutor section, the second bottom tab from the left
             
-            Q: How do I access the FAQ section?
+            Q: How do I change my profile picture?
             
-            A: Stare at the screen and ask that question again
-
-            Q: Why didn't Joshua Cheng do anything?
-            
-            A: Cuz he's a dumbass little shit that doesn't know responsibility
+            A: Go to the user page, and click on your profile picture.
 
             """
             
@@ -180,14 +172,13 @@ class TabBarViewController: UITabBarController, UISearchBarDelegate {
             
             Server:
             Joshua Cheng
-            Email: dumbassirressponsiblejerk@gmail.org
-            Phone: 1800- doyourjobBOY
-            (This guy will take weeks to respond if you contact him)
+            Email: joshua2020181@concordiashanghai.org
+            Phone:
             
             Design:
             Allison Chen
             Email: allison2019155@concordiashanghai.org
-            Phone:
+            Phone: 13585506250
             """
             textView.translatesAutoresizingMaskIntoConstraints = false
             

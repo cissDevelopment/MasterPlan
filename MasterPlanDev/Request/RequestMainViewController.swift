@@ -15,6 +15,14 @@ let containerViewRequest: UIView = {
     return view
 }()
 
+var keyboardHeightLayoutConstraint: NSLayoutConstraint?
+
+var activeField: UITextField = {
+    let textField = UITextField()
+    return textField
+    
+}()
+
 let changepicuniversal: UIImageView = {
     let image1 = UIImageView()
     image1.backgroundColor = lightYellow
@@ -359,12 +367,21 @@ class RequestMainViewController: UIViewController, UITextFieldDelegate {
         return button
     }()
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+
+    
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
 
+        
         view.addSubview(scrollView1)
         view.addSubview(tutorRequest)
 
@@ -510,9 +527,19 @@ class RequestMainViewController: UIViewController, UITextFieldDelegate {
         submit.leftAnchor.constraint(equalTo: scrollView1.leftAnchor, constant:20).isActive = true
         submit.rightAnchor.constraint(equalTo: scrollView1.rightAnchor, constant:-20).isActive = true
         
+        NotificationCenter.default.addObserver(self, selector: #selector(RequestMainViewController.keyboardWillShow(sender:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(RequestMainViewController.keyboardWillHide(sender:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
 
+    @objc func keyboardWillShow(sender: NSNotification) {
+        self.view.frame.origin.y = -150 // Move view 150 points upward
+    }
+    
+    @objc func keyboardWillHide(sender: NSNotification) {
+        self.view.frame.origin.y = 0 // Move view to original position
+    }
     
     @objc func submitAction() {
         submit.isHighlighted = true
