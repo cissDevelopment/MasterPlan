@@ -427,7 +427,6 @@ class RequestMainViewController: UIViewController, UITextFieldDelegate {
         datePlaceholder.addTarget(self, action: #selector(dateChanged), for: UIControlEvents.touchDown)
         lengthPlaceholder.addTarget(self, action: #selector(timeChanged), for: UIControlEvents.touchDown)
         
-        
         profilepic.topAnchor.constraint(equalTo: scrollView1.topAnchor, constant:20).isActive = true
         profilepic.leftAnchor.constraint(equalTo: scrollView1.leftAnchor, constant: 20).isActive = true
         
