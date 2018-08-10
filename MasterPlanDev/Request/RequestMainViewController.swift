@@ -323,9 +323,6 @@ class RequestMainViewController: UIViewController {
         scrollView1.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         scrollView1.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         
-
-    
-        
         scrollView1.backgroundColor = lightBlue
         scrollView1.addSubview(profilepic)
         scrollView1.addSubview(changepicuniversal)

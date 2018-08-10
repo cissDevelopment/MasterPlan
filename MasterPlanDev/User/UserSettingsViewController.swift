@@ -323,10 +323,6 @@ class UserSettingsViewController: UIViewController {
 
     @objc func changepicAction (sender: UIButton!) {
         print ("something!")
-//        imagepicker.delegate = self
-//        imagepicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
-//
-//        self.present(imagepicker, animated:true, completion:nil)
     }
     
     

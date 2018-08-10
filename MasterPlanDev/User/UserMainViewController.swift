@@ -420,15 +420,12 @@ class UserMainViewController: UIViewController, UIImagePickerControllerDelegate,
             content.subtitle = ""
             content.body = "Joshua Shou is a genius omg"
             let alarmTime = Date().addingTimeInterval(60)
-            let components = Calendar.current.dateComponents([.weekday,
-                                                              .hour, .minute], from: alarmTime)
-            let trigger = UNCalendarNotificationTrigger(dateMatching:
-                components, repeats: true)
+            let components = Calendar.current.dateComponents([.weekday, .hour, .minute], from: alarmTime)
+            let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
             let request = UNNotificationRequest(identifier:
                 "taskreminder", content: content, trigger: trigger)
             UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
         }
-            
         else
         {
             UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
