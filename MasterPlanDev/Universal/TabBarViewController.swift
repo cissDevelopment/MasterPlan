@@ -255,7 +255,7 @@ class TabBarViewController: UITabBarController, UISearchBarDelegate {
             //        button.layer.borderColor = borderColor
             button.titleLabel?.textColor = color
             button.translatesAutoresizingMaskIntoConstraints = false
-
+            button.addTarget(self, action: #selector(introAction), for: .touchUpInside)
             
             return button
         }()
@@ -547,6 +547,13 @@ class TabBarViewController: UITabBarController, UISearchBarDelegate {
         UIView.animate(withDuration: moreElementTime) {
             self.faqView.transform = CGAffineTransform(translationX: 140, y: 0)
         }
+        
+    }
+    
+    @objc func introAction() {
+        let page = IntroductionViewController()
+        present(page, animated: true, completion: nil)
+        
         
     }
     
