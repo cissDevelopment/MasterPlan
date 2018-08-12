@@ -38,6 +38,7 @@
 		7FED50BD2107699D00FEF5E7 /* BarNewestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FED50BC2107699D00FEF5E7 /* BarNewestViewController.swift */; };
 		7FED50BF210769AF00FEF5E7 /* RequestSingleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FED50BE210769AF00FEF5E7 /* RequestSingleViewController.swift */; };
 		7FED50C1210769B500FEF5E7 /* UserSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FED50C0210769B500FEF5E7 /* UserSettingsViewController.swift */; };
+		C6604203211EDA0A00755369 /* IntroductionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6604202211EDA0A00755369 /* IntroductionViewController.swift */; };
 		C684EB4A210D83AB007F8A55 /* CurrentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C684EB49210D83AB007F8A55 /* CurrentViewController.swift */; };
 		C684EB4E210D965E007F8A55 /* CurrentMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C684EB4D210D965E007F8A55 /* CurrentMainViewController.swift */; };
 /* End PBXBuildFile section */
@@ -76,6 +77,7 @@
 		7FED50BC2107699D00FEF5E7 /* BarNewestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarNewestViewController.swift; sourceTree = "<group>"; };
 		7FED50BE210769AF00FEF5E7 /* RequestSingleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSingleViewController.swift; sourceTree = "<group>"; };
 		7FED50C0210769B500FEF5E7 /* UserSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsViewController.swift; sourceTree = "<group>"; };
+		C6604202211EDA0A00755369 /* IntroductionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroductionViewController.swift; sourceTree = "<group>"; };
 		C684EB49210D83AB007F8A55 /* CurrentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentViewController.swift; sourceTree = "<group>"; };
 		C684EB4D210D965E007F8A55 /* CurrentMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentMainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -110,6 +112,7 @@
 				7F0917F921062B1000C33F60 /* FirstViewController.swift */,
 				7F09180B2106423400C33F60 /* LoginViewController.swift */,
 				7F09180D21064D1400C33F60 /* SignUpViewController.swift */,
+				C6604202211EDA0A00755369 /* IntroductionViewController.swift */,
 			);
 			path = Firsts;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 				7F0917FA21062B1000C33F60 /* FirstViewController.swift in Sources */,
 				716266032112E3C3003E3B7A /* CustomHeaderView.swift in Sources */,
 				7FED50BD2107699D00FEF5E7 /* BarNewestViewController.swift in Sources */,
+				C6604203211EDA0A00755369 /* IntroductionViewController.swift in Sources */,
 				7FE7E4EC21082DC100F115D1 /* BarRewardingViewController.swift in Sources */,
 				7F3EDCE72108A74100120BED /* RequestDraftsViewController.swift in Sources */,
 				C684EB4A210D83AB007F8A55 /* CurrentViewController.swift in Sources */,

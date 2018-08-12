@@ -118,6 +118,7 @@ class TutorCell: UITableViewCell {
         
         name.topAnchor.constraint(equalTo: requestor.bottomAnchor, constant: barSpacing).isActive = true
         name.leftAnchor.constraint(equalTo: requestor.leftAnchor).isActive = true
+        
         name.rightAnchor.constraint(equalTo: rightAnchor, constant: -30).isActive = true
         name.heightAnchor.constraint(equalToConstant: 50).isActive = true
         

@@ -81,25 +81,17 @@ class TabBarViewController: UITabBarController, UISearchBarDelegate {
         let faqText: UITextView = {
             let textView = UITextView()
             textView.text = """
-            Q: Why are you guys so awesome?
+            Q: How do I sign up for specific subjects for tutoring?
             
-            A: Virginity power
-            
-            Q: Who did the most work for this project?
-            
-            A: Joshua Shou of course!
+            A: At the user page, you can pick specific subjects in the "subjects notified" section
             
             Q: How do I request a tutor?
             
-            A: There's literally a request page you dumbnugget
+            A: There is a request tutor section, the second bottom tab from the left
             
-            Q: How do I access the FAQ section?
+            Q: How do I change my profile picture?
             
-            A: Stare at the screen and ask that question again
-
-            Q: Why didn't Joshua Cheng do anything?
-            
-            A: Cuz he's a dumbass little shit that doesn't know responsibility
+            A: Go to the user page, and click on your profile picture.
 
             """
             
@@ -180,14 +172,13 @@ class TabBarViewController: UITabBarController, UISearchBarDelegate {
             
             Server:
             Joshua Cheng
-            Email: dumbassirressponsiblejerk@gmail.org
-            Phone: 1800- doyourjobBOY
-            (This guy will take weeks to respond if you contact him)
+            Email: joshua2020181@concordiashanghai.org
+            Phone:
             
             Design:
             Allison Chen
             Email: allison2019155@concordiashanghai.org
-            Phone:
+            Phone: 13585506250
             """
             textView.translatesAutoresizingMaskIntoConstraints = false
             
@@ -252,7 +243,7 @@ class TabBarViewController: UITabBarController, UISearchBarDelegate {
         
         view.backgroundColor = lightBlue
         view.frame = CGRect(x: -140, y: 70, width: 200, height: 617)
-        
+        print(view.frame.height)
         let intro: UIButton = {
             let button = UIButton()
             let font = UIFont(name: "Avenir-Medium", size: 20)
@@ -264,7 +255,7 @@ class TabBarViewController: UITabBarController, UISearchBarDelegate {
             //        button.layer.borderColor = borderColor
             button.titleLabel?.textColor = color
             button.translatesAutoresizingMaskIntoConstraints = false
-
+            button.addTarget(self, action: #selector(introAction), for: .touchUpInside)
             
             return button
         }()
@@ -387,7 +378,7 @@ class TabBarViewController: UITabBarController, UISearchBarDelegate {
         mySearchBar.searchBarStyle = .minimal
         
         // set placeholder
-        mySearchBar.placeholder = "Input text"
+        mySearchBar.placeholder = "Search Tutor Requests"
         
         // change the color of cursol and cancel button.
         mySearchBar.tintColor = UIColor.white
@@ -516,6 +507,7 @@ class TabBarViewController: UITabBarController, UISearchBarDelegate {
         UIView.animate(withDuration: searchTime){
             self.mySearchBar.transform = CGAffineTransform(translationX: 384, y: 0)
         }
+        mySearchBar.text = ""
         exitSearchButton.removeFromSuperview()
     }
     
@@ -555,6 +547,13 @@ class TabBarViewController: UITabBarController, UISearchBarDelegate {
         UIView.animate(withDuration: moreElementTime) {
             self.faqView.transform = CGAffineTransform(translationX: 140, y: 0)
         }
+        
+    }
+    
+    @objc func introAction() {
+        let page = IntroductionViewController()
+        present(page, animated: true, completion: nil)
+        
         
     }
     

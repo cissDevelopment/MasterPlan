@@ -66,21 +66,6 @@ class RequestSingleViewController: UIViewController {
 
         changepic.centerXAnchor.constraint(equalTo: profilepic.centerXAnchor).isActive = true
         changepic.centerYAnchor.constraint(equalTo: profilepic.centerYAnchor).isActive = true
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
     }
-    
-    
-    
 
 }

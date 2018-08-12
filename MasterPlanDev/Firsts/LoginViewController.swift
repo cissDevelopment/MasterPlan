@@ -153,7 +153,6 @@ class LoginViewController: UIViewController {
         }
     }
     
-    
     // Forgot password functions
     
     func randomPasswordGenerator() -> String { // Generate password of 8 characters
@@ -198,7 +197,6 @@ class LoginViewController: UIViewController {
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true, completion: nil)
     }
-    
     
     func createAlert (title: String, message: String, button: String)
     {

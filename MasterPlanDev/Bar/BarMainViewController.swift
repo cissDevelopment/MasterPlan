@@ -93,6 +93,7 @@ class BarMainViewController: UIViewController {
         viewController.removeFromParentViewController()
     }
     
+    
     private func setDefaultVC() {
         containerView.addSubview(BarNewestViewController().view)
     }
