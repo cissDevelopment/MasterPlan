@@ -88,8 +88,16 @@ class RequestMainViewController: UIViewController, UITextFieldDelegate {
         datePicker.isHidden = true
         datePicker.translatesAutoresizingMaskIntoConstraints = false
 //      Format is correct, unsure about functionality
-        datePicker.datePickerMode = .countDownTimer
+        datePicker.datePickerMode = .time
         datePicker.minuteInterval = 15
+//        Sets 24-hour clock
+        datePicker.locale = NSLocale(localeIdentifier: "da_DK") as Locale
+        //        Sets default time as 00:00
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat =  "HH:mm"
+        let date = dateFormatter.date(from: "00:00")
+        datePicker.date = date!
+        datePicker.minimumDate = date
         return datePicker
     }()
 
