@@ -95,11 +95,14 @@ class RequestMainViewController: UIViewController, UITextFieldDelegate {
         //        Sets default time as 00:00
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat =  "HH:mm"
-        let date = dateFormatter.date(from: "00:00")
-        datePicker.date = date!
-        datePicker.minimumDate = date
+        let startDate = dateFormatter.date(from: "00:00")
+        let endDate = dateFormatter.date(from: "03:00")
+        datePicker.date = startDate!
+        datePicker.maximumDate = endDate
         return datePicker
     }()
+    
+    
 
     let anonymous: UILabel = {
         let label = UILabel()
