@@ -1,4 +1,3 @@
-//
 //  PageCell.swift
 //  MasterPlanDev
 //
@@ -24,7 +23,7 @@ class PageCell: UICollectionViewCell {
         
         return label
     }()
-
+    
     let descriptionTextView : UITextView = {
         let textView = UITextView()
         textView.textColor = .black
@@ -40,7 +39,7 @@ class PageCell: UICollectionViewCell {
     let userImageView : UIImageView = {
         let imageView = UIImageView(image: #imageLiteral(resourceName: "User"))
         imageView.translatesAutoresizingMaskIntoConstraints = false
-
+        
         return imageView
         
     }()
@@ -53,7 +52,7 @@ class PageCell: UICollectionViewCell {
         button.titleLabel?.textColor = .black
         
         button.translatesAutoresizingMaskIntoConstraints = false
-       // button.addTarget(self, action: #selector(seguetoBarViewController), for: .touchUpInside)
+        // button.addTarget(self, action: #selector(seguetoBarViewController), for: .touchUpInside)
         button.backgroundColor = lightBlue
         return button
         
@@ -63,7 +62,7 @@ class PageCell: UICollectionViewCell {
         super.init(frame: frame)
         backgroundColor = secondaryBlue
         setupLayout()
-
+        
         
         
     }
@@ -75,13 +74,13 @@ class PageCell: UICollectionViewCell {
         addSubview(introductionLabel)
         addSubview(descriptionTextView)
         addSubview(userImageView)
-
-
+        
+        
         introductionLabel.topAnchor.constraint(equalTo: topAnchor, constant:20).isActive = true
         introductionLabel.bottomAnchor.constraint(equalTo: topAnchor, constant:95).isActive = true
         introductionLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         
-
+        
         userImageView.topAnchor.constraint(equalTo: introductionLabel.bottomAnchor, constant: 10).isActive = true
         userImageView.leftAnchor.constraint(equalTo: leftAnchor, constant: 100).isActive = true
         userImageView.rightAnchor.constraint(equalTo: rightAnchor, constant: -100).isActive = true
@@ -90,15 +89,27 @@ class PageCell: UICollectionViewCell {
         
         descriptionTextView.topAnchor.constraint(equalTo: userImageView.bottomAnchor, constant: 50).isActive = true
         
-        topImageContainerView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5).isActive = true
-        backButton.topAnchor.constraint(equalTo: topImageContainerView.bottomAnchor, constant:50).isActive = true
+        descriptionTextView.leftAnchor.constraint(equalTo: leftAnchor, constant: 50).isActive = true
+        descriptionTextView.rightAnchor.constraint(equalTo: rightAnchor, constant:-50).isActive = true
+        descriptionTextView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        
+        
+        backButton.topAnchor.constraint(equalTo: descriptionTextView.bottomAnchor, constant:20).isActive = true
+        
+        backButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 50).isActive = true
+        backButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -50).isActive = true
+        
+        
     }
+    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
+    
+    
+    
+    
 }
-
-
-
