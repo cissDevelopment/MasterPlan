@@ -551,10 +551,13 @@ class TabBarViewController: UITabBarController, UISearchBarDelegate {
     }
     
     @objc func introAction() {
-        let page = IntroductionViewController()
-        present(page, animated: true, completion: nil)
-        
-        
+
+//        let page = CollectionViewController(collectionViewLayout: UICollectionViewFlowLayout)
+//        present(page, animated: true, completion: nil)
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        let IntroductionViewControllerr = SwipingController(collectionViewLayout: layout)
+        present(IntroductionViewControllerr, animated: true, completion: nil)
     }
     
 
