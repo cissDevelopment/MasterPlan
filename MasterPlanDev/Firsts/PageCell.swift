@@ -31,7 +31,8 @@ class PageCell: UICollectionViewCell {
         textView.text = "filler"
         textView.font = UIFont(name: "Avenir-Medium", size: 15)
         textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.backgroundColor = .white
+        textView.backgroundColor = .black
+        textView.isHidden = false
         textView.isEditable = false
         return textView
     }()
@@ -70,42 +71,32 @@ class PageCell: UICollectionViewCell {
     private func setupLayout()
     {
         
-        let introview = UIView()
         addSubview(backButton)
         addSubview(introductionLabel)
         addSubview(descriptionTextView)
         addSubview(userImageView)
-        addSubview(introview)
-        introview.translatesAutoresizingMaskIntoConstraints = false
-        
-        introview.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        introview.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        introview.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-        introview.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
 
 
-
-        introductionLabel.topAnchor.constraint(equalTo: introview.topAnchor, constant:20).isActive = true
-        introductionLabel.bottomAnchor.constraint(equalTo: introview.topAnchor, constant:95).isActive = true
-        introductionLabel.centerXAnchor.constraint(equalTo: introview.centerXAnchor).isActive = true
+        introductionLabel.topAnchor.constraint(equalTo: topAnchor, constant:20).isActive = true
+        introductionLabel.bottomAnchor.constraint(equalTo: topAnchor, constant:95).isActive = true
+        introductionLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         
 
         userImageView.topAnchor.constraint(equalTo: introductionLabel.bottomAnchor, constant: 10).isActive = true
-        userImageView.leftAnchor.constraint(equalTo: introview.leftAnchor, constant: 100).isActive = true
-        userImageView.rightAnchor.constraint(equalTo: introview.rightAnchor, constant: -100).isActive = true
+        userImageView.leftAnchor.constraint(equalTo: leftAnchor, constant: 100).isActive = true
+        userImageView.rightAnchor.constraint(equalTo: rightAnchor, constant: -100).isActive = true
         userImageView.bottomAnchor.constraint(equalTo: userImageView.topAnchor, constant: 354).isActive = true
         
         
         descriptionTextView.topAnchor.constraint(equalTo: userImageView.bottomAnchor, constant: 50).isActive = true
         
-        descriptionTextView.leftAnchor.constraint(equalTo: introview.leftAnchor, constant: 50).isActive = true
-        descriptionTextView.rightAnchor.constraint(equalTo: introview.rightAnchor, constant:-50).isActive = true
-        descriptionTextView.bottomAnchor.constraint(equalTo: introview.bottomAnchor)
+        descriptionTextView.leftAnchor.constraint(equalTo: leftAnchor, constant: 50).isActive = true
+        descriptionTextView.rightAnchor.constraint(equalTo: rightAnchor, constant:-50).isActive = true
+        descriptionTextView.bottomAnchor.constraint(equalTo: bottomAnchor)
 
-//
-//
+        
         backButton.topAnchor.constraint(equalTo: descriptionTextView.bottomAnchor, constant:20).isActive = true
-        backButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+
         backButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 50).isActive = true
         backButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -50).isActive = true
 
