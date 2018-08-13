@@ -41,6 +41,9 @@ let changepicuniversal: UIImageView = {
 }()
 
 class RequestMainViewController: UIViewController, UITextFieldDelegate {
+    func showSubjects(text: String) {
+        print(text)
+    }
     
     let myDatePicker: UIDatePicker = {
         let datePicker = UIDatePicker()
@@ -133,7 +136,7 @@ class RequestMainViewController: UIViewController, UITextFieldDelegate {
         scrollView.alwaysBounceVertical = true
         scrollView.alwaysBounceHorizontal = false
         scrollView.showsHorizontalScrollIndicator = false
-
+        
         return scrollView
         
     }()
@@ -169,17 +172,6 @@ class RequestMainViewController: UIViewController, UITextFieldDelegate {
         button.addTarget(self, action: #selector(segueToSubjectsViewController), for: .touchUpInside)
         
         return button
-    }()
-    
-    let servicename: UITextView = {
-        let textView = UITextView(frame: CGRect(x:20.0, y:90.0, width:250.0, height:100.0))
-        textView.text = "Name of the Service"
-        textView.textColor = white
-        textView.backgroundColor = lightYellow
-  //      textView.allowsEditingTextAttributes = true
-        textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.isEditable = true
-       return textView
     }()
     
     let _label: UILabel = {
@@ -374,13 +366,13 @@ class RequestMainViewController: UIViewController, UITextFieldDelegate {
     
 
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        SubjectsTableViewController().selectionDelegate = self
+    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-
         
         view.addSubview(scrollView1)
         view.addSubview(tutorRequest)
@@ -398,16 +390,9 @@ class RequestMainViewController: UIViewController, UITextFieldDelegate {
         tutorRequest.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         tutorRequest.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
-        scrollView1.translatesAutoresizingMaskIntoConstraints = false
-        scrollView1.topAnchor.constraint(equalTo: tutorRequest.bottomAnchor).isActive = true
-        scrollView1.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
-        scrollView1.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        scrollView1.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-        
         scrollView1.backgroundColor = lightBlue
         scrollView1.addSubview(profilepic)
         scrollView1.addSubview(changepicuniversal)
-        scrollView1.addSubview(servicename)
         scrollView1.addSubview(_label)
         scrollView1.addSubview(anonymous)
         scrollView1.addSubview(request)
@@ -450,9 +435,6 @@ class RequestMainViewController: UIViewController, UITextFieldDelegate {
         changepicuniversal.centerXAnchor.constraint(equalTo: profilepic.centerXAnchor).isActive = true
         changepicuniversal.centerYAnchor.constraint(equalTo: profilepic.centerYAnchor).isActive = true
         
-        servicename.topAnchor.constraint(equalTo: scrollView1.topAnchor, constant:50).isActive = true
-        servicename.leftAnchor.constraint(equalTo: profilepic.rightAnchor, constant:20).isActive = true
-        
         _label.topAnchor.constraint(equalTo: changepicuniversal.bottomAnchor, constant:-10).isActive = true
         _label.leftAnchor.constraint(equalTo: scrollView1.leftAnchor, constant:20).isActive = true
         _label.rightAnchor.constraint(equalTo: scrollView1.rightAnchor, constant:-20).isActive = true
@@ -471,7 +453,7 @@ class RequestMainViewController: UIViewController, UITextFieldDelegate {
         chosenSubjectLabel.centerYAnchor.constraint(equalTo: subjectlabel.centerYAnchor).isActive = true
         
         subjectDisclosure.centerYAnchor.constraint(equalTo: subjectlabel.centerYAnchor).isActive = true
-        subjectDisclosure.rightAnchor.constraint(equalTo: scrollView1.rightAnchor, constant: -20).isActive = true
+        subjectDisclosure.rightAnchor.constraint(equalTo: scrollView1.rightAnchor, constant: 100).isActive = true
         
         __label.topAnchor.constraint(equalTo: subjectlabel.bottomAnchor, constant: -40).isActive = true
         __label.leftAnchor.constraint(equalTo: scrollView1.leftAnchor, constant:20).isActive = true
@@ -546,11 +528,6 @@ class RequestMainViewController: UIViewController, UITextFieldDelegate {
         detailsDescription.text = "Optional description here such as range, level of comprehension, materials, etc"
         let page = TabBarViewController()
         present(page, animated: true, completion : nil)
-        
-        
-        
-        
-        
     }
     
     @objc func segueToSubjectsViewController() {
@@ -561,6 +538,7 @@ class RequestMainViewController: UIViewController, UITextFieldDelegate {
         transition.subtype = kCATransitionFromRight
         transition.timingFunction = CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseInEaseOut)
         view.window!.layer.add(transition, forKey: kCATransition)
+        SubjectsTableViewController().selectionDelegate = self
         present(page, animated: false, completion: nil)
     }
    
@@ -643,6 +621,10 @@ class RequestMainViewController: UIViewController, UITextFieldDelegate {
         self.lengthPicker.isHidden = false
         self.toolBar.isHidden = false
     }
-    
-    
+}
+
+extension RequestMainViewController: ChosenSubjectDelegate {
+    func selectedSubject(subject: String) {
+        chosenSubjectLabel.text = subject
+    }
 }

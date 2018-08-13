@@ -10,6 +10,7 @@
 		716266032112E3C3003E3B7A /* CustomHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716266022112E3C3003E3B7A /* CustomHeaderView.swift */; };
 		717F80D12112D3D300627170 /* UserMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717F80CF2112D3D300627170 /* UserMainViewController.swift */; };
 		717F80D42112D45A00627170 /* SubjectsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717F80D32112D45A00627170 /* SubjectsTableViewController.swift */; };
+		719D956C2120927900CF8C3A /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719D956B2120927900CF8C3A /* Protocols.swift */; };
 		71AEF9ED211697A7004190EE /* SubjectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AEF9EC211697A7004190EE /* SubjectsViewController.swift */; };
 		71AEF9EF21169B8D004190EE /* Subjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AEF9EE21169B8D004190EE /* Subjects.swift */; };
 		71AEFA2D2116D2E7004190EE /* AnimationTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AEFA2C2116D2E7004190EE /* AnimationTime.swift */; };
@@ -47,6 +48,7 @@
 		716266022112E3C3003E3B7A /* CustomHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeaderView.swift; sourceTree = "<group>"; };
 		717F80CF2112D3D300627170 /* UserMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMainViewController.swift; sourceTree = "<group>"; };
 		717F80D32112D45A00627170 /* SubjectsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectsTableViewController.swift; sourceTree = "<group>"; };
+		719D956B2120927900CF8C3A /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		71AEF9EC211697A7004190EE /* SubjectsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectsViewController.swift; sourceTree = "<group>"; };
 		71AEF9EE21169B8D004190EE /* Subjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subjects.swift; sourceTree = "<group>"; };
 		71AEFA2C2116D2E7004190EE /* AnimationTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationTime.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				7FED50BE210769AF00FEF5E7 /* RequestSingleViewController.swift */,
 				7F3EDCE22108A73200120BED /* RequestMultipleViewController.swift */,
 				7F3EDCE42108A73A00120BED /* RequestTutorViewController.swift */,
+				719D956B2120927900CF8C3A /* Protocols.swift */,
 				7F3EDCE62108A74100120BED /* RequestDraftsViewController.swift */,
 			);
 			path = Request;
@@ -285,6 +288,7 @@
 				7FED50BD2107699D00FEF5E7 /* BarNewestViewController.swift in Sources */,
 				C6604203211EDA0A00755369 /* IntroductionViewController.swift in Sources */,
 				7FE7E4EC21082DC100F115D1 /* BarRewardingViewController.swift in Sources */,
+				719D956C2120927900CF8C3A /* Protocols.swift in Sources */,
 				7F3EDCE72108A74100120BED /* RequestDraftsViewController.swift in Sources */,
 				C684EB4A210D83AB007F8A55 /* CurrentViewController.swift in Sources */,
 				7F09180E21064D1400C33F60 /* SignUpViewController.swift in Sources */,
