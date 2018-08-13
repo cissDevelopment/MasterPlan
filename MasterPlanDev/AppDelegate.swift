@@ -23,7 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        let swipingController = SwipingController(collectionViewLayout: layout)
 //        
 //        window?.rootViewController = swipingController
-        
+        UIApplication.shared.statusBarStyle = .lightContent
+
         
         return true
     }
@@ -52,4 +53,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
-
