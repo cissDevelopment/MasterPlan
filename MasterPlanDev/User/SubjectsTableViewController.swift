@@ -12,11 +12,15 @@ class SubjectsTableViewController: UITableViewController {
     
     var headerView : CustomHeaderView!
     
+    var selectionDelegate: ChosenSubjectDelegate!
+    
     let classID = "classID"
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.delegate = self
+        tableView.dataSource = self
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: classID)
         
@@ -37,7 +41,7 @@ class SubjectsTableViewController: UITableViewController {
         label.backgroundColor = .clear
         
         return label
-    }
+    } 
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 40
@@ -52,14 +56,14 @@ class SubjectsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 40
+        return 80
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: classID, for: indexPath)
         
         cell.textLabel?.text = classList[indexPath.section][indexPath.row]
-        cell.textLabel?.font = UIFont(name: "Avenir-Medium", size: 16)
+        cell.textLabel?.font = UIFont(name: "Avenir-Medium", size: 24)
         cell.textLabel?.textColor = .white
         cell.backgroundColor = lightBlue
         
@@ -71,6 +75,7 @@ class SubjectsTableViewController: UITableViewController {
             if cell.accessoryType == .none {
                 cell.accessoryType = .checkmark
                 cell.tintColor = .white
+                selectionDelegate.selectedSubject(subject: classList[indexPath.section][indexPath.row])
             } else {
                 cell.accessoryType = .none
             }

@@ -22,7 +22,7 @@ class UserMainViewController: UIViewController, UIImagePickerControllerDelegate,
         let view = UIView()
         view.backgroundColor = secondaryBlue
         let label = UILabel()
-        label.text = "User"
+        label.text = "User Settings"
         label.textColor  = .white
         label.font = UIFont(name: "Avenir-Medium", size: 30)
         view.addSubview(label)
